@@ -1,0 +1,56 @@
+﻿<mah:MetroWindow x:Class="SistemaLibreriaImagina.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:fa="http://schemas.fontawesome.io/icons/"
+                 xmlns:viewModel="clr-namespace:SistemaLibreriaImagina.ViewModels"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 mc:Ignorable="d"
+                 Height="800" Width="1200" Background="Transparent"
+                 WindowStyle="None"
+                 AllowsTransparency="False"
+                 ResizeMode="NoResize">
+
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel />
+    </Window.DataContext>
+    <Border Background="#FFFFFAF5" CornerRadius="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!-- Logo Librería Imagina-->
+            <Image  Height="64"  Width="200" Source="/Assets/brand.png" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="5,0,0,0" />
+
+            <StackPanel Grid.Row="1" Background="#1F8BAC">
+
+                <RadioButton  Content="Inicio" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" IsChecked="True" Command="{Binding InicioViewCommand }" FontFamily="Montserrat"/>
+
+                <RadioButton  Content="Inventario" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding InventarioViewCommand }" FontFamily="Montserrat Medium"/>
+
+                <RadioButton  Content="Restock" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton  Content="Pedidos" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" FontFamily="Montserrat"/>
+                <RadioButton  Content="Cerrar Sesión" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" VerticalContentAlignment="Bottom" FontFamily="Montserrat"/>
+            </StackPanel>
+
+            <TextBox VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="20,5,0,5" Grid.Column="1" Style="{StaticResource ModernTextBox}"/>
+
+            <ContentControl Grid.Row="1" Grid.Column="1" Margin="10" Content="{Binding CurrentView}" />
+
+
+        </Grid>
+
+
+
+    </Border>
+</mah:MetroWindow>
+

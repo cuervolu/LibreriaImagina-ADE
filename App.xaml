@@ -1,0 +1,30 @@
+﻿<Application x:Class="SistemaLibreriaImagina.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModel="clr-namespace:SistemaLibreriaImagina.ViewModels"
+             xmlns:view="clr-namespace:SistemaLibreriaImagina.View"
+             StartupUri="View/LoginView.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Cobalt.xaml" />
+                <ResourceDictionary Source="Themes/MenuButtonTheme.xaml" />
+                <ResourceDictionary Source="Themes/TextboxTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type Window}">
+                <Setter Property="FontFamily" Value="Montserrat"/>
+            </Style>
+            <DataTemplate DataType="{x:Type viewModel:InicioViewModel}">
+                <view:InicioView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
+                <view:LoginView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:InventarioViewModel}">
+                <view:InventarioView />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,60 @@
+# Carpeta bin y obj generadas por Visual Studio
+bin/
+obj/
+
+# Archivos de compilación generados
+*.exe
+*.dll
+*.pdb
+
+# Archivos de respaldo de Visual Studio
+*.user
+*.suo
+*.sln.docstates
+
+# Carpeta de paquetes NuGet
+packages/
+
+# Carpeta de salida de publicación de la aplicación
+publish/
+
+# Archivo de configuración de usuario de Visual Studio
+*.vs/config/*.json
+
+*.vs/
+
+# Archivos de registro
+*.log
+
+# Carpeta de análisis de código
+_resharper/
+
+# Carpeta de prueba
+TestResults/
+
+# Archivo de configuración de prueba
+*.testsettings
+
+# Carpeta de capturas de pantalla y registros generados por pruebas
+TestResults/
+
+# Archivos de caché
+*.suo
+*.userprefs
+*.vspscc
+*.vssscc
+*.resharper
+*.resharper.user
+
+# Archivo de opciones generales de Visual Studio
+*.sln.DotSettings.user
+
+# Archivos de caché de Visual Studio Code
+.vscode/
+
+# Carpeta de historial de cambios de Git
+.git/
+
+# Archivos de configuración de Windows
+Desktop.ini
+Thumbs.db
