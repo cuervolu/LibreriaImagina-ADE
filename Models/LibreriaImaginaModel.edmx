@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AUTH_GROUP">
           <Key>
             <PropertyRef Name="ID" />
@@ -132,6 +132,15 @@
           <Property Name="DIRECCION_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
           <Property Name="PEDIDO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
           <Property Name="REPARTIDOR_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ERROR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="19" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIMESTAMP" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="MENSAJE" Type="nclob" />
+          <Property Name="TRACEBACK" Type="nclob" />
         </EntityType>
         <EntityType Name="LIBRO">
           <Key>
@@ -584,7 +593,69 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ACTUALIZAR_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+          <Parameter Name="P_ID_MANTENIMIENTO" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA_SOLICITUD" Type="date" Mode="In" />
+          <Parameter Name="P_TIPO_MANTENIMIENTO" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_ESTADO_MANTENIMIENTO" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_CLIENTE_ID" Type="number" Mode="In" />
+          <Parameter Name="P_LIBRO_ID" Type="number" Mode="In" />
+          <Parameter Name="P_TECNICO_ID" Type="number" Mode="In" />
+        </Function>
+        <Function Name="AGREGAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+          <Parameter Name="P_NOMBRE_LIBRO" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="nclob" Mode="In" />
+          <Parameter Name="P_AUTOR" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_EDITORIAL" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_PRECIO_UNITARIO" Type="number" Mode="In" />
+          <Parameter Name="P_CANTIDAD_DISPONIBLE" Type="number" Mode="In" />
+          <Parameter Name="P_PORTADA" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_FECHA_PUBLICACION" Type="date" Mode="In" />
+          <Parameter Name="P_CATEGORIA" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_ISBN" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_SLUG" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_THUMBNAIL" Type="nvarchar2" Mode="In" />
+        </Function>
+        <Function Name="CREAR_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+          <Parameter Name="P_FECHA_SOLICITUD" Type="date" Mode="In" />
+          <Parameter Name="P_TIPO_MANTENIMIENTO" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_ESTADO_MANTENIMIENTO" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_CLIENTE_ID" Type="number" Mode="In" />
+          <Parameter Name="P_LIBRO_ID" Type="number" Mode="In" />
+          <Parameter Name="P_TECNICO_ID" Type="number" Mode="In" />
+        </Function>
+        <Function Name="ELIMINAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+          <Parameter Name="P_ID_LIBRO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="ELIMINAR_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+          <Parameter Name="P_ID_MANTENIMIENTO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="LEER_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+          <Parameter Name="P_ID_MANTENIMIENTO" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA_SOLICITUD" Type="date" Mode="Out" />
+          <Parameter Name="P_TIPO_MANTENIMIENTO" Type="nvarchar2" Mode="Out" />
+          <Parameter Name="P_ESTADO_MANTENIMIENTO" Type="nvarchar2" Mode="Out" />
+          <Parameter Name="P_CLIENTE_ID" Type="number" Mode="Out" />
+          <Parameter Name="P_LIBRO_ID" Type="number" Mode="Out" />
+          <Parameter Name="P_TECNICO_ID" Type="number" Mode="Out" />
+        </Function>
         <Function Name="LISTAR_CATEGORIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP" />
+        <Function Name="LISTAR_LIBROS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP" />
+        <Function Name="MODIFICAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+          <Parameter Name="P_ID_LIBRO" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE_LIBRO" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="nclob" Mode="In" />
+          <Parameter Name="P_AUTOR" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_EDITORIAL" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_PRECIO_UNITARIO" Type="number" Mode="In" />
+          <Parameter Name="P_CANTIDAD_DISPONIBLE" Type="number" Mode="In" />
+          <Parameter Name="P_PORTADA" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_FECHA_PUBLICACION" Type="date" Mode="In" />
+          <Parameter Name="P_CATEGORIA" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_ISBN" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_SLUG" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_THUMBNAIL" Type="nvarchar2" Mode="In" />
+        </Function>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="AUTH_GROUP" EntityType="Self.AUTH_GROUP" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
           <EntitySet Name="AUTH_GROUP_PERMISSIONS" EntityType="Self.AUTH_GROUP_PERMISSIONS" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
@@ -600,6 +671,7 @@
           <EntitySet Name="DJANGO_MIGRATIONS" EntityType="Self.DJANGO_MIGRATIONS" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
           <EntitySet Name="DJANGO_SESSION" EntityType="Self.DJANGO_SESSION" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
           <EntitySet Name="ENVIO" EntityType="Self.ENVIO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
+          <EntitySet Name="ERROR" EntityType="Self.ERROR" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
           <EntitySet Name="LIBRO" EntityType="Self.LIBRO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
           <EntitySet Name="MANTENIMIENTO" EntityType="Self.MANTENIMIENTO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
           <EntitySet Name="METODO_PAGO" EntityType="Self.METODO_PAGO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
@@ -723,8 +795,7 @@
             <End Role="USUARIO_USER_PERMISSIONS" EntitySet="USUARIO_USER_PERMISSIONS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1501,7 +1572,79 @@
             <End Role="USUARIO_USER_PERMISSIONS" EntitySet="USUARIO_USER_PERMISSIONS" />
           </AssociationSet>
           <FunctionImport Name="LISTAR_CATEGORIAS" />
+          <EntitySet Name="ERROR" EntityType="Model.ERROR" />
+          <FunctionImport Name="ACTUALIZAR_MANTENIMIENTO">
+            <Parameter Name="P_ID_MANTENIMIENTO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA_SOLICITUD" Mode="In" Type="DateTime" />
+            <Parameter Name="P_TIPO_MANTENIMIENTO" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO_MANTENIMIENTO" Mode="In" Type="String" />
+            <Parameter Name="P_CLIENTE_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_LIBRO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TECNICO_ID" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="AGREGAR_LIBRO">
+            <Parameter Name="P_NOMBRE_LIBRO" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_AUTOR" Mode="In" Type="String" />
+            <Parameter Name="P_EDITORIAL" Mode="In" Type="String" />
+            <Parameter Name="P_PRECIO_UNITARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CANTIDAD_DISPONIBLE" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PORTADA" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA_PUBLICACION" Mode="In" Type="DateTime" />
+            <Parameter Name="P_CATEGORIA" Mode="In" Type="String" />
+            <Parameter Name="P_ISBN" Mode="In" Type="String" />
+            <Parameter Name="P_SLUG" Mode="In" Type="String" />
+            <Parameter Name="P_THUMBNAIL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CREAR_MANTENIMIENTO">
+            <Parameter Name="P_FECHA_SOLICITUD" Mode="In" Type="DateTime" />
+            <Parameter Name="P_TIPO_MANTENIMIENTO" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO_MANTENIMIENTO" Mode="In" Type="String" />
+            <Parameter Name="P_CLIENTE_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_LIBRO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TECNICO_ID" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ELIMINAR_LIBRO">
+          <Parameter Name="P_ID_LIBRO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ELIMINAR_MANTENIMIENTO">
+          <Parameter Name="P_ID_MANTENIMIENTO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="LEER_MANTENIMIENTO">
+            <Parameter Name="P_ID_MANTENIMIENTO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA_SOLICITUD" Mode="Out" Type="DateTime" />
+            <Parameter Name="P_TIPO_MANTENIMIENTO" Mode="Out" Type="String" />
+            <Parameter Name="P_ESTADO_MANTENIMIENTO" Mode="Out" Type="String" />
+            <Parameter Name="P_CLIENTE_ID" Mode="Out" Type="Decimal" />
+            <Parameter Name="P_LIBRO_ID" Mode="Out" Type="Decimal" />
+            <Parameter Name="P_TECNICO_ID" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="MODIFICAR_LIBRO">
+            <Parameter Name="P_ID_LIBRO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE_LIBRO" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_AUTOR" Mode="In" Type="String" />
+            <Parameter Name="P_EDITORIAL" Mode="In" Type="String" />
+            <Parameter Name="P_PRECIO_UNITARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CANTIDAD_DISPONIBLE" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PORTADA" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA_PUBLICACION" Mode="In" Type="DateTime" />
+            <Parameter Name="P_CATEGORIA" Mode="In" Type="String" />
+            <Parameter Name="P_ISBN" Mode="In" Type="String" />
+            <Parameter Name="P_SLUG" Mode="In" Type="String" />
+            <Parameter Name="P_THUMBNAIL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LISTAR_LIBROS" />
         </EntityContainer>
+        <EntityType Name="ERROR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIMESTAMP" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="MENSAJE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TRACEBACK" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1776,6 +1919,24 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="LISTAR_CATEGORIAS" FunctionName="Model.Store.LISTAR_CATEGORIAS" />
+          <EntitySetMapping Name="ERROR">
+            <EntityTypeMapping TypeName="Model.ERROR">
+              <MappingFragment StoreEntitySet="ERROR">
+                <ScalarProperty Name="TRACEBACK" ColumnName="TRACEBACK" />
+                <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ACTUALIZAR_MANTENIMIENTO" FunctionName="Model.Store.ACTUALIZAR_MANTENIMIENTO" />
+          <FunctionImportMapping FunctionImportName="AGREGAR_LIBRO" FunctionName="Model.Store.AGREGAR_LIBRO" />
+          <FunctionImportMapping FunctionImportName="CREAR_MANTENIMIENTO" FunctionName="Model.Store.CREAR_MANTENIMIENTO" />
+          <FunctionImportMapping FunctionImportName="ELIMINAR_LIBRO" FunctionName="Model.Store.ELIMINAR_LIBRO" />
+          <FunctionImportMapping FunctionImportName="ELIMINAR_MANTENIMIENTO" FunctionName="Model.Store.ELIMINAR_MANTENIMIENTO" />
+          <FunctionImportMapping FunctionImportName="LEER_MANTENIMIENTO" FunctionName="Model.Store.LEER_MANTENIMIENTO" />
+          <FunctionImportMapping FunctionImportName="MODIFICAR_LIBRO" FunctionName="Model.Store.MODIFICAR_LIBRO" />
+          <FunctionImportMapping FunctionImportName="LISTAR_LIBROS" FunctionName="Model.Store.LISTAR_LIBROS" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

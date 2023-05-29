@@ -58,3 +58,6 @@ TestResults/
 # Archivos de configuración de Windows
 Desktop.ini
 Thumbs.db
+
+
+.env

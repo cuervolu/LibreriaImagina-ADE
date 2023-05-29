@@ -29,6 +29,21 @@ namespace SistemaLibreriaImagina.ViewModels
         private string mensaje;
 
 
+        private string token;
+        public string Token
+        {
+            get { return token; }
+            set
+            {
+                if (token != value)
+                {
+                    token = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
         private bool isLoading;
         public bool IsLoading
         {
@@ -107,7 +122,7 @@ namespace SistemaLibreriaImagina.ViewModels
             if (response != null)
             {
                 isLoading = false;
-                MainWindow mainWindow = new MainWindow(user);
+                MainWindow mainWindow = new MainWindow(user, Token);
                 mainWindow.Show();
                 CloseLoginWindow();
 
@@ -137,8 +152,14 @@ namespace SistemaLibreriaImagina.ViewModels
                     // Obtener el contenido de la respuesta como una cadena JSON
                     string jsonResponse = await response.Content.ReadAsStringAsync();
 
-                    // Deserializar la cadena JSON en un objeto Usuario utilizando Newtonsoft.Json
-                    user = JsonConvert.DeserializeObject<USUARIO>(jsonResponse);
+                    // Deserializar la cadena JSON en un objeto dynamic utilizando Newtonsoft.Json
+                    dynamic responseData = JsonConvert.DeserializeObject(jsonResponse);
+
+                    // Obtener el token de la respuesta y asignarlo a la propiedad Token
+                    Token = responseData.token;
+
+                    // Obtener el objeto usuario de la respuesta y asignarlo a la propiedad user
+                    user = JsonConvert.DeserializeObject<USUARIO>(responseData.user.ToString());
 
                     return response;
                 }

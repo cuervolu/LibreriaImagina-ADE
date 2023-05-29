@@ -1,4 +1,10 @@
-﻿using SistemaLibreriaImagina.Core;
+﻿using MahApps.Metro.Controls.Dialogs;
+using SistemaLibreriaImagina.Core;
+using SistemaLibreriaImagina.Services;
+using SistemaLibreriaImagina.View;
+using System;
+using System.Linq;
+using System.Windows;
 
 namespace SistemaLibreriaImagina.ViewModels
 {
@@ -6,6 +12,7 @@ namespace SistemaLibreriaImagina.ViewModels
     {
         public RelayCommand InicioViewCommand { get; set; }
         public RelayCommand InventarioViewCommand { get; set; }
+        public RelayCommand CerrarSesionCommand { get; private set; }
 
         public InicioViewModel InicioVM { get; set; }
         public InventarioViewModel InventarioVM { get; set; }
@@ -17,6 +24,8 @@ namespace SistemaLibreriaImagina.ViewModels
             get { return _currentView; }
             set { _currentView = value; OnPropertyChanged(); }
         }
+
+        public string Token { get; set; }
 
         public MainWindowViewModel()
         {
@@ -34,6 +43,50 @@ namespace SistemaLibreriaImagina.ViewModels
                 CurrentView = InventarioVM;
             });
 
+            CerrarSesionCommand = new RelayCommand(async o =>
+            {
+                // Mostrar un diálogo de confirmación antes de cerrar sesión
+                var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                var result = await mainWindow?.ShowMessageAsync("Cerrar sesión", "¿Estás seguro de que deseas cerrar sesión?", MessageDialogStyle.AffirmativeAndNegative);
+
+                if (result == MessageDialogResult.Affirmative)
+                {
+                    // Mostrar pantalla de carga
+                    var progressDialog = await mainWindow.ShowProgressAsync("Cerrando sesión", "Cerrando sesión...");
+
+                    try
+                    {
+                        // Llamar al método de cierre de sesión del AuthenticationService
+                        await AuthenticationService.LogoutAsync(Token);
+
+                        // Cerrar la pantalla de carga
+                        await progressDialog.CloseAsync();
+
+                        // Redirigir al inicio de sesión
+                        LoginView loginView = new LoginView();
+                        loginView.Show();
+                        CloseMainWindow();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Manejar cualquier error que ocurra durante el cierre de sesión
+                        await progressDialog.CloseAsync();
+                        await mainWindow.ShowMessageAsync("Error", "Se produjo un error al cerrar la sesión: " + ex.Message);
+                    }
+                }
+            });
+        }
+
+        private void CloseMainWindow()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is MainWindow mainWindow)
+                {
+                    mainWindow.Close();
+                    break;
+                }
+            }
         }
     }
 }

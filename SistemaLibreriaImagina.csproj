@@ -17,6 +17,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,7 +30,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -59,6 +59,9 @@
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>packages\ControlzEx.4.4.0\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
+    <Reference Include="dotenv.net, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\dotenv.net.3.1.2\lib\netstandard2.0\dotenv.net.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -87,9 +90,11 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -179,6 +184,9 @@
     <Compile Include="Models\ENVIO.cs">
       <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ERROR.cs">
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LibreriaImaginaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -225,6 +233,8 @@
       <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\BookService.cs" />
+    <Compile Include="Utilities\ErrorControl.cs" />
     <Compile Include="ViewModels\InicioViewModel.cs" />
     <Compile Include="ViewModels\InventarioViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -313,6 +323,9 @@
     <Resource Include="Fonts\Montserrat-Thin.ttf" />
     <Resource Include="Fonts\Montserrat-ThinItalic.ttf" />
     <Resource Include="Fonts\Montserrat-VariableFont_wght.ttf" />
+    <None Include=".env">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Models\LibreriaImaginaModel.edmx.diagram">
       <DependentUpon>LibreriaImaginaModel.edmx</DependentUpon>
     </None>
