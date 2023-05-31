@@ -8,7 +8,7 @@
              xmlns:local="clr-namespace:SistemaLibreriaImagina.View"
              xmlns:viewModels="clr-namespace:SistemaLibreriaImagina.ViewModels" 
              mc:Ignorable="d" 
-             d:DesignHeight="780" d:DesignWidth="905" Background="Transparent"
+             d:DesignHeight="780" d:DesignWidth="905" Margin="10" Background="Transparent"
              d:DataContext="{d:DesignInstance Type=viewModels:InventarioViewModel}"
              Dialog:DialogParticipation.Register="{Binding}">
 
@@ -27,7 +27,11 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <DataGrid ItemsSource="{Binding Libros}" AutoGenerateColumns="False">
+
+        <Button HorizontalAlignment="Left" Margin="772,7,0,0" VerticalAlignment="Top" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Background="#FF008CBA" Foreground="White" FontFamily="Montserrat Thin Medium">
+            <TextBlock Text="Agregar Libro" FontSize="16" TextAlignment="Center"  Foreground="White" Padding="5,0,5,0" />
+        </Button>
+        <DataGrid ItemsSource="{Binding Libros}" AutoGenerateColumns="False" Margin="0,50,10,0" IsReadOnly="True">
             <DataGrid.Columns>
                 <!-- Columnas existentes -->
                 <DataGridTextColumn Header="ID" Binding="{Binding ID_LIBRO}" />
@@ -53,8 +57,15 @@
             </DataGrid.Columns>
         </DataGrid>
 
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,12,0,0">
+            <Button Content="Anterior" Command="{Binding PreviousPageCommand}" />
+            <Label Content="{Binding CurrentPage}" />
+            <Button Content="Siguiente" Command="{Binding NextPageCommand}" />
+        </StackPanel>
+
+
         <!-- Grid adicional para el ProgressRing -->
-        <Grid Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="0,5,0,5">
+        <Grid Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="0,0,0,-10" Grid.RowSpan="2">
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.4"/>
             </Grid.Background>
@@ -65,6 +76,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <mah:ProgressRing IsActive="{Binding IsLoading}" Foreground="#1F8BAC" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
         </Grid>
     </Grid>
 </UserControl>

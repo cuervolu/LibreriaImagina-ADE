@@ -7,30 +7,48 @@ using System.Linq;
 
 public static class BookService
 {
-    public static List<LIBRO> GetBookList()
+    public static List<LIBRO> GetBookList(int startIndex, int pageSize)
     {
+        Entities dbContext = null;
+
         try
         {
-            using (var dbContext = new Entities())
+            dbContext = new Entities();
+
+            var pCursor = new OracleParameter
             {
-                // Crea un parámetro de salida para el cursor del procedimiento almacenado
-                var pCursor = new OracleParameter
-                {
-                    ParameterName = "p_cursor",
-                    Direction = ParameterDirection.Output,
-                    OracleDbType = OracleDbType.RefCursor
-                };
+                ParameterName = "p_cursor",
+                Direction = ParameterDirection.Output,
+                OracleDbType = OracleDbType.RefCursor
+            };
 
-                // Llama al procedimiento almacenado utilizando SqlQuery
-                var libros = dbContext.Database.SqlQuery<LIBRO>("BEGIN listar_libros(:p_cursor); END;", pCursor).ToList();
+            var pStartIndex = new OracleParameter
+            {
+                ParameterName = "p_start_index",
+                OracleDbType = OracleDbType.Int32,
+                Value = startIndex
+            };
 
-                return libros;
-            }
+            var pPageSize = new OracleParameter
+            {
+                ParameterName = "p_page_size",
+                OracleDbType = OracleDbType.Int32,
+                Value = pageSize
+            };
+
+            var libros = dbContext.Database.SqlQuery<LIBRO>("BEGIN listar_libros(:p_cursor, :p_start_index, :p_page_size); END;", pCursor, pStartIndex, pPageSize).ToList();
+
+            return libros;
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error al obtener la lista de libros: {ex.Message}");
             return null;
+        }
+        finally
+        {
+            // Cerrar la conexión en el bloque finally
+            dbContext?.Dispose();
         }
     }
 }
