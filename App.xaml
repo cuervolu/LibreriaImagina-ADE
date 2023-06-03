@@ -25,6 +25,12 @@
             <DataTemplate DataType="{x:Type viewModel:InventarioViewModel}">
                 <view:InventarioView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:RestockViewModel}">
+                <view:RestockView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ModificarLibroViewModel}">
+                <view:ModificarLibroView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

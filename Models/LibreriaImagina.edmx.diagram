@@ -4,7 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1baeba38a60f403794b50455acb72612" Name="Diagram1" ZoomLevel="77">
+      <Diagram DiagramId="c919788cffd34d579f91652863923cf3" Name="Diagram1" ZoomLevel="79">
+        <EntityTypeShape EntityType="Model.ADMIN_INTERFACE_THEME" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.AUTH_GROUP" Width="1.5" PointX="12.5" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.AUTH_GROUP_PERMISSIONS" Width="1.5" PointX="17.75" PointY="17.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.AUTH_PERMISSION" Width="1.5" PointX="12.5" PointY="20.75" IsExpanded="true" />
@@ -16,8 +17,8 @@
         <EntityTypeShape EntityType="Model.DIRECCION" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.DJANGO_ADMIN_LOG" Width="1.5" PointX="9.75" PointY="21.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.DJANGO_CONTENT_TYPE" Width="1.5" PointX="7.5" PointY="25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DJANGO_MIGRATIONS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DJANGO_SESSION" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DJANGO_MIGRATIONS" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DJANGO_SESSION" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.ENVIO" Width="1.5" PointX="12" PointY="24.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.LIBRO" Width="1.5" PointX="9.75" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.MANTENIMIENTO" Width="1.5" PointX="14.75" PointY="19.5" IsExpanded="true" />
@@ -57,7 +58,6 @@
         <AssociationConnector Association="Model.TRANSACCI_PEDIDO_ID_887AFE2F_F" ManuallyRouted="false" />
         <AssociationConnector Association="Model.USUARIO_G_USUARIO_I_161FC80C_F" ManuallyRouted="false" />
         <AssociationConnector Association="Model.USUARIO_U_USUARIO_I_693D9C50_F" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.ERROR" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -5,6 +5,65 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADMIN_INTERFACE_THEME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="11" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar2" MaxLength="50" />
+          <Property Name="ACTIVE" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar2" MaxLength="50" />
+          <Property Name="TITLE_VISIBLE" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LOGO" Type="nvarchar2" MaxLength="100" />
+          <Property Name="LOGO_VISIBLE" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="CSS_HEADER_BACKGROUND_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="TITLE_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_HEADER_TEXT_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_HEADER_LINK_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_HEADER_LINK_HOVER_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_MODULE_BACKGROUND_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_MODULE_TEXT_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_MODULE_LINK_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_MODULE_LINK_HOVER_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_MODULE_ROUNDED_CORNERS" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="CSS_GENERIC_LINK_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_GENERIC_LINK_HOVER_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_SAVE_BUTTON_BACKGROUND99E4" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_SAVE_BUTTON_BACKGROUND20F4" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_SAVE_BUTTON_TEXT_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_DELETE_BUTTON_BACKGROUE0B7" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_DELETE_BUTTON_BACKGROUA080" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_DELETE_BUTTON_TEXT_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="LIST_FILTER_DROPDOWN" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="RELATED_MODAL_ACTIVE" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="RELATED_MODAL_BACKGROUND_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="RELATED_MODAL_ROUNDED_CORNERS" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LOGO_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="RECENT_ACTIONS_VISIBLE" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="FAVICON" Type="nvarchar2" MaxLength="100" />
+          <Property Name="RELATED_MODAL_BACKGROUND_OE111" Type="nvarchar2" MaxLength="5" />
+          <Property Name="ENV_NAME" Type="nvarchar2" MaxLength="50" />
+          <Property Name="ENV_VISIBLE_IN_HEADER" Type="number" Precision="1" Scale="0" />
+          <Property Name="ENV_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="ENV_VISIBLE_IN_FAVICON" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="RELATED_MODAL_CLOSE_BUTTON3B73" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LANGUAGE_CHOOSER_ACTIVE" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LANGUAGE_CHOOSER_DISPLAY" Type="nvarchar2" MaxLength="10" />
+          <Property Name="LIST_FILTER_STICKY" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="FORM_PAGINATION_STICKY" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="FORM_SUBMIT_STICKY" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="CSS_MODULE_BACKGROUND_SELE1A15" Type="nvarchar2" MaxLength="10" />
+          <Property Name="CSS_MODULE_LINK_SELECTED_COLOR" Type="nvarchar2" MaxLength="10" />
+          <Property Name="LOGO_MAX_HEIGHT" Type="number" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="LOGO_MAX_WIDTH" Type="number" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="FOLDABLE_APPS" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LANGUAGE_CHOOSER_CONTROL" Type="nvarchar2" MaxLength="20" />
+          <Property Name="LIST_FILTER_HIGHLIGHT" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LIST_FILTER_REMOVAL_LINKS" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="SHOW_FIELDSETS_AS_TABS" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="SHOW_INLINES_AS_TABS" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="CSS_GENERIC_LINK_ACTIVE_COLOR" Type="nvarchar2" MaxLength="10" />
+        </EntityType>
         <EntityType Name="AUTH_GROUP">
           <Key>
             <PropertyRef Name="ID" />
@@ -64,7 +123,7 @@
           <Property Name="CANTIDAD" Type="number" Precision="11" Scale="0" Nullable="false" />
           <Property Name="PRECIO_TOTAL" Type="number" Precision="10" Scale="2" Nullable="false" />
           <Property Name="CARRITO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
-          <Property Name="LIBRO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="LIBRO_ID" Type="number" Precision="11" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="DETALLE_PEDIDO">
           <Key>
@@ -74,7 +133,7 @@
           <Property Name="CANTIDAD" Type="number" Precision="11" Scale="0" Nullable="false" />
           <Property Name="PRECIO_UNITARIO" Type="number" Precision="11" Scale="0" Nullable="false" />
           <Property Name="SUBTOTAL" Type="number" Precision="11" Scale="0" />
-          <Property Name="LIBRO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="LIBRO_ID" Type="number" Precision="11" Scale="0" Nullable="false" />
           <Property Name="PEDIDO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="DIRECCION">
@@ -133,32 +192,23 @@
           <Property Name="PEDIDO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
           <Property Name="REPARTIDOR_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
         </EntityType>
-        <EntityType Name="ERROR">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="number" Precision="19" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TIMESTAMP" Type="timestamp" Precision="6" Nullable="false" />
-          <Property Name="MENSAJE" Type="nclob" />
-          <Property Name="TRACEBACK" Type="nclob" />
-        </EntityType>
         <EntityType Name="LIBRO">
           <Key>
             <PropertyRef Name="ID_LIBRO" />
           </Key>
-          <Property Name="ID_LIBRO" Type="number" Precision="19" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_LIBRO" Type="number" Precision="11" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRE_LIBRO" Type="nvarchar2" MaxLength="100" />
           <Property Name="DESCRIPCION" Type="nclob" />
           <Property Name="AUTOR" Type="nvarchar2" MaxLength="100" />
           <Property Name="EDITORIAL" Type="nvarchar2" MaxLength="100" />
           <Property Name="PRECIO_UNITARIO" Type="number" Precision="8" Scale="2" Nullable="false" />
           <Property Name="CANTIDAD_DISPONIBLE" Type="number" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="THUMBNAIL" Type="nvarchar2" MaxLength="200" />
           <Property Name="PORTADA" Type="nvarchar2" MaxLength="300" />
           <Property Name="FECHA_PUBLICACION" Type="date" />
           <Property Name="CATEGORIA" Type="nvarchar2" MaxLength="200" />
           <Property Name="ISBN" Type="nvarchar2" MaxLength="20" />
           <Property Name="SLUG" Type="nvarchar2" MaxLength="50" />
-          <Property Name="THUMBNAIL" Type="nvarchar2" MaxLength="200" />
         </EntityType>
         <EntityType Name="MANTENIMIENTO">
           <Key>
@@ -169,7 +219,7 @@
           <Property Name="TIPO_MANTENIMIENTO" Type="nvarchar2" MaxLength="50" />
           <Property Name="ESTADO_MANTENIMIENTO" Type="nvarchar2" MaxLength="50" />
           <Property Name="CLIENTE_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
-          <Property Name="LIBRO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="LIBRO_ID" Type="number" Precision="11" Scale="0" Nullable="false" />
           <Property Name="TECNICO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="METODO_PAGO">
@@ -193,7 +243,7 @@
           <Property Name="DESCUENTO" Type="number" Precision="5" Scale="2" Nullable="false" />
           <Property Name="FECHA_INICIO" Type="timestamp" Precision="6" Nullable="false" />
           <Property Name="FECHA_FIN" Type="timestamp" Precision="6" Nullable="false" />
-          <Property Name="LIBRO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="LIBRO_ID" Type="number" Precision="11" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="PEDIDO">
           <Key>
@@ -593,7 +643,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="ACTUALIZAR_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+        <Function Name="ACTUALIZAR_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
           <Parameter Name="P_ID_MANTENIMIENTO" Type="number" Mode="In" />
           <Parameter Name="P_FECHA_SOLICITUD" Type="date" Mode="In" />
           <Parameter Name="P_TIPO_MANTENIMIENTO" Type="nvarchar2" Mode="In" />
@@ -602,7 +652,7 @@
           <Parameter Name="P_LIBRO_ID" Type="number" Mode="In" />
           <Parameter Name="P_TECNICO_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="AGREGAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+        <Function Name="AGREGAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
           <Parameter Name="P_NOMBRE_LIBRO" Type="nvarchar2" Mode="In" />
           <Parameter Name="P_DESCRIPCION" Type="nclob" Mode="In" />
           <Parameter Name="P_AUTOR" Type="nvarchar2" Mode="In" />
@@ -616,7 +666,7 @@
           <Parameter Name="P_SLUG" Type="nvarchar2" Mode="In" />
           <Parameter Name="P_THUMBNAIL" Type="nvarchar2" Mode="In" />
         </Function>
-        <Function Name="CREAR_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+        <Function Name="CREAR_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
           <Parameter Name="P_FECHA_SOLICITUD" Type="date" Mode="In" />
           <Parameter Name="P_TIPO_MANTENIMIENTO" Type="nvarchar2" Mode="In" />
           <Parameter Name="P_ESTADO_MANTENIMIENTO" Type="nvarchar2" Mode="In" />
@@ -624,13 +674,13 @@
           <Parameter Name="P_LIBRO_ID" Type="number" Mode="In" />
           <Parameter Name="P_TECNICO_ID" Type="number" Mode="In" />
         </Function>
-        <Function Name="ELIMINAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+        <Function Name="ELIMINAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
           <Parameter Name="P_ID_LIBRO" Type="number" Mode="In" />
         </Function>
-        <Function Name="ELIMINAR_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+        <Function Name="ELIMINAR_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
           <Parameter Name="P_ID_MANTENIMIENTO" Type="number" Mode="In" />
         </Function>
-        <Function Name="LEER_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+        <Function Name="LEER_MANTENIMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
           <Parameter Name="P_ID_MANTENIMIENTO" Type="number" Mode="In" />
           <Parameter Name="P_FECHA_SOLICITUD" Type="date" Mode="Out" />
           <Parameter Name="P_TIPO_MANTENIMIENTO" Type="nvarchar2" Mode="Out" />
@@ -639,9 +689,12 @@
           <Parameter Name="P_LIBRO_ID" Type="number" Mode="Out" />
           <Parameter Name="P_TECNICO_ID" Type="number" Mode="Out" />
         </Function>
-        <Function Name="LISTAR_CATEGORIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP" />
-        <Function Name="LISTAR_LIBROS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP" />
-        <Function Name="MODIFICAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIAIMAGINA_IDP">
+        <Function Name="LISTAR_CATEGORIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA" />
+        <Function Name="LISTAR_LIBROS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
+          <Parameter Name="P_START_INDEX" Type="number" Mode="In" />
+          <Parameter Name="P_PAGE_SIZE" Type="number" Mode="In" />
+        </Function>
+        <Function Name="MODIFICAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
           <Parameter Name="P_ID_LIBRO" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE_LIBRO" Type="nvarchar2" Mode="In" />
           <Parameter Name="P_DESCRIPCION" Type="nclob" Mode="In" />
@@ -655,33 +708,34 @@
           <Parameter Name="P_ISBN" Type="nvarchar2" Mode="In" />
           <Parameter Name="P_SLUG" Type="nvarchar2" Mode="In" />
           <Parameter Name="P_THUMBNAIL" Type="nvarchar2" Mode="In" />
+          <Parameter Name="P_RESULTADO" Type="nvarchar2" Mode="Out" />
         </Function>
         <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="AUTH_GROUP" EntityType="Self.AUTH_GROUP" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="AUTH_GROUP_PERMISSIONS" EntityType="Self.AUTH_GROUP_PERMISSIONS" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="AUTH_PERMISSION" EntityType="Self.AUTH_PERMISSION" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="AUTHTOKEN_TOKEN" EntityType="Self.AUTHTOKEN_TOKEN" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="CARRITO" EntityType="Self.CARRITO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="COMUNA" EntityType="Self.COMUNA" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="DETALLE_CARRITO" EntityType="Self.DETALLE_CARRITO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="DETALLE_PEDIDO" EntityType="Self.DETALLE_PEDIDO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="DIRECCION" EntityType="Self.DIRECCION" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="DJANGO_ADMIN_LOG" EntityType="Self.DJANGO_ADMIN_LOG" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="DJANGO_CONTENT_TYPE" EntityType="Self.DJANGO_CONTENT_TYPE" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="DJANGO_MIGRATIONS" EntityType="Self.DJANGO_MIGRATIONS" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="DJANGO_SESSION" EntityType="Self.DJANGO_SESSION" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="ENVIO" EntityType="Self.ENVIO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="ERROR" EntityType="Self.ERROR" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="LIBRO" EntityType="Self.LIBRO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="MANTENIMIENTO" EntityType="Self.MANTENIMIENTO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="METODO_PAGO" EntityType="Self.METODO_PAGO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="OFERTA" EntityType="Self.OFERTA" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="REGION" EntityType="Self.REGION" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="TRANSACCION" EntityType="Self.TRANSACCION" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="USUARIO_GROUPS" EntityType="Self.USUARIO_GROUPS" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
-          <EntitySet Name="USUARIO_USER_PERMISSIONS" EntityType="Self.USUARIO_USER_PERMISSIONS" Schema="LIBRERIAIMAGINA_IDP" store:Type="Tables" />
+          <EntitySet Name="ADMIN_INTERFACE_THEME" EntityType="Self.ADMIN_INTERFACE_THEME" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="AUTH_GROUP" EntityType="Self.AUTH_GROUP" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="AUTH_GROUP_PERMISSIONS" EntityType="Self.AUTH_GROUP_PERMISSIONS" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="AUTH_PERMISSION" EntityType="Self.AUTH_PERMISSION" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="AUTHTOKEN_TOKEN" EntityType="Self.AUTHTOKEN_TOKEN" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="CARRITO" EntityType="Self.CARRITO" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="COMUNA" EntityType="Self.COMUNA" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="DETALLE_CARRITO" EntityType="Self.DETALLE_CARRITO" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="DETALLE_PEDIDO" EntityType="Self.DETALLE_PEDIDO" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="DIRECCION" EntityType="Self.DIRECCION" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="DJANGO_ADMIN_LOG" EntityType="Self.DJANGO_ADMIN_LOG" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="DJANGO_CONTENT_TYPE" EntityType="Self.DJANGO_CONTENT_TYPE" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="DJANGO_MIGRATIONS" EntityType="Self.DJANGO_MIGRATIONS" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="DJANGO_SESSION" EntityType="Self.DJANGO_SESSION" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="ENVIO" EntityType="Self.ENVIO" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="LIBRO" EntityType="Self.LIBRO" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="MANTENIMIENTO" EntityType="Self.MANTENIMIENTO" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="METODO_PAGO" EntityType="Self.METODO_PAGO" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="OFERTA" EntityType="Self.OFERTA" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="REGION" EntityType="Self.REGION" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="TRANSACCION" EntityType="Self.TRANSACCION" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="USUARIO_GROUPS" EntityType="Self.USUARIO_GROUPS" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
+          <EntitySet Name="USUARIO_USER_PERMISSIONS" EntityType="Self.USUARIO_USER_PERMISSIONS" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
           <AssociationSet Name="AUTH_GROU_GROUP_ID_B120CBF9_F" Association="Self.AUTH_GROU_GROUP_ID_B120CBF9_F">
             <End Role="AUTH_GROUP" EntitySet="AUTH_GROUP" />
             <End Role="AUTH_GROUP_PERMISSIONS" EntitySet="AUTH_GROUP_PERMISSIONS" />
@@ -799,6 +853,65 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADMIN_INTERFACE_THEME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TITLE_VISIBLE" Type="Boolean" Nullable="false" />
+          <Property Name="LOGO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LOGO_VISIBLE" Type="Boolean" Nullable="false" />
+          <Property Name="CSS_HEADER_BACKGROUND_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TITLE_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_HEADER_TEXT_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_HEADER_LINK_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_HEADER_LINK_HOVER_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_MODULE_BACKGROUND_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_MODULE_TEXT_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_MODULE_LINK_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_MODULE_LINK_HOVER_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_MODULE_ROUNDED_CORNERS" Type="Boolean" Nullable="false" />
+          <Property Name="CSS_GENERIC_LINK_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_GENERIC_LINK_HOVER_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_SAVE_BUTTON_BACKGROUND99E4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_SAVE_BUTTON_BACKGROUND20F4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_SAVE_BUTTON_TEXT_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_DELETE_BUTTON_BACKGROUE0B7" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_DELETE_BUTTON_BACKGROUA080" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_DELETE_BUTTON_TEXT_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="LIST_FILTER_DROPDOWN" Type="Boolean" Nullable="false" />
+          <Property Name="RELATED_MODAL_ACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="RELATED_MODAL_BACKGROUND_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RELATED_MODAL_ROUNDED_CORNERS" Type="Boolean" Nullable="false" />
+          <Property Name="LOGO_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RECENT_ACTIONS_VISIBLE" Type="Boolean" Nullable="false" />
+          <Property Name="FAVICON" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RELATED_MODAL_BACKGROUND_OE111" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ENV_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ENV_VISIBLE_IN_HEADER" Type="Boolean" />
+          <Property Name="ENV_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ENV_VISIBLE_IN_FAVICON" Type="Boolean" Nullable="false" />
+          <Property Name="RELATED_MODAL_CLOSE_BUTTON3B73" Type="Boolean" Nullable="false" />
+          <Property Name="LANGUAGE_CHOOSER_ACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="LANGUAGE_CHOOSER_DISPLAY" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="LIST_FILTER_STICKY" Type="Boolean" Nullable="false" />
+          <Property Name="FORM_PAGINATION_STICKY" Type="Boolean" Nullable="false" />
+          <Property Name="FORM_SUBMIT_STICKY" Type="Boolean" Nullable="false" />
+          <Property Name="CSS_MODULE_BACKGROUND_SELE1A15" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CSS_MODULE_LINK_SELECTED_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="LOGO_MAX_HEIGHT" Type="Int64" Nullable="false" />
+          <Property Name="LOGO_MAX_WIDTH" Type="Int64" Nullable="false" />
+          <Property Name="FOLDABLE_APPS" Type="Boolean" Nullable="false" />
+          <Property Name="LANGUAGE_CHOOSER_CONTROL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LIST_FILTER_HIGHLIGHT" Type="Boolean" Nullable="false" />
+          <Property Name="LIST_FILTER_REMOVAL_LINKS" Type="Boolean" Nullable="false" />
+          <Property Name="SHOW_FIELDSETS_AS_TABS" Type="Boolean" Nullable="false" />
+          <Property Name="SHOW_INLINES_AS_TABS" Type="Boolean" Nullable="false" />
+          <Property Name="CSS_GENERIC_LINK_ACTIVE_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="AUTH_GROUP">
           <Key>
             <PropertyRef Name="ID" />
@@ -964,12 +1077,12 @@
           <Property Name="EDITORIAL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PRECIO_UNITARIO" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="CANTIDAD_DISPONIBLE" Type="Int64" Nullable="false" />
+          <Property Name="THUMBNAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PORTADA" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="FECHA_PUBLICACION" Type="DateTime" />
           <Property Name="CATEGORIA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ISBN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="SLUG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="THUMBNAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DETALLE_CARRITO" Relationship="Self.DETALLE_C_LIBRO_ID_A002CD5C_F" FromRole="LIBRO" ToRole="DETALLE_CARRITO" />
           <NavigationProperty Name="DETALLE_PEDIDO" Relationship="Self.DETALLE_P_LIBRO_ID_478253B7_F" FromRole="LIBRO" ToRole="DETALLE_PEDIDO" />
           <NavigationProperty Name="MANTENIMIENTO" Relationship="Self.MANTENIMI_LIBRO_ID_C5ABC3FE_F" FromRole="LIBRO" ToRole="MANTENIMIENTO" />
@@ -1435,6 +1548,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADMIN_INTERFACE_THEME" EntityType="Self.ADMIN_INTERFACE_THEME" />
           <EntitySet Name="AUTH_GROUP" EntityType="Self.AUTH_GROUP" />
           <EntitySet Name="AUTH_GROUP_PERMISSIONS" EntityType="Self.AUTH_GROUP_PERMISSIONS" />
           <EntitySet Name="AUTH_PERMISSION" EntityType="Self.AUTH_PERMISSION" />
@@ -1571,8 +1685,6 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="USUARIO_USER_PERMISSIONS" EntitySet="USUARIO_USER_PERMISSIONS" />
           </AssociationSet>
-          <FunctionImport Name="LISTAR_CATEGORIAS" />
-          <EntitySet Name="ERROR" EntityType="Model.ERROR" />
           <FunctionImport Name="ACTUALIZAR_MANTENIMIENTO">
             <Parameter Name="P_ID_MANTENIMIENTO" Mode="In" Type="Decimal" />
             <Parameter Name="P_FECHA_SOLICITUD" Mode="In" Type="DateTime" />
@@ -1619,6 +1731,11 @@
             <Parameter Name="P_LIBRO_ID" Mode="Out" Type="Decimal" />
             <Parameter Name="P_TECNICO_ID" Mode="Out" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="LISTAR_CATEGORIAS" />
+          <FunctionImport Name="LISTAR_LIBROS">
+            <Parameter Name="P_START_INDEX" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PAGE_SIZE" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="MODIFICAR_LIBRO">
             <Parameter Name="P_ID_LIBRO" Mode="In" Type="Decimal" />
             <Parameter Name="P_NOMBRE_LIBRO" Mode="In" Type="String" />
@@ -1633,24 +1750,75 @@
             <Parameter Name="P_ISBN" Mode="In" Type="String" />
             <Parameter Name="P_SLUG" Mode="In" Type="String" />
             <Parameter Name="P_THUMBNAIL" Mode="In" Type="String" />
+            <Parameter Name="P_RESULTADO" Mode="Out" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="LISTAR_LIBROS" />
         </EntityContainer>
-        <EntityType Name="ERROR">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TIMESTAMP" Type="DateTime" Nullable="false" Precision="6" />
-          <Property Name="MENSAJE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TRACEBACK" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="ADMIN_INTERFACE_THEME">
+            <EntityTypeMapping TypeName="Model.ADMIN_INTERFACE_THEME">
+              <MappingFragment StoreEntitySet="ADMIN_INTERFACE_THEME">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="TITLE_VISIBLE" ColumnName="TITLE_VISIBLE" />
+                <ScalarProperty Name="LOGO" ColumnName="LOGO" />
+                <ScalarProperty Name="LOGO_VISIBLE" ColumnName="LOGO_VISIBLE" />
+                <ScalarProperty Name="CSS_HEADER_BACKGROUND_COLOR" ColumnName="CSS_HEADER_BACKGROUND_COLOR" />
+                <ScalarProperty Name="TITLE_COLOR" ColumnName="TITLE_COLOR" />
+                <ScalarProperty Name="CSS_HEADER_TEXT_COLOR" ColumnName="CSS_HEADER_TEXT_COLOR" />
+                <ScalarProperty Name="CSS_HEADER_LINK_COLOR" ColumnName="CSS_HEADER_LINK_COLOR" />
+                <ScalarProperty Name="CSS_HEADER_LINK_HOVER_COLOR" ColumnName="CSS_HEADER_LINK_HOVER_COLOR" />
+                <ScalarProperty Name="CSS_MODULE_BACKGROUND_COLOR" ColumnName="CSS_MODULE_BACKGROUND_COLOR" />
+                <ScalarProperty Name="CSS_MODULE_TEXT_COLOR" ColumnName="CSS_MODULE_TEXT_COLOR" />
+                <ScalarProperty Name="CSS_MODULE_LINK_COLOR" ColumnName="CSS_MODULE_LINK_COLOR" />
+                <ScalarProperty Name="CSS_MODULE_LINK_HOVER_COLOR" ColumnName="CSS_MODULE_LINK_HOVER_COLOR" />
+                <ScalarProperty Name="CSS_MODULE_ROUNDED_CORNERS" ColumnName="CSS_MODULE_ROUNDED_CORNERS" />
+                <ScalarProperty Name="CSS_GENERIC_LINK_COLOR" ColumnName="CSS_GENERIC_LINK_COLOR" />
+                <ScalarProperty Name="CSS_GENERIC_LINK_HOVER_COLOR" ColumnName="CSS_GENERIC_LINK_HOVER_COLOR" />
+                <ScalarProperty Name="CSS_SAVE_BUTTON_BACKGROUND99E4" ColumnName="CSS_SAVE_BUTTON_BACKGROUND99E4" />
+                <ScalarProperty Name="CSS_SAVE_BUTTON_BACKGROUND20F4" ColumnName="CSS_SAVE_BUTTON_BACKGROUND20F4" />
+                <ScalarProperty Name="CSS_SAVE_BUTTON_TEXT_COLOR" ColumnName="CSS_SAVE_BUTTON_TEXT_COLOR" />
+                <ScalarProperty Name="CSS_DELETE_BUTTON_BACKGROUE0B7" ColumnName="CSS_DELETE_BUTTON_BACKGROUE0B7" />
+                <ScalarProperty Name="CSS_DELETE_BUTTON_BACKGROUA080" ColumnName="CSS_DELETE_BUTTON_BACKGROUA080" />
+                <ScalarProperty Name="CSS_DELETE_BUTTON_TEXT_COLOR" ColumnName="CSS_DELETE_BUTTON_TEXT_COLOR" />
+                <ScalarProperty Name="LIST_FILTER_DROPDOWN" ColumnName="LIST_FILTER_DROPDOWN" />
+                <ScalarProperty Name="RELATED_MODAL_ACTIVE" ColumnName="RELATED_MODAL_ACTIVE" />
+                <ScalarProperty Name="RELATED_MODAL_BACKGROUND_COLOR" ColumnName="RELATED_MODAL_BACKGROUND_COLOR" />
+                <ScalarProperty Name="RELATED_MODAL_ROUNDED_CORNERS" ColumnName="RELATED_MODAL_ROUNDED_CORNERS" />
+                <ScalarProperty Name="LOGO_COLOR" ColumnName="LOGO_COLOR" />
+                <ScalarProperty Name="RECENT_ACTIONS_VISIBLE" ColumnName="RECENT_ACTIONS_VISIBLE" />
+                <ScalarProperty Name="FAVICON" ColumnName="FAVICON" />
+                <ScalarProperty Name="RELATED_MODAL_BACKGROUND_OE111" ColumnName="RELATED_MODAL_BACKGROUND_OE111" />
+                <ScalarProperty Name="ENV_NAME" ColumnName="ENV_NAME" />
+                <ScalarProperty Name="ENV_VISIBLE_IN_HEADER" ColumnName="ENV_VISIBLE_IN_HEADER" />
+                <ScalarProperty Name="ENV_COLOR" ColumnName="ENV_COLOR" />
+                <ScalarProperty Name="ENV_VISIBLE_IN_FAVICON" ColumnName="ENV_VISIBLE_IN_FAVICON" />
+                <ScalarProperty Name="RELATED_MODAL_CLOSE_BUTTON3B73" ColumnName="RELATED_MODAL_CLOSE_BUTTON3B73" />
+                <ScalarProperty Name="LANGUAGE_CHOOSER_ACTIVE" ColumnName="LANGUAGE_CHOOSER_ACTIVE" />
+                <ScalarProperty Name="LANGUAGE_CHOOSER_DISPLAY" ColumnName="LANGUAGE_CHOOSER_DISPLAY" />
+                <ScalarProperty Name="LIST_FILTER_STICKY" ColumnName="LIST_FILTER_STICKY" />
+                <ScalarProperty Name="FORM_PAGINATION_STICKY" ColumnName="FORM_PAGINATION_STICKY" />
+                <ScalarProperty Name="FORM_SUBMIT_STICKY" ColumnName="FORM_SUBMIT_STICKY" />
+                <ScalarProperty Name="CSS_MODULE_BACKGROUND_SELE1A15" ColumnName="CSS_MODULE_BACKGROUND_SELE1A15" />
+                <ScalarProperty Name="CSS_MODULE_LINK_SELECTED_COLOR" ColumnName="CSS_MODULE_LINK_SELECTED_COLOR" />
+                <ScalarProperty Name="LOGO_MAX_HEIGHT" ColumnName="LOGO_MAX_HEIGHT" />
+                <ScalarProperty Name="LOGO_MAX_WIDTH" ColumnName="LOGO_MAX_WIDTH" />
+                <ScalarProperty Name="FOLDABLE_APPS" ColumnName="FOLDABLE_APPS" />
+                <ScalarProperty Name="LANGUAGE_CHOOSER_CONTROL" ColumnName="LANGUAGE_CHOOSER_CONTROL" />
+                <ScalarProperty Name="LIST_FILTER_HIGHLIGHT" ColumnName="LIST_FILTER_HIGHLIGHT" />
+                <ScalarProperty Name="LIST_FILTER_REMOVAL_LINKS" ColumnName="LIST_FILTER_REMOVAL_LINKS" />
+                <ScalarProperty Name="SHOW_FIELDSETS_AS_TABS" ColumnName="SHOW_FIELDSETS_AS_TABS" />
+                <ScalarProperty Name="SHOW_INLINES_AS_TABS" ColumnName="SHOW_INLINES_AS_TABS" />
+                <ScalarProperty Name="CSS_GENERIC_LINK_ACTIVE_COLOR" ColumnName="CSS_GENERIC_LINK_ACTIVE_COLOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="AUTH_GROUP">
             <EntityTypeMapping TypeName="Model.AUTH_GROUP">
               <MappingFragment StoreEntitySet="AUTH_GROUP">
@@ -1803,12 +1971,12 @@
                 <ScalarProperty Name="EDITORIAL" ColumnName="EDITORIAL" />
                 <ScalarProperty Name="PRECIO_UNITARIO" ColumnName="PRECIO_UNITARIO" />
                 <ScalarProperty Name="CANTIDAD_DISPONIBLE" ColumnName="CANTIDAD_DISPONIBLE" />
+                <ScalarProperty Name="THUMBNAIL" ColumnName="THUMBNAIL" />
                 <ScalarProperty Name="PORTADA" ColumnName="PORTADA" />
                 <ScalarProperty Name="FECHA_PUBLICACION" ColumnName="FECHA_PUBLICACION" />
                 <ScalarProperty Name="CATEGORIA" ColumnName="CATEGORIA" />
                 <ScalarProperty Name="ISBN" ColumnName="ISBN" />
                 <ScalarProperty Name="SLUG" ColumnName="SLUG" />
-                <ScalarProperty Name="THUMBNAIL" ColumnName="THUMBNAIL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1918,25 +2086,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="LISTAR_CATEGORIAS" FunctionName="Model.Store.LISTAR_CATEGORIAS" />
-          <EntitySetMapping Name="ERROR">
-            <EntityTypeMapping TypeName="Model.ERROR">
-              <MappingFragment StoreEntitySet="ERROR">
-                <ScalarProperty Name="TRACEBACK" ColumnName="TRACEBACK" />
-                <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
-                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="ACTUALIZAR_MANTENIMIENTO" FunctionName="Model.Store.ACTUALIZAR_MANTENIMIENTO" />
           <FunctionImportMapping FunctionImportName="AGREGAR_LIBRO" FunctionName="Model.Store.AGREGAR_LIBRO" />
           <FunctionImportMapping FunctionImportName="CREAR_MANTENIMIENTO" FunctionName="Model.Store.CREAR_MANTENIMIENTO" />
           <FunctionImportMapping FunctionImportName="ELIMINAR_LIBRO" FunctionName="Model.Store.ELIMINAR_LIBRO" />
           <FunctionImportMapping FunctionImportName="ELIMINAR_MANTENIMIENTO" FunctionName="Model.Store.ELIMINAR_MANTENIMIENTO" />
           <FunctionImportMapping FunctionImportName="LEER_MANTENIMIENTO" FunctionName="Model.Store.LEER_MANTENIMIENTO" />
-          <FunctionImportMapping FunctionImportName="MODIFICAR_LIBRO" FunctionName="Model.Store.MODIFICAR_LIBRO" />
+          <FunctionImportMapping FunctionImportName="LISTAR_CATEGORIAS" FunctionName="Model.Store.LISTAR_CATEGORIAS" />
           <FunctionImportMapping FunctionImportName="LISTAR_LIBROS" FunctionName="Model.Store.LISTAR_LIBROS" />
+          <FunctionImportMapping FunctionImportName="MODIFICAR_LIBRO" FunctionName="Model.Store.MODIFICAR_LIBRO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

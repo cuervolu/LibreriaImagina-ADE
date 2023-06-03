@@ -4,21 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
              xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:SistemaLibreriaImagina.View"
-             xmlns:viewModels="clr-namespace:SistemaLibreriaImagina.ViewModels" 
-             mc:Ignorable="d" 
+              xmlns:converters="clr-namespace:SistemaLibreriaImagina.Converters"
+             xmlns:viewModels="clr-namespace:SistemaLibreriaImagina.ViewModels"
+             mc:Ignorable="d"
              d:DesignHeight="780" d:DesignWidth="905" Margin="10" Background="Transparent"
              d:DataContext="{d:DesignInstance Type=viewModels:InventarioViewModel}"
              Dialog:DialogParticipation.Register="{Binding}">
 
     <UserControl.DataContext>
-        <viewModels:InventarioViewModel/>
+        <viewModels:InventarioViewModel />
     </UserControl.DataContext>
 
     <UserControl.Resources>
         <Dialog:DialogCoordinator x:Key="DialogCoordinator" />
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
 
     <Grid>
@@ -26,7 +28,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
 
         <Button HorizontalAlignment="Left" Margin="772,7,0,0" VerticalAlignment="Top" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Background="#FF008CBA" Foreground="White" FontFamily="Montserrat Thin Medium">
             <TextBlock Text="Agregar Libro" FontSize="16" TextAlignment="Center"  Foreground="White" Padding="5,0,5,0" />
@@ -47,9 +48,20 @@
                 <DataGridTemplateColumn Header="Acciones">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="Modificar" Command="{Binding DataContext.ModifyBookCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" />
-                                <Button Content="Eliminar" Command="{Binding DataContext.DeleteBookCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" />
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button Command="{Binding DataContext.ModifyBookCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+        CommandParameter="{Binding}"
+        Style="{StaticResource MahApps.Styles.Button.Square.Accent}"
+        Background="#2195A1" Margin="0 0 5 0" Width="30" Height="30">
+                                    <fa:FontAwesome Icon="Pencil" Margin="0 0 5 0" />
+                                </Button>
+
+                                <Button Command="{Binding DataContext.DeleteBookCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            CommandParameter="{Binding ID_LIBRO}"
+            Style="{StaticResource MahApps.Styles.Button.Square.Accent}"
+            Background="#ff6961" Width="30" Height="30">
+                                    <fa:FontAwesome Icon="Trash" Margin="0 0 5 0" />
+                                </Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -63,11 +75,10 @@
             <Button Content="Siguiente" Command="{Binding NextPageCommand}" />
         </StackPanel>
 
-
         <!-- Grid adicional para el ProgressRing -->
         <Grid Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="0,0,0,-10" Grid.RowSpan="2">
             <Grid.Background>
-                <SolidColorBrush Color="Black" Opacity="0.4"/>
+                <SolidColorBrush Color="Black" Opacity="0.4" />
             </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -76,7 +87,6 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <mah:ProgressRing IsActive="{Binding IsLoading}" Foreground="#1F8BAC" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
-
         </Grid>
     </Grid>
 </UserControl>

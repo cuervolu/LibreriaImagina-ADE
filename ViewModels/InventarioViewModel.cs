@@ -1,5 +1,6 @@
 ﻿using SistemaLibreriaImagina.Core;
 using SistemaLibreriaImagina.Models;
+using SistemaLibreriaImagina.View;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -81,6 +82,84 @@ namespace SistemaLibreriaImagina.ViewModels
             }
         }
 
+        private RelayCommand deleteBookCommand;
+
+        public RelayCommand DeleteBookCommand
+        {
+            get
+            {
+                if (deleteBookCommand == null)
+                {
+                    deleteBookCommand = new RelayCommand(DeleteBook);
+                }
+                return deleteBookCommand;
+            }
+        }
+
+        private RelayCommand modifyBookCommand;
+
+        public RelayCommand ModifyBookCommand
+        {
+            get
+            {
+                if (modifyBookCommand == null)
+                {
+                    modifyBookCommand = new RelayCommand(ModifyBook);
+                }
+                return modifyBookCommand;
+            }
+        }
+
+        private void DeleteBook(object parameter)
+        {
+            if (parameter is long id_libro)
+            {
+                var result = MessageBox.Show("¿Estás seguro de que deseas eliminar el libro?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        isLoading = true;
+                        BookService.EliminarLibro(id_libro);
+
+                        LoadLibros();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al eliminar el libro: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    finally
+                    {
+                        isLoading = false;
+                    }
+                }
+            }
+        }
+
+        private void ModifyBook(object parameter)
+        {
+            // Obtener el libro seleccionado desde el parámetro
+            if (parameter is LIBRO libro)
+            {
+                var idLibro = libro.ID_LIBRO;
+
+                // Crear una instancia de la nueva ventana
+                var modificarLibroView = new ModificarLibroView(idLibro);
+
+                // Bloquear la ventana anterior
+                var mainWindow = Application.Current.MainWindow;
+                mainWindow.IsEnabled = false;
+
+                // Mostrar la nueva ventana como diálogo modal
+                modificarLibroView.Owner = mainWindow;
+                modificarLibroView.ShowDialog();
+
+                // Desbloquear la ventana anterior cuando se cierre la nueva ventana
+                mainWindow.IsEnabled = true;
+            }
+        }
+
         private bool isApplicationClosing = false;
 
         public InventarioViewModel()
@@ -130,7 +209,6 @@ namespace SistemaLibreriaImagina.ViewModels
                 IsLoading = false; // Ocultar el ProgressRing
             }
         }
-
 
         private void ShowErrorMessage(string message)
         {

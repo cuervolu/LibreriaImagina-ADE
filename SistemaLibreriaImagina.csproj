@@ -68,6 +68,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
       <HintPath>packages\MahApps.Metro.2.4.9\lib\net47\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -85,6 +88,9 @@
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.21.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>packages\Oracle.ManagedDataAccess.EntityFramework.21.9.0\lib\net462\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Slugify, Version=0.1.0.20570, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Slugify.0.1.0.20570\lib\net40\Slugify.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -140,97 +146,98 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\UrlToImageConverter.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Models\ADMIN_INTERFACE_THEME.cs">
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AUTHTOKEN_TOKEN.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AUTH_GROUP.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AUTH_GROUP_PERMISSIONS.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AUTH_PERMISSION.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CARRITO.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\COMUNA.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DETALLE_CARRITO.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DETALLE_PEDIDO.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DIRECCION.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DJANGO_ADMIN_LOG.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DJANGO_CONTENT_TYPE.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DJANGO_MIGRATIONS.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DJANGO_SESSION.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ENVIO.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ERROR.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LibreriaImaginaModel.Context.cs">
+    <Compile Include="Models\LibreriaImagina.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LibreriaImaginaModel.Context.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LibreriaImaginaModel.cs">
+    <Compile Include="Models\LibreriaImagina.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LibreriaImaginaModel.Designer.cs">
+    <Compile Include="Models\LibreriaImagina.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LibreriaImaginaModel.edmx</DependentUpon>
+      <DependentUpon>LibreriaImagina.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\LIBRO.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MANTENIMIENTO.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\METODO_PAGO.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OFERTA.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PEDIDO.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\REGION.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TRANSACCION.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USUARIO.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USUARIO_GROUPS.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USUARIO_USER_PERMISSIONS.cs">
-      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
+      <DependentUpon>LibreriaImagina.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\BookService.cs" />
@@ -239,6 +246,8 @@
     <Compile Include="ViewModels\InventarioViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\ModificarLibroViewModel.cs" />
+    <Compile Include="ViewModels\RestockViewModel.cs" />
     <Compile Include="View\InicioView.xaml.cs">
       <DependentUpon>InicioView.xaml</DependentUpon>
     </Compile>
@@ -247,6 +256,12 @@
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ModificarLibroView.xaml.cs">
+      <DependentUpon>ModificarLibroView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RestockView.xaml.cs">
+      <DependentUpon>RestockView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -280,6 +295,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ModificarLibroView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RestockView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -299,35 +322,35 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\LibreriaImaginaModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LibreriaImaginaModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Resource Include="Fonts\Montserrat-Black.ttf" />
-    <Resource Include="Fonts\Montserrat-BlackItalic.ttf" />
-    <Resource Include="Fonts\Montserrat-Bold.ttf" />
-    <Resource Include="Fonts\Montserrat-BoldItalic.ttf" />
-    <Resource Include="Fonts\Montserrat-ExtraBold.ttf" />
-    <Resource Include="Fonts\Montserrat-ExtraBoldItalic.ttf" />
-    <Resource Include="Fonts\Montserrat-ExtraLight.ttf" />
-    <Resource Include="Fonts\Montserrat-ExtraLightItalic.ttf" />
-    <Resource Include="Fonts\Montserrat-Italic-VariableFont_wght.ttf" />
-    <Resource Include="Fonts\Montserrat-Italic.ttf" />
-    <Resource Include="Fonts\Montserrat-Light.ttf" />
-    <Resource Include="Fonts\Montserrat-LightItalic.ttf" />
-    <Resource Include="Fonts\Montserrat-Medium.ttf" />
-    <Resource Include="Fonts\Montserrat-MediumItalic.ttf" />
-    <Resource Include="Fonts\Montserrat-Regular.ttf" />
-    <Resource Include="Fonts\Montserrat-SemiBold.ttf" />
-    <Resource Include="Fonts\Montserrat-SemiBoldItalic.ttf" />
-    <Resource Include="Fonts\Montserrat-Thin.ttf" />
-    <Resource Include="Fonts\Montserrat-ThinItalic.ttf" />
-    <Resource Include="Fonts\Montserrat-VariableFont_wght.ttf" />
+    <Content Include="Fonts\Montserrat-Black.ttf" />
+    <Content Include="Fonts\Montserrat-BlackItalic.ttf" />
+    <Content Include="Fonts\Montserrat-Bold.ttf" />
+    <Content Include="Fonts\Montserrat-BoldItalic.ttf" />
+    <Content Include="Fonts\Montserrat-ExtraBold.ttf" />
+    <Content Include="Fonts\Montserrat-ExtraBoldItalic.ttf" />
+    <Content Include="Fonts\Montserrat-ExtraLight.ttf" />
+    <Content Include="Fonts\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="Fonts\Montserrat-Italic-VariableFont_wght.ttf" />
+    <Content Include="Fonts\Montserrat-Italic.ttf" />
+    <Content Include="Fonts\Montserrat-Light.ttf" />
+    <Content Include="Fonts\Montserrat-LightItalic.ttf" />
+    <Content Include="Fonts\Montserrat-Medium.ttf" />
+    <Content Include="Fonts\Montserrat-MediumItalic.ttf" />
+    <Content Include="Fonts\Montserrat-Regular.ttf" />
+    <Content Include="Fonts\Montserrat-SemiBold.ttf" />
+    <Content Include="Fonts\Montserrat-SemiBoldItalic.ttf" />
+    <Content Include="Fonts\Montserrat-Thin.ttf" />
+    <Content Include="Fonts\Montserrat-ThinItalic.ttf" />
+    <Content Include="Fonts\Montserrat-VariableFont_wght.ttf" />
     <None Include=".env">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Models\LibreriaImaginaModel.edmx.diagram">
-      <DependentUpon>LibreriaImaginaModel.edmx</DependentUpon>
+    <EntityDeploy Include="Models\LibreriaImagina.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LibreriaImagina.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\LibreriaImagina.edmx.diagram">
+      <DependentUpon>LibreriaImagina.edmx</DependentUpon>
     </None>
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
@@ -371,15 +394,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logo.ico" />
-    <Content Include="Models\LibreriaImaginaModel.Context.tt">
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\LibreriaImagina.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LibreriaImaginaModel.edmx</DependentUpon>
-      <LastGenOutput>LibreriaImaginaModel.Context.cs</LastGenOutput>
+      <DependentUpon>LibreriaImagina.edmx</DependentUpon>
+      <LastGenOutput>LibreriaImagina.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\LibreriaImaginaModel.tt">
+    <Content Include="Models\LibreriaImagina.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LibreriaImaginaModel.edmx</DependentUpon>
-      <LastGenOutput>LibreriaImaginaModel.cs</LastGenOutput>
+      <DependentUpon>LibreriaImagina.edmx</DependentUpon>
+      <LastGenOutput>LibreriaImagina.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

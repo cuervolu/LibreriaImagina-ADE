@@ -27,6 +27,7 @@ namespace SistemaLibreriaImagina.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ADMIN_INTERFACE_THEME> ADMIN_INTERFACE_THEME { get; set; }
         public virtual DbSet<AUTH_GROUP> AUTH_GROUP { get; set; }
         public virtual DbSet<AUTH_GROUP_PERMISSIONS> AUTH_GROUP_PERMISSIONS { get; set; }
         public virtual DbSet<AUTH_PERMISSION> AUTH_PERMISSION { get; set; }
@@ -51,12 +52,6 @@ namespace SistemaLibreriaImagina.Models
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<USUARIO_GROUPS> USUARIO_GROUPS { get; set; }
         public virtual DbSet<USUARIO_USER_PERMISSIONS> USUARIO_USER_PERMISSIONS { get; set; }
-        public virtual DbSet<ERROR> ERROR { get; set; }
-    
-        public virtual int LISTAR_CATEGORIAS()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LISTAR_CATEGORIAS");
-        }
     
         public virtual int ACTUALIZAR_MANTENIMIENTO(Nullable<decimal> p_ID_MANTENIMIENTO, Nullable<System.DateTime> p_FECHA_SOLICITUD, string p_TIPO_MANTENIMIENTO, string p_ESTADO_MANTENIMIENTO, Nullable<decimal> p_CLIENTE_ID, Nullable<decimal> p_LIBRO_ID, Nullable<decimal> p_TECNICO_ID)
         {
@@ -200,7 +195,25 @@ namespace SistemaLibreriaImagina.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LEER_MANTENIMIENTO", p_ID_MANTENIMIENTOParameter, p_FECHA_SOLICITUD, p_TIPO_MANTENIMIENTO, p_ESTADO_MANTENIMIENTO, p_CLIENTE_ID, p_LIBRO_ID, p_TECNICO_ID);
         }
     
-        public virtual int MODIFICAR_LIBRO(Nullable<decimal> p_ID_LIBRO, string p_NOMBRE_LIBRO, string p_DESCRIPCION, string p_AUTOR, string p_EDITORIAL, Nullable<decimal> p_PRECIO_UNITARIO, Nullable<decimal> p_CANTIDAD_DISPONIBLE, string p_PORTADA, Nullable<System.DateTime> p_FECHA_PUBLICACION, string p_CATEGORIA, string p_ISBN, string p_SLUG, string p_THUMBNAIL)
+        public virtual int LISTAR_CATEGORIAS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LISTAR_CATEGORIAS");
+        }
+    
+        public virtual int LISTAR_LIBROS(Nullable<decimal> p_START_INDEX, Nullable<decimal> p_PAGE_SIZE)
+        {
+            var p_START_INDEXParameter = p_START_INDEX.HasValue ?
+                new ObjectParameter("P_START_INDEX", p_START_INDEX) :
+                new ObjectParameter("P_START_INDEX", typeof(decimal));
+    
+            var p_PAGE_SIZEParameter = p_PAGE_SIZE.HasValue ?
+                new ObjectParameter("P_PAGE_SIZE", p_PAGE_SIZE) :
+                new ObjectParameter("P_PAGE_SIZE", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LISTAR_LIBROS", p_START_INDEXParameter, p_PAGE_SIZEParameter);
+        }
+    
+        public virtual int MODIFICAR_LIBRO(Nullable<decimal> p_ID_LIBRO, string p_NOMBRE_LIBRO, string p_DESCRIPCION, string p_AUTOR, string p_EDITORIAL, Nullable<decimal> p_PRECIO_UNITARIO, Nullable<decimal> p_CANTIDAD_DISPONIBLE, string p_PORTADA, Nullable<System.DateTime> p_FECHA_PUBLICACION, string p_CATEGORIA, string p_ISBN, string p_SLUG, string p_THUMBNAIL, ObjectParameter p_RESULTADO)
         {
             var p_ID_LIBROParameter = p_ID_LIBRO.HasValue ?
                 new ObjectParameter("P_ID_LIBRO", p_ID_LIBRO) :
@@ -254,12 +267,7 @@ namespace SistemaLibreriaImagina.Models
                 new ObjectParameter("P_THUMBNAIL", p_THUMBNAIL) :
                 new ObjectParameter("P_THUMBNAIL", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFICAR_LIBRO", p_ID_LIBROParameter, p_NOMBRE_LIBROParameter, p_DESCRIPCIONParameter, p_AUTORParameter, p_EDITORIALParameter, p_PRECIO_UNITARIOParameter, p_CANTIDAD_DISPONIBLEParameter, p_PORTADAParameter, p_FECHA_PUBLICACIONParameter, p_CATEGORIAParameter, p_ISBNParameter, p_SLUGParameter, p_THUMBNAILParameter);
-        }
-    
-        public virtual int LISTAR_LIBROS()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LISTAR_LIBROS");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFICAR_LIBRO", p_ID_LIBROParameter, p_NOMBRE_LIBROParameter, p_DESCRIPCIONParameter, p_AUTORParameter, p_EDITORIALParameter, p_PRECIO_UNITARIOParameter, p_CANTIDAD_DISPONIBLEParameter, p_PORTADAParameter, p_FECHA_PUBLICACIONParameter, p_CATEGORIAParameter, p_ISBNParameter, p_SLUGParameter, p_THUMBNAILParameter, p_RESULTADO);
         }
     }
 }

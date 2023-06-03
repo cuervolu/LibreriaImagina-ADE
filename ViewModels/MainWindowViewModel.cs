@@ -13,9 +13,12 @@ namespace SistemaLibreriaImagina.ViewModels
         public RelayCommand InicioViewCommand { get; set; }
         public RelayCommand InventarioViewCommand { get; set; }
         public RelayCommand CerrarSesionCommand { get; private set; }
+        public RelayCommand RestockCommand { get; set; }
 
         public InicioViewModel InicioVM { get; set; }
         public InventarioViewModel InventarioVM { get; set; }
+        public RestockViewModel RestockVM { get; set; }
+
 
         private object _currentView;
 
@@ -31,6 +34,7 @@ namespace SistemaLibreriaImagina.ViewModels
         {
             InicioVM = new InicioViewModel();
             InventarioVM = new InventarioViewModel();
+            RestockVM = new RestockViewModel();
             CurrentView = InicioVM;
 
             InicioViewCommand = new RelayCommand(o =>
@@ -41,6 +45,11 @@ namespace SistemaLibreriaImagina.ViewModels
             InventarioViewCommand = new RelayCommand(o =>
             {
                 CurrentView = InventarioVM;
+            });
+
+            RestockCommand = new RelayCommand(o =>
+            {
+                CurrentView = RestockVM;
             });
 
             CerrarSesionCommand = new RelayCommand(async o =>
