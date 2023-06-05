@@ -83,6 +83,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Notifications.Wpf, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Notifications.Wpf.0.1.1\lib\net461\Notifications.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.21.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>packages\Oracle.ManagedDataAccess.21.9.0\lib\net462\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
@@ -140,6 +143,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfMessageBox, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WpfMessageBox.1.2.0\lib\net40-client\WpfMessageBox.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -152,6 +158,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\RolVisibilityConverter.cs" />
     <Compile Include="Converters\UrlToImageConverter.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
@@ -236,6 +243,7 @@
     <Compile Include="Models\USUARIO.cs">
       <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UsuarioGlobal.cs" />
     <Compile Include="Models\USUARIO_GROUPS.cs">
       <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
@@ -245,6 +253,7 @@
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\UsersService.cs" />
     <Compile Include="Utilities\ErrorControl.cs" />
     <Compile Include="ViewModels\InicioViewModel.cs" />
     <Compile Include="ViewModels\InventarioViewModel.cs" />
@@ -253,6 +262,7 @@
     <Compile Include="ViewModels\ModificarLibroViewModel.cs" />
     <Compile Include="ViewModels\PedidosViewModel.cs" />
     <Compile Include="ViewModels\RestockViewModel.cs" />
+    <Compile Include="ViewModels\UsersViewModel.cs" />
     <Compile Include="View\InicioView.xaml.cs">
       <DependentUpon>InicioView.xaml</DependentUpon>
     </Compile>
@@ -270,6 +280,9 @@
     </Compile>
     <Compile Include="View\RestockView.xaml.cs">
       <DependentUpon>RestockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsersView.xaml.cs">
+      <DependentUpon>UsersView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -312,6 +325,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RestockView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

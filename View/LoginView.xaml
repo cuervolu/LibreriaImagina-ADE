@@ -52,14 +52,16 @@
                             PasswordChanged="txtContrasena_PasswordChanged" />
                         </StackPanel>
                         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 20" />
-                        <Button Content="Ingresar" Command="{Binding IngresarCommand}" FontSize="16" Background="#FF008CBA" Foreground="White" Margin="167,152,166,10" FontFamily="Montserrat Thin Medium" Grid.RowSpan="2" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" />
+                        <Button Command="{Binding IngresarCommand}" Background="#FF008CBA" Margin="167,152,166,10" FontFamily="Montserrat Thin Medium" Grid.RowSpan="2" Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                            <TextBlock  Text="Ingresar"  FontSize="16"  Foreground="White" />
+                        </Button>
                     </Grid>
                 </Border>
             </StackPanel>
         </Grid>
 
         <!-- Grid adicional para el ProgressRing -->
-        <Grid Grid.ColumnSpan="2"  Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <Grid Grid.ColumnSpan="2" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.4" />
             </Grid.Background>
@@ -71,5 +73,6 @@
             </Grid.ColumnDefinitions>
             <mah:ProgressRing IsActive="{Binding IsLoading}" Foreground="#1F8BAC" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Grid>
+
     </Grid>
 </mah:MetroWindow>

@@ -4,15 +4,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SistemaLibreriaImagina.ViewModels"
+             xmlns:notifications="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
              mc:Ignorable="d"
              d:DesignHeight="780" d:DesignWidth="905">
 
     <UserControl.DataContext>
         <viewModels:InicioViewModel />
     </UserControl.DataContext>
-
+    
     <StackPanel>
-        <TextBlock  Text="Bienvenido" Foreground="DarkGray" FontSize="28" HorizontalAlignment="Left" Margin="0,0,0,20" />
+        
+        <TextBlock Foreground="DarkGray" FontSize="28" HorizontalAlignment="Left" Margin="0,0,0,20">
+    <Run Text="Bienvenido, " />
+    <Run Text="{Binding Usuario.NOMBRE}" />
+        </TextBlock>
+
 
         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
             <Border Width="400" Height="200">
@@ -68,5 +74,8 @@
                 <Border Width="150" Height="150" Background="#64B4CD"/>
             </StackPanel>
         </StackPanel>
+
+        <notifications:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="3"/>
+
     </StackPanel>
 </UserControl>

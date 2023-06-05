@@ -1,4 +1,6 @@
-﻿using SistemaLibreriaImagina.Core;
+﻿using Notifications.Wpf;
+using SistemaLibreriaImagina.Core;
+using SistemaLibreriaImagina.Models;
 using System;
 using System.Windows;
 
@@ -17,12 +19,20 @@ namespace SistemaLibreriaImagina.ViewModels
             }
         }
 
+        private USUARIO usuario;
+
+        public USUARIO Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; OnPropertyChanged(); }
+        }
 
         public InicioViewModel()
         {
+            Usuario = UsuarioGlobal.Instancia.Usuario;
             obtenerCantidadDeLibros();
-
         }
+
         private int obtenerCantidadDeLibros()
         {
             try
@@ -40,13 +50,17 @@ namespace SistemaLibreriaImagina.ViewModels
                 return cantidadLibros;
             }
         }
-
-
         private void ShowErrorMessage(string message)
         {
             Application.Current.Dispatcher.BeginInvoke(new Action(() =>
             {
-                MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                var notificationManager = new NotificationManager();
+                notificationManager.Show(new NotificationContent
+                {
+                    Title = "Error",
+                    Message = message,
+                    Type = NotificationType.Error
+                });
             }));
         }
     }

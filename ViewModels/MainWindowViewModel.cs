@@ -1,26 +1,30 @@
 ﻿using MahApps.Metro.Controls.Dialogs;
 using SistemaLibreriaImagina.Core;
+using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.Services;
 using SistemaLibreriaImagina.View;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace SistemaLibreriaImagina.ViewModels
 {
-    class MainWindowViewModel : ObservableObject
+    internal class MainWindowViewModel : ObservableObject
     {
         public RelayCommand InicioViewCommand { get; set; }
         public RelayCommand InventarioViewCommand { get; set; }
         public RelayCommand CerrarSesionCommand { get; private set; }
         public RelayCommand RestockCommand { get; set; }
         public RelayCommand PedidoViewCommand { get; set; }
+        public RelayCommand UserViewCommand { get; set; }
 
         public InicioViewModel InicioVM { get; set; }
         public InventarioViewModel InventarioVM { get; set; }
         public RestockViewModel RestockVM { get; set; }
         public PedidosViewModel PedidosVM { get; set; }
-
+        public UsersViewModel UserVM { get; set; }
+        public string RolUsuario { get; set; }
 
         private object _currentView;
 
@@ -31,67 +35,131 @@ namespace SistemaLibreriaImagina.ViewModels
         }
 
         public string Token { get; set; }
+        public long UserID { get; set; }
+
+        private USUARIO usuario;
+
+        public USUARIO Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; OnPropertyChanged(); }
+        }
+
+        private bool isLoading;
+
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged();
+            }
+        }
 
         public MainWindowViewModel()
         {
-            InicioVM = new InicioViewModel();
-            InventarioVM = new InventarioViewModel();
-            RestockVM = new RestockViewModel();
-            PedidosVM = new PedidosViewModel();
-            CurrentView = InicioVM;
+            InitializeData();
+        }
 
-            InicioViewCommand = new RelayCommand(o =>
+        private void InitializeData()
+        {
+            try
             {
+                // Mostrar el elemento de carga
+                IsLoading = true;
+                InicioVM = new InicioViewModel();
+                RolUsuario = UsuarioGlobal.Instancia.Usuario.TIPO_USUARIO;
                 CurrentView = InicioVM;
-            });
-
-            InventarioViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = InventarioVM;
-            });
-
-            PedidoViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = PedidosVM;
-            });
-
-            RestockCommand = new RelayCommand(o =>
-            {
-                CurrentView = RestockVM;
-            });
-
-            CerrarSesionCommand = new RelayCommand(async o =>
-            {
-                // Mostrar un diálogo de confirmación antes de cerrar sesión
-                var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-                var result = await mainWindow?.ShowMessageAsync("Cerrar sesión", "¿Estás seguro de que deseas cerrar sesión?", MessageDialogStyle.AffirmativeAndNegative);
-
-                if (result == MessageDialogResult.Affirmative)
+                InicioViewCommand = new RelayCommand(o =>
                 {
-                    // Mostrar pantalla de carga
-                    var progressDialog = await mainWindow.ShowProgressAsync("Cerrando sesión", "Cerrando sesión...");
+                    InicioVM = new InicioViewModel();
+                    CurrentView = InicioVM;
+                });
 
-                    try
+                InventarioViewCommand = new RelayCommand(o =>
+                {
+                    InventarioVM = new InventarioViewModel();
+                    CurrentView = InventarioVM;
+                });
+
+                PedidoViewCommand = new RelayCommand(o =>
+                {
+                    PedidosVM = new PedidosViewModel();
+                    CurrentView = PedidosVM;
+                });
+
+                RestockCommand = new RelayCommand(o =>
+                {
+                    RestockVM = new RestockViewModel();
+                    CurrentView = RestockVM;
+                });
+
+                UserViewCommand = new RelayCommand(o =>
+                {
+                    UserVM = new UsersViewModel();
+                    CurrentView = UserVM;
+                });
+
+                CerrarSesionCommand = new RelayCommand(async o =>
+                {
+                    // Mostrar un diálogo de confirmación antes de cerrar sesión
+                    var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                    var result = await mainWindow?.ShowMessageAsync("Cerrar sesión", "¿Estás seguro de que deseas cerrar sesión?", MessageDialogStyle.AffirmativeAndNegative);
+
+                    if (result == MessageDialogResult.Affirmative)
                     {
-                        // Llamar al método de cierre de sesión del AuthenticationService
-                        await AuthenticationService.LogoutAsync(Token);
+                        // Mostrar pantalla de carga
+                        var progressDialog = await mainWindow.ShowProgressAsync("Cerrando sesión", "Cerrando sesión...");
 
-                        // Cerrar la pantalla de carga
-                        await progressDialog.CloseAsync();
+                        try
+                        {
+                            // Llamar al método de cierre de sesión del AuthenticationService
+                            await AuthenticationService.LogoutAsync(Token);
 
-                        // Redirigir al inicio de sesión
-                        LoginView loginView = new LoginView();
-                        loginView.Show();
-                        CloseMainWindow();
+                            // Cerrar la pantalla de carga
+                            await progressDialog.CloseAsync();
+
+                            // Redirigir al inicio de sesión
+                            LoginView loginView = new LoginView();
+                            loginView.Show();
+                            CloseMainWindow();
+                        }
+                        catch (Exception ex)
+                        {
+                            // Manejar cualquier error que ocurra durante el cierre de sesión
+                            await progressDialog.CloseAsync();
+                            await mainWindow.ShowMessageAsync("Error", "Se produjo un error al cerrar la sesión: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        // Manejar cualquier error que ocurra durante el cierre de sesión
-                        await progressDialog.CloseAsync();
-                        await mainWindow.ShowMessageAsync("Error", "Se produjo un error al cerrar la sesión: " + ex.Message);
-                    }
-                }
-            });
+                });
+
+                // Ocultar el elemento de carga una vez que se complete la carga
+                IsLoading = false;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+
+
+        private async Task<USUARIO> GetUserInfo()
+        {
+            try
+            {
+                Usuario = await UsersService.GetCurrentUserInfo(UserID);
+                return Usuario;
+            }
+            catch (Exception ex)
+            {
+                var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                await mainWindow.ShowMessageAsync("Error", "Se produjo un error al cargar la información del usuario: " + ex.Message);
+                return null;
+            }
         }
 
         private void CloseMainWindow()

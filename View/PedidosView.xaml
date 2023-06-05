@@ -8,6 +8,7 @@
              xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:SistemaLibreriaImagina.View"
               xmlns:converters="clr-namespace:SistemaLibreriaImagina.Converters"
+             xmlns:notifications="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
              xmlns:viewModels="clr-namespace:SistemaLibreriaImagina.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="780" d:DesignWidth="905" Margin="10" Background="Transparent">
@@ -35,7 +36,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox SelectedItem="{Binding ESTADO_PEDIDO, UpdateSourceTrigger=PropertyChanged}"
-                      ItemsSource="{Binding DataContext.Estados, RelativeSource={RelativeSource AncestorType=UserControl}}" SelectionChanged="ComboBox_SelectionChanged">
+                      ItemsSource="{Binding DataContext.Estados, RelativeSource={RelativeSource AncestorType=UserControl}}" SelectionChanged="PedidosComboBox_SelectionChanged">
                                 </ComboBox>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -55,6 +56,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+            <notifications:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="1" />
         </Grid>
     </Border>
 </UserControl>

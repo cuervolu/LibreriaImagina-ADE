@@ -2,10 +2,12 @@
 using MahApps.Metro.Controls.Dialogs;
 using Newtonsoft.Json;
 using SistemaLibreriaImagina.Core;
+using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.Services;
 using SistemaLibreriaImagina.View;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
@@ -21,7 +23,16 @@ namespace SistemaLibreriaImagina.ViewModels
         // Evento para notificar cambios en las propiedades
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public long user;
+        public long user_id;
+
+        private USUARIO usuarioData;
+
+        public USUARIO UsuarioData
+        {
+            get { return usuarioData; }
+            set { usuarioData = value; OnPropertyChanged(); }
+        }
+
 
         private string usuario;
         private SecureString contrasena;
@@ -116,19 +127,30 @@ namespace SistemaLibreriaImagina.ViewModels
 
         private async void Ingresar(object parameter)
         {
-            isLoading = true;
+            IsLoading = true;
             HttpResponseMessage response = await VerificarCredenciales();
             if (response != null)
             {
-                isLoading = false;
-                MainWindow mainWindow = new MainWindow(user, Token);
-                mainWindow.Show();
-                CloseLoginWindow();
-
+                try
+                {
+                    usuarioData = await GetUserInfo(user_id);
+                    // Asignar la información del usuario a UsuarioGlobal
+                    UsuarioGlobal.Instancia.Usuario = usuarioData;
+                    IsLoading = false;
+                    MainWindow mainWindow = new MainWindow(usuarioData, user_id, Token);
+                    mainWindow.Show();
+                    CloseLoginWindow();
+                }
+                catch (Exception ex)
+                {
+                    IsLoading = false;
+                    MetroWindow metroWindow = Application.Current.MainWindow as MetroWindow;
+                    await metroWindow.ShowMessageAsync("Error", ex.Message);
+                }
             }
             else
             {
-                isLoading = false;
+                IsLoading = false;
                 // Mostrar el mensaje de la respuesta HTTP utilizando MahApps.Metro
                 MetroWindow metroWindow = Application.Current.MainWindow as MetroWindow;
                 await metroWindow.ShowMessageAsync("Error", Mensaje);
@@ -158,7 +180,7 @@ namespace SistemaLibreriaImagina.ViewModels
                     Token = responseData.token;
 
                     // Obtener el objeto usuario de la respuesta y asignarlo a la propiedad user
-                    user = JsonConvert.DeserializeObject(responseData.user.ToString());
+                    user_id = JsonConvert.DeserializeObject(responseData.user.ToString());
 
                     return response;
                 }
@@ -195,6 +217,23 @@ namespace SistemaLibreriaImagina.ViewModels
             // Invocar el evento de cambio de propiedad cuando se actualiza una propiedad
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
+        private async Task<USUARIO> GetUserInfo(long user_id)
+        {
+            try
+            {
+                UsuarioData = await UsersService.GetCurrentUserInfo(user_id);
+                return UsuarioData;
+            }
+            catch (Exception ex)
+            {
+                var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+                await mainWindow.ShowMessageAsync("Error", "Se produjo un error al cargar la información del usuario: " + ex.Message);
+                return null;
+            }
+        }
+
 
         private void CloseLoginWindow()
         {

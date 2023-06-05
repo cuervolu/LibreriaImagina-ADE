@@ -1,11 +1,11 @@
-﻿using SistemaLibreriaImagina.Core;
+﻿using Notifications.Wpf;
+using SistemaLibreriaImagina.Core;
 using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using System.Xml.Linq;
 
 namespace SistemaLibreriaImagina.ViewModels
@@ -108,8 +108,13 @@ namespace SistemaLibreriaImagina.ViewModels
                             // Convertir la respuesta XML a una cadena con formato
                             XDocument xmlDoc = XDocument.Parse(response.OuterXml);
                             string formattedXml = xmlDoc.ToString();
-                            Console.WriteLine(formattedXml);
-                            MessageBox.Show("Se creo el envío con éxito", "Éxito");
+                            var notificationManager = new NotificationManager();
+                            notificationManager.Show(new NotificationContent
+                            {
+                                Title = "¡Bien hecho!",
+                                Message = "Se creo el envío con éxito",
+                                Type = NotificationType.Success
+                            });
                         }
                         else
                         {
@@ -145,13 +150,19 @@ namespace SistemaLibreriaImagina.ViewModels
                         var pedidoActualizado = dbContext.PEDIDOes.FirstOrDefault(p => p.ID_PEDIDO == pedido.ID_PEDIDO);
                         if (pedidoActualizado != null)
                         {
+                            if (pedidoActualizado.ESTADO_PEDIDO == estado) return;
                             // Actualizar el estado del pedido con el valor seleccionado
                             pedidoActualizado.ESTADO_PEDIDO = estado;
 
                             // Guardar los cambios en la base de datos
                             dbContext.SaveChanges();
-
-                            MessageBox.Show("Cambios realizados exitosamente", "Exito");
+                            var notificationManager = new NotificationManager();
+                            notificationManager.Show(new NotificationContent
+                            {
+                                Title = "¡Bien hecho!",
+                                Message = "Cambios realizados exitosamente",
+                                Type = NotificationType.Success
+                            });
                         }
                     }
                 }
@@ -167,13 +178,16 @@ namespace SistemaLibreriaImagina.ViewModels
         }
 
 
-
         private void ShowErrorMessage(string message)
         {
-            Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+            var notificationManager = new NotificationManager();
+
+            notificationManager.Show(new NotificationContent
             {
-                MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }));
+                Title = "Error",
+                Message = message,
+                Type = NotificationType.Error
+            });
         }
     }
 }

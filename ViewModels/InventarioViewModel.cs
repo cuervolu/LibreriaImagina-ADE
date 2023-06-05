@@ -1,9 +1,11 @@
-﻿using SistemaLibreriaImagina.Core;
+﻿using Notifications.Wpf;
+using SistemaLibreriaImagina.Core;
 using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.View;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using WpfMessageBoxLibrary;
 
 namespace SistemaLibreriaImagina.ViewModels
 {
@@ -114,7 +116,7 @@ namespace SistemaLibreriaImagina.ViewModels
         {
             if (parameter is long id_libro)
             {
-                var result = MessageBox.Show("¿Estás seguro de que deseas eliminar el libro?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var result = WpfMessageBox.Show("Confirmar eliminación", "¿Estás seguro de que deseas eliminar el libro?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -127,7 +129,7 @@ namespace SistemaLibreriaImagina.ViewModels
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error al eliminar el libro: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        ShowErrorMessage("Error al eliminar el libro: " + ex.Message);
                     }
                     finally
                     {
@@ -136,6 +138,8 @@ namespace SistemaLibreriaImagina.ViewModels
                 }
             }
         }
+
+
 
         private void ModifyBook(object parameter)
         {
@@ -212,10 +216,14 @@ namespace SistemaLibreriaImagina.ViewModels
 
         private void ShowErrorMessage(string message)
         {
-            Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+            var notificationManager = new NotificationManager();
+
+            notificationManager.Show(new NotificationContent
             {
-                MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }));
+                Title = "Error",
+                Message = message,
+                Type = NotificationType.Error
+            });
         }
     }
 }

@@ -2,6 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                 xmlns:converters="clr-namespace:SistemaLibreriaImagina.Converters"
                  
         xmlns:fa="http://schemas.fontawesome.io/icons/"
                  xmlns:viewModel="clr-namespace:SistemaLibreriaImagina.ViewModels"
@@ -12,11 +13,17 @@
                  Height="800" Width="1200" Background="Transparent"
                  WindowStyle="None"
                  AllowsTransparency="False"
-                 ResizeMode="NoResize">
+                 ResizeMode="NoResize" Title="Sistema Librería Imagina">
 
     <Window.DataContext>
         <viewModel:MainWindowViewModel/>
     </Window.DataContext>
+
+    <Window.Resources>
+        <converters:RolVisibilityConverter x:Key="RolVisibilityConverter" />
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+
 
     <Border Background="#FFFFFAF5" CornerRadius="10">
         <Grid>
@@ -35,20 +42,34 @@
 
             <StackPanel Grid.Row="1" Background="#1F8BAC">
 
-                <RadioButton  Content="Inicio" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" IsChecked="True" Command="{Binding InicioViewCommand }" FontFamily="Montserrat"/>
+                <RadioButton  Content="Inicio" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" IsChecked="True" Command="{Binding InicioViewCommand }" FontFamily="Montserrat" />
 
-                <RadioButton  Content="Inventario" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding InventarioViewCommand }" FontFamily="Montserrat Medium"/>
+                <RadioButton  Content="Inventario" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding InventarioViewCommand }" FontFamily="Montserrat Medium" Visibility="{Binding RolUsuario, Converter={StaticResource RolVisibilityConverter}, ConverterParameter=Inventario}"/>
 
                 <RadioButton  Content="Restock" Height="50" Foreground="White" FontSize="14" 
-                              Command="{Binding RestockCommand }" Style="{StaticResource MenuButtonTheme}"/>
+                              Command="{Binding RestockCommand }" Style="{StaticResource MenuButtonTheme}" Visibility="{Binding RolUsuario, Converter={StaticResource RolVisibilityConverter}, ConverterParameter=Restock}"/>
 
-                <RadioButton  Content="Pedidos" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding PedidoViewCommand }" FontFamily="Montserrat"/>
+                <RadioButton  Content="Pedidos" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding PedidoViewCommand }" FontFamily="Montserrat" Visibility="{Binding RolUsuario, Converter={StaticResource RolVisibilityConverter}, ConverterParameter=Pedidos}"/>
+
+
+                <RadioButton  Content="Usuarios" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding UserViewCommand }" FontFamily="Montserrat" Visibility="{Binding RolUsuario, Converter={StaticResource RolVisibilityConverter}, ConverterParameter=Usuarios}" />
+
+
                 <RadioButton  Content="Cerrar Sesión" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" VerticalContentAlignment="Bottom" FontFamily="Montserrat" Command="{Binding CerrarSesionCommand }"/>
             </StackPanel>
 
-            <TextBox VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="20,5,0,5" Grid.Column="1" Style="{StaticResource ModernTextBox}"/>
+           <!-- <TextBox VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="20,5,0,5" Grid.Column="1" Style="{StaticResource ModernTextBox}"/> -->
+       
 
             <ContentControl Grid.Row="1" Grid.Column="1" Margin="10" Content="{Binding CurrentView}" />
+
+            <!-- Elemento de carga -->
+            <Grid x:Name="LoadingGrid" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="1" Grid.Column="1">
+                <Grid.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.4" />
+                </Grid.Background>
+                <mah:ProgressRing IsActive="{Binding IsLoading}" Foreground="#1F8BAC" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
 
 
         </Grid>

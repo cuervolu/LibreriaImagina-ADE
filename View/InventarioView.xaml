@@ -7,6 +7,7 @@
              xmlns:fa="http://schemas.fontawesome.io/icons/"
              xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:SistemaLibreriaImagina.View"
+             xmlns:notifications="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
               xmlns:converters="clr-namespace:SistemaLibreriaImagina.Converters"
              xmlns:viewModels="clr-namespace:SistemaLibreriaImagina.ViewModels"
              mc:Ignorable="d"
@@ -84,5 +85,6 @@
             </Grid.ColumnDefinitions>
             <mah:ProgressRing IsActive="{Binding IsLoading}" Foreground="#1F8BAC" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Grid>
+        <notifications:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="3" />
     </Grid>
 </UserControl>
