@@ -4,8 +4,9 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:viewModel="clr-namespace:SistemaLibreriaImagina.ViewModels"
                   xmlns:converters="clr-namespace:SistemaLibreriaImagina.Converters"
-                  Title="Librería Imagina - Inicio de Sesión" Height="800" Width="1200" WindowStyle="None" AllowsTransparency="True"
-          ShowTitleBar="False" Background="#FFFFFAF5">
+                  Title="Librería Imagina - Inicio de Sesión" Height="800" Width="1200" WindowStyle="None" 
+          ShowTitleBar="False" Background="#FFFFFAF5" AllowsTransparency="False"
+                 ResizeMode="NoResize">
 
     <mah:MetroWindow.DataContext>
         <viewModel:LoginViewModel />

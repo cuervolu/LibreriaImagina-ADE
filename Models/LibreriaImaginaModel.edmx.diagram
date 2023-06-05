@@ -4,32 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c919788cffd34d579f91652863923cf3" Name="Diagram1" ZoomLevel="79">
-        <EntityTypeShape EntityType="Model.ADMIN_INTERFACE_THEME" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.AUTH_GROUP" Width="1.5" PointX="12.5" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.AUTH_GROUP_PERMISSIONS" Width="1.5" PointX="17.75" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.AUTH_PERMISSION" Width="1.5" PointX="12.5" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.AUTHTOKEN_TOKEN" Width="1.5" PointX="9.75" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.CARRITO" Width="1.5" PointX="9.75" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.COMUNA" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DETALLE_CARRITO" Width="1.5" PointX="12" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DETALLE_PEDIDO" Width="1.5" PointX="12" PointY="31.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DIRECCION" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DJANGO_ADMIN_LOG" Width="1.5" PointX="9.75" PointY="21.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DJANGO_CONTENT_TYPE" Width="1.5" PointX="7.5" PointY="25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DJANGO_MIGRATIONS" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DJANGO_SESSION" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ENVIO" Width="1.5" PointX="12" PointY="24.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.LIBRO" Width="1.5" PointX="9.75" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MANTENIMIENTO" Width="1.5" PointX="14.75" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.METODO_PAGO" Width="1.5" PointX="9.75" PointY="28" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.OFERTA" Width="1.5" PointX="12" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PEDIDO" Width="1.5" PointX="9.75" PointY="31.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.REGION" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.TRANSACCION" Width="1.5" PointX="12" PointY="35.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.USUARIO" Width="1.5" PointX="7.5" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.USUARIO_GROUPS" Width="1.5" PointX="14.75" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.USUARIO_USER_PERMISSIONS" Width="1.5" PointX="14.75" PointY="24" IsExpanded="true" />
+      <Diagram DiagramId="8726e38dbb464a9bbcc8fc6f1f2e95b8" Name="Diagram1" ZoomLevel="21">
+        <EntityTypeShape EntityType="Model.AUTH_GROUP" Width="1.5" PointX="12.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AUTH_GROUP_PERMISSIONS" Width="1.5" PointX="14.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AUTH_PERMISSION" Width="1.5" PointX="12.5" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AUTHTOKEN_TOKEN" Width="1.5" PointX="9.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CARRITO" Width="1.5" PointX="9.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COMUNA" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DETALLE_CARRITO" Width="1.5" PointX="12" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DETALLE_PEDIDO" Width="1.5" PointX="12" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DIRECCION" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DJANGO_ADMIN_LOG" Width="1.5" PointX="9.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DJANGO_CONTENT_TYPE" Width="1.5" PointX="7.5" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DJANGO_MIGRATIONS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DJANGO_SESSION" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ENVIO" Width="1.5" PointX="12" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LIBRO" Width="1.5" PointX="9.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MANTENIMIENTO" Width="1.5" PointX="12.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.METODO_PAGO" Width="1.5" PointX="9.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.OFERTA" Width="1.5" PointX="12" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PEDIDO" Width="1.5" PointX="9.75" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REGION" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TRANSACCION" Width="1.5" PointX="12" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USUARIO" Width="1.5" PointX="7.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USUARIO_GROUPS" Width="1.5" PointX="14.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USUARIO_USER_PERMISSIONS" Width="1.5" PointX="14.75" PointY="23.875" IsExpanded="true" />
         <AssociationConnector Association="Model.AUTH_GROU_GROUP_ID_B120CBF9_F" ManuallyRouted="false" />
         <AssociationConnector Association="Model.USUARIO_G_GROUP_ID_C67C8651_F" ManuallyRouted="false" />
         <AssociationConnector Association="Model.AUTH_GROU_PERMISSIO_84C5C92E_F" ManuallyRouted="false" />
@@ -54,8 +53,10 @@
         <AssociationConnector Association="Model.MANTENIMI_CLIENTE_I_87240F08_F" ManuallyRouted="false" />
         <AssociationConnector Association="Model.MANTENIMI_TECNICO_I_F351FB7F_F" ManuallyRouted="false" />
         <AssociationConnector Association="Model.METODO_PA_USUARIO_I_CB94264F_F" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.TRANSACCI_METODO_PA_D4EF531D_F" ManuallyRouted="false" />
         <AssociationConnector Association="Model.PEDIDO_CLIENTE_I_E6353BB4_F" ManuallyRouted="false" />
         <AssociationConnector Association="Model.TRANSACCI_PEDIDO_ID_887AFE2F_F" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.TRANSACCI_USUARIO_I_B025DB99_F" ManuallyRouted="false" />
         <AssociationConnector Association="Model.USUARIO_G_USUARIO_I_161FC80C_F" ManuallyRouted="false" />
         <AssociationConnector Association="Model.USUARIO_U_USUARIO_I_693D9C50_F" ManuallyRouted="false" />
       </Diagram>

@@ -2,7 +2,6 @@
 using MahApps.Metro.Controls.Dialogs;
 using Newtonsoft.Json;
 using SistemaLibreriaImagina.Core;
-using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.Services;
 using SistemaLibreriaImagina.View;
 using System;
@@ -22,7 +21,7 @@ namespace SistemaLibreriaImagina.ViewModels
         // Evento para notificar cambios en las propiedades
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public USUARIO user;
+        public long user;
 
         private string usuario;
         private SecureString contrasena;
@@ -159,7 +158,7 @@ namespace SistemaLibreriaImagina.ViewModels
                     Token = responseData.token;
 
                     // Obtener el objeto usuario de la respuesta y asignarlo a la propiedad user
-                    user = JsonConvert.DeserializeObject<USUARIO>(responseData.user.ToString());
+                    user = JsonConvert.DeserializeObject(responseData.user.ToString());
 
                     return response;
                 }

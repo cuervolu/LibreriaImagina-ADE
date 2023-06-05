@@ -17,7 +17,7 @@ namespace SistemaLibreriaImagina.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public COMUNA()
         {
-            this.DIRECCION = new HashSet<DIRECCION>();
+            this.DIRECCIONs = new HashSet<DIRECCION>();
         }
     
         public long ID_COMUNA { get; set; }
@@ -26,6 +26,6 @@ namespace SistemaLibreriaImagina.Models
     
         public virtual REGION REGION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DIRECCION> DIRECCION { get; set; }
+        public virtual ICollection<DIRECCION> DIRECCIONs { get; set; }
     }
 }

@@ -5,65 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ADMIN_INTERFACE_THEME">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="number" Precision="11" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NAME" Type="nvarchar2" MaxLength="50" />
-          <Property Name="ACTIVE" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="TITLE" Type="nvarchar2" MaxLength="50" />
-          <Property Name="TITLE_VISIBLE" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="LOGO" Type="nvarchar2" MaxLength="100" />
-          <Property Name="LOGO_VISIBLE" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="CSS_HEADER_BACKGROUND_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="TITLE_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_HEADER_TEXT_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_HEADER_LINK_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_HEADER_LINK_HOVER_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_MODULE_BACKGROUND_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_MODULE_TEXT_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_MODULE_LINK_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_MODULE_LINK_HOVER_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_MODULE_ROUNDED_CORNERS" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="CSS_GENERIC_LINK_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_GENERIC_LINK_HOVER_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_SAVE_BUTTON_BACKGROUND99E4" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_SAVE_BUTTON_BACKGROUND20F4" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_SAVE_BUTTON_TEXT_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_DELETE_BUTTON_BACKGROUE0B7" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_DELETE_BUTTON_BACKGROUA080" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_DELETE_BUTTON_TEXT_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="LIST_FILTER_DROPDOWN" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="RELATED_MODAL_ACTIVE" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="RELATED_MODAL_BACKGROUND_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="RELATED_MODAL_ROUNDED_CORNERS" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="LOGO_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="RECENT_ACTIONS_VISIBLE" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="FAVICON" Type="nvarchar2" MaxLength="100" />
-          <Property Name="RELATED_MODAL_BACKGROUND_OE111" Type="nvarchar2" MaxLength="5" />
-          <Property Name="ENV_NAME" Type="nvarchar2" MaxLength="50" />
-          <Property Name="ENV_VISIBLE_IN_HEADER" Type="number" Precision="1" Scale="0" />
-          <Property Name="ENV_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="ENV_VISIBLE_IN_FAVICON" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="RELATED_MODAL_CLOSE_BUTTON3B73" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="LANGUAGE_CHOOSER_ACTIVE" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="LANGUAGE_CHOOSER_DISPLAY" Type="nvarchar2" MaxLength="10" />
-          <Property Name="LIST_FILTER_STICKY" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="FORM_PAGINATION_STICKY" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="FORM_SUBMIT_STICKY" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="CSS_MODULE_BACKGROUND_SELE1A15" Type="nvarchar2" MaxLength="10" />
-          <Property Name="CSS_MODULE_LINK_SELECTED_COLOR" Type="nvarchar2" MaxLength="10" />
-          <Property Name="LOGO_MAX_HEIGHT" Type="number" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="LOGO_MAX_WIDTH" Type="number" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="FOLDABLE_APPS" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="LANGUAGE_CHOOSER_CONTROL" Type="nvarchar2" MaxLength="20" />
-          <Property Name="LIST_FILTER_HIGHLIGHT" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="LIST_FILTER_REMOVAL_LINKS" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="SHOW_FIELDSETS_AS_TABS" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="SHOW_INLINES_AS_TABS" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="CSS_GENERIC_LINK_ACTIVE_COLOR" Type="nvarchar2" MaxLength="10" />
-        </EntityType>
         <EntityType Name="AUTH_GROUP">
           <Key>
             <PropertyRef Name="ID" />
@@ -268,9 +209,13 @@
           <Key>
             <PropertyRef Name="ID_TRANSACCION" />
           </Key>
-          <Property Name="ID_TRANSACCION" Type="number" Precision="19" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TOTAL_TRANSACCION" Type="number" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="ID_TRANSACCION" Type="number" Precision="11" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TOTAL_TRANSACCION" Type="number" Precision="8" Scale="2" Nullable="false" />
           <Property Name="PEDIDO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="APROBADO" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="METODO_PAGO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -571,6 +516,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="TRANSACCI_METODO_PA_D4EF531D_F">
+          <End Role="METODO_PAGO" Type="Self.METODO_PAGO" Multiplicity="1" />
+          <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METODO_PAGO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACCION">
+              <PropertyRef Name="METODO_PAGO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="TRANSACCI_PEDIDO_ID_887AFE2F_F">
           <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1" />
           <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
@@ -580,6 +537,18 @@
             </Principal>
             <Dependent Role="TRANSACCION">
               <PropertyRef Name="PEDIDO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSACCI_USUARIO_I_B025DB99_F">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACCION">
+              <PropertyRef Name="USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -694,6 +663,7 @@
           <Parameter Name="P_START_INDEX" Type="number" Mode="In" />
           <Parameter Name="P_PAGE_SIZE" Type="number" Mode="In" />
         </Function>
+        <Function Name="LISTAR_PEDIDOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA" />
         <Function Name="MODIFICAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
           <Parameter Name="P_ID_LIBRO" Type="number" Mode="In" />
           <Parameter Name="P_NOMBRE_LIBRO" Type="nvarchar2" Mode="In" />
@@ -710,8 +680,13 @@
           <Parameter Name="P_THUMBNAIL" Type="nvarchar2" Mode="In" />
           <Parameter Name="P_RESULTADO" Type="nvarchar2" Mode="Out" />
         </Function>
+        <Function Name="MOSTRARCANTIDADLIBROS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
+          <Parameter Name="CANTIDAD" Type="number" Mode="Out" />
+        </Function>
+        <Function Name="OBTENERLIBROPORID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
+          <Parameter Name="P_IDLIBRO" Type="number" Mode="In" />
+        </Function>
         <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="ADMIN_INTERFACE_THEME" EntityType="Self.ADMIN_INTERFACE_THEME" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
           <EntitySet Name="AUTH_GROUP" EntityType="Self.AUTH_GROUP" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
           <EntitySet Name="AUTH_GROUP_PERMISSIONS" EntityType="Self.AUTH_GROUP_PERMISSIONS" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
           <EntitySet Name="AUTH_PERMISSION" EntityType="Self.AUTH_PERMISSION" Schema="LIBRERIA_IMAGINA" store:Type="Tables" />
@@ -824,8 +799,16 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
+          <AssociationSet Name="TRANSACCI_METODO_PA_D4EF531D_F" Association="Self.TRANSACCI_METODO_PA_D4EF531D_F">
+            <End Role="METODO_PAGO" EntitySet="METODO_PAGO" />
+            <End Role="TRANSACCION" EntitySet="TRANSACCION" />
+          </AssociationSet>
           <AssociationSet Name="TRANSACCI_PEDIDO_ID_887AFE2F_F" Association="Self.TRANSACCI_PEDIDO_ID_887AFE2F_F">
             <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="TRANSACCION" EntitySet="TRANSACCION" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSACCI_USUARIO_I_B025DB99_F" Association="Self.TRANSACCI_USUARIO_I_B025DB99_F">
+            <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="TRANSACCION" EntitySet="TRANSACCION" />
           </AssociationSet>
           <AssociationSet Name="USUARIO_DIRECCION_4D2CC5E4_F" Association="Self.USUARIO_DIRECCION_4D2CC5E4_F">
@@ -853,65 +836,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ADMIN_INTERFACE_THEME">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
-          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TITLE_VISIBLE" Type="Boolean" Nullable="false" />
-          <Property Name="LOGO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LOGO_VISIBLE" Type="Boolean" Nullable="false" />
-          <Property Name="CSS_HEADER_BACKGROUND_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="TITLE_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_HEADER_TEXT_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_HEADER_LINK_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_HEADER_LINK_HOVER_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_MODULE_BACKGROUND_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_MODULE_TEXT_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_MODULE_LINK_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_MODULE_LINK_HOVER_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_MODULE_ROUNDED_CORNERS" Type="Boolean" Nullable="false" />
-          <Property Name="CSS_GENERIC_LINK_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_GENERIC_LINK_HOVER_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_SAVE_BUTTON_BACKGROUND99E4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_SAVE_BUTTON_BACKGROUND20F4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_SAVE_BUTTON_TEXT_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_DELETE_BUTTON_BACKGROUE0B7" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_DELETE_BUTTON_BACKGROUA080" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_DELETE_BUTTON_TEXT_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="LIST_FILTER_DROPDOWN" Type="Boolean" Nullable="false" />
-          <Property Name="RELATED_MODAL_ACTIVE" Type="Boolean" Nullable="false" />
-          <Property Name="RELATED_MODAL_BACKGROUND_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="RELATED_MODAL_ROUNDED_CORNERS" Type="Boolean" Nullable="false" />
-          <Property Name="LOGO_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="RECENT_ACTIONS_VISIBLE" Type="Boolean" Nullable="false" />
-          <Property Name="FAVICON" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="RELATED_MODAL_BACKGROUND_OE111" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="ENV_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ENV_VISIBLE_IN_HEADER" Type="Boolean" />
-          <Property Name="ENV_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="ENV_VISIBLE_IN_FAVICON" Type="Boolean" Nullable="false" />
-          <Property Name="RELATED_MODAL_CLOSE_BUTTON3B73" Type="Boolean" Nullable="false" />
-          <Property Name="LANGUAGE_CHOOSER_ACTIVE" Type="Boolean" Nullable="false" />
-          <Property Name="LANGUAGE_CHOOSER_DISPLAY" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="LIST_FILTER_STICKY" Type="Boolean" Nullable="false" />
-          <Property Name="FORM_PAGINATION_STICKY" Type="Boolean" Nullable="false" />
-          <Property Name="FORM_SUBMIT_STICKY" Type="Boolean" Nullable="false" />
-          <Property Name="CSS_MODULE_BACKGROUND_SELE1A15" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CSS_MODULE_LINK_SELECTED_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="LOGO_MAX_HEIGHT" Type="Int64" Nullable="false" />
-          <Property Name="LOGO_MAX_WIDTH" Type="Int64" Nullable="false" />
-          <Property Name="FOLDABLE_APPS" Type="Boolean" Nullable="false" />
-          <Property Name="LANGUAGE_CHOOSER_CONTROL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="LIST_FILTER_HIGHLIGHT" Type="Boolean" Nullable="false" />
-          <Property Name="LIST_FILTER_REMOVAL_LINKS" Type="Boolean" Nullable="false" />
-          <Property Name="SHOW_FIELDSETS_AS_TABS" Type="Boolean" Nullable="false" />
-          <Property Name="SHOW_INLINES_AS_TABS" Type="Boolean" Nullable="false" />
-          <Property Name="CSS_GENERIC_LINK_ACTIVE_COLOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="AUTH_GROUP">
           <Key>
             <PropertyRef Name="ID" />
@@ -973,7 +897,7 @@
           <Property Name="NOMBRE_COMUNA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="REGION_ID" Type="Int64" Nullable="false" />
           <NavigationProperty Name="REGION" Relationship="Self.COMUNA_REGION_ID_1DD456CB_F" FromRole="COMUNA" ToRole="REGION" />
-          <NavigationProperty Name="DIRECCION" Relationship="Self.DIRECCION_COMUNA_ID_C661B083_F" FromRole="COMUNA" ToRole="DIRECCION" />
+          <NavigationProperty Name="DIRECCIONs" Relationship="Self.DIRECCION_COMUNA_ID_C661B083_F" FromRole="COMUNA" ToRole="DIRECCION" />
         </EntityType>
         <EntityType Name="DETALLE_CARRITO">
           <Key>
@@ -1008,8 +932,8 @@
           <Property Name="DIRECCION1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="COMUNA_ID" Type="Int64" Nullable="false" />
           <NavigationProperty Name="COMUNA" Relationship="Self.DIRECCION_COMUNA_ID_C661B083_F" FromRole="DIRECCION" ToRole="COMUNA" />
-          <NavigationProperty Name="ENVIO" Relationship="Self.ENVIO_DIRECCION_CE3560FC_F" FromRole="DIRECCION" ToRole="ENVIO" />
-          <NavigationProperty Name="USUARIO" Relationship="Self.USUARIO_DIRECCION_4D2CC5E4_F" FromRole="DIRECCION" ToRole="USUARIO" />
+          <NavigationProperty Name="ENVIOs" Relationship="Self.ENVIO_DIRECCION_CE3560FC_F" FromRole="DIRECCION" ToRole="ENVIO" />
+          <NavigationProperty Name="USUARIOs" Relationship="Self.USUARIO_DIRECCION_4D2CC5E4_F" FromRole="DIRECCION" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="DJANGO_ADMIN_LOG">
           <Key>
@@ -1085,8 +1009,8 @@
           <Property Name="SLUG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DETALLE_CARRITO" Relationship="Self.DETALLE_C_LIBRO_ID_A002CD5C_F" FromRole="LIBRO" ToRole="DETALLE_CARRITO" />
           <NavigationProperty Name="DETALLE_PEDIDO" Relationship="Self.DETALLE_P_LIBRO_ID_478253B7_F" FromRole="LIBRO" ToRole="DETALLE_PEDIDO" />
-          <NavigationProperty Name="MANTENIMIENTO" Relationship="Self.MANTENIMI_LIBRO_ID_C5ABC3FE_F" FromRole="LIBRO" ToRole="MANTENIMIENTO" />
-          <NavigationProperty Name="OFERTA" Relationship="Self.OFERTA_LIBRO_ID_AF914488_F" FromRole="LIBRO" ToRole="OFERTA" />
+          <NavigationProperty Name="MANTENIMIENTOes" Relationship="Self.MANTENIMI_LIBRO_ID_C5ABC3FE_F" FromRole="LIBRO" ToRole="MANTENIMIENTO" />
+          <NavigationProperty Name="OFERTAs" Relationship="Self.OFERTA_LIBRO_ID_AF914488_F" FromRole="LIBRO" ToRole="OFERTA" />
         </EntityType>
         <EntityType Name="MANTENIMIENTO">
           <Key>
@@ -1116,6 +1040,7 @@
           <Property Name="ACTUALIZADO_EN" Type="DateTime" Precision="6" Nullable="false" />
           <Property Name="USUARIO_ID" Type="Int64" Nullable="false" />
           <NavigationProperty Name="USUARIO" Relationship="Self.METODO_PA_USUARIO_I_CB94264F_F" FromRole="METODO_PAGO" ToRole="USUARIO" />
+          <NavigationProperty Name="TRANSACCIONs" Relationship="Self.TRANSACCI_METODO_PA_D4EF531D_F" FromRole="METODO_PAGO" ToRole="TRANSACCION" />
         </EntityType>
         <EntityType Name="OFERTA">
           <Key>
@@ -1139,9 +1064,9 @@
           <Property Name="MONTO_TOTAL" Type="Int64" Nullable="false" />
           <Property Name="CLIENTE_ID" Type="Int64" Nullable="false" />
           <NavigationProperty Name="DETALLE_PEDIDO" Relationship="Self.DETALLE_P_PEDIDO_ID_75D4855E_F" FromRole="PEDIDO" ToRole="DETALLE_PEDIDO" />
-          <NavigationProperty Name="ENVIO" Relationship="Self.ENVIO_PEDIDO_ID_A1F90F65_F" FromRole="PEDIDO" ToRole="ENVIO" />
+          <NavigationProperty Name="ENVIOs" Relationship="Self.ENVIO_PEDIDO_ID_A1F90F65_F" FromRole="PEDIDO" ToRole="ENVIO" />
           <NavigationProperty Name="USUARIO" Relationship="Self.PEDIDO_CLIENTE_I_E6353BB4_F" FromRole="PEDIDO" ToRole="USUARIO" />
-          <NavigationProperty Name="TRANSACCION" Relationship="Self.TRANSACCI_PEDIDO_ID_887AFE2F_F" FromRole="PEDIDO" ToRole="TRANSACCION" />
+          <NavigationProperty Name="TRANSACCIONs" Relationship="Self.TRANSACCI_PEDIDO_ID_887AFE2F_F" FromRole="PEDIDO" ToRole="TRANSACCION" />
         </EntityType>
         <EntityType Name="REGION">
           <Key>
@@ -1150,16 +1075,22 @@
           <Property Name="ID_REGION" Type="Int64" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NUMERO_ROMANO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="COMUNA" Relationship="Self.COMUNA_REGION_ID_1DD456CB_F" FromRole="REGION" ToRole="COMUNA" />
+          <NavigationProperty Name="COMUNAs" Relationship="Self.COMUNA_REGION_ID_1DD456CB_F" FromRole="REGION" ToRole="COMUNA" />
         </EntityType>
         <EntityType Name="TRANSACCION">
           <Key>
             <PropertyRef Name="ID_TRANSACCION" />
           </Key>
           <Property Name="ID_TRANSACCION" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TOTAL_TRANSACCION" Type="Int64" Nullable="false" />
+          <Property Name="TOTAL_TRANSACCION" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="PEDIDO_ID" Type="Int64" Nullable="false" />
+          <Property Name="APROBADO" Type="Boolean" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="METODO_PAGO_ID" Type="Int64" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="METODO_PAGO" Relationship="Self.TRANSACCI_METODO_PA_D4EF531D_F" FromRole="TRANSACCION" ToRole="METODO_PAGO" />
           <NavigationProperty Name="PEDIDO" Relationship="Self.TRANSACCI_PEDIDO_ID_887AFE2F_F" FromRole="TRANSACCION" ToRole="PEDIDO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.TRANSACCI_USUARIO_I_B025DB99_F" FromRole="TRANSACCION" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -1180,14 +1111,15 @@
           <Property Name="IS_STAFF" Type="Boolean" Nullable="false" />
           <Property Name="DIRECCION_ID" Type="Int64" />
           <NavigationProperty Name="AUTHTOKEN_TOKEN" Relationship="Self.AUTHTOKEN_USER_ID_35299EFF_F" FromRole="USUARIO" ToRole="AUTHTOKEN_TOKEN" />
-          <NavigationProperty Name="CARRITO" Relationship="Self.CARRITO_USUARIO_I_55385271_F" FromRole="USUARIO" ToRole="CARRITO" />
+          <NavigationProperty Name="CARRITOes" Relationship="Self.CARRITO_USUARIO_I_55385271_F" FromRole="USUARIO" ToRole="CARRITO" />
           <NavigationProperty Name="DIRECCION" Relationship="Self.USUARIO_DIRECCION_4D2CC5E4_F" FromRole="USUARIO" ToRole="DIRECCION" />
           <NavigationProperty Name="DJANGO_ADMIN_LOG" Relationship="Self.DJANGO_AD_USER_ID_C564EBA6_F" FromRole="USUARIO" ToRole="DJANGO_ADMIN_LOG" />
-          <NavigationProperty Name="ENVIO" Relationship="Self.ENVIO_REPARTIDO_3940B68F_F" FromRole="USUARIO" ToRole="ENVIO" />
-          <NavigationProperty Name="MANTENIMIENTO" Relationship="Self.MANTENIMI_CLIENTE_I_87240F08_F" FromRole="USUARIO" ToRole="MANTENIMIENTO" />
-          <NavigationProperty Name="MANTENIMIENTO1" Relationship="Self.MANTENIMI_TECNICO_I_F351FB7F_F" FromRole="USUARIO" ToRole="MANTENIMIENTO" />
+          <NavigationProperty Name="ENVIOs" Relationship="Self.ENVIO_REPARTIDO_3940B68F_F" FromRole="USUARIO" ToRole="ENVIO" />
+          <NavigationProperty Name="MANTENIMIENTOes" Relationship="Self.MANTENIMI_CLIENTE_I_87240F08_F" FromRole="USUARIO" ToRole="MANTENIMIENTO" />
+          <NavigationProperty Name="MANTENIMIENTOes1" Relationship="Self.MANTENIMI_TECNICO_I_F351FB7F_F" FromRole="USUARIO" ToRole="MANTENIMIENTO" />
           <NavigationProperty Name="METODO_PAGO" Relationship="Self.METODO_PA_USUARIO_I_CB94264F_F" FromRole="USUARIO" ToRole="METODO_PAGO" />
-          <NavigationProperty Name="PEDIDO" Relationship="Self.PEDIDO_CLIENTE_I_E6353BB4_F" FromRole="USUARIO" ToRole="PEDIDO" />
+          <NavigationProperty Name="PEDIDOes" Relationship="Self.PEDIDO_CLIENTE_I_E6353BB4_F" FromRole="USUARIO" ToRole="PEDIDO" />
+          <NavigationProperty Name="TRANSACCIONs" Relationship="Self.TRANSACCI_USUARIO_I_B025DB99_F" FromRole="USUARIO" ToRole="TRANSACCION" />
           <NavigationProperty Name="USUARIO_GROUPS" Relationship="Self.USUARIO_G_USUARIO_I_161FC80C_F" FromRole="USUARIO" ToRole="USUARIO_GROUPS" />
           <NavigationProperty Name="USUARIO_USER_PERMISSIONS" Relationship="Self.USUARIO_U_USUARIO_I_693D9C50_F" FromRole="USUARIO" ToRole="USUARIO_USER_PERMISSIONS" />
         </EntityType>
@@ -1499,6 +1431,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="TRANSACCI_METODO_PA_D4EF531D_F">
+          <End Role="METODO_PAGO" Type="Self.METODO_PAGO" Multiplicity="1" />
+          <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METODO_PAGO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACCION">
+              <PropertyRef Name="METODO_PAGO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="PEDIDO_CLIENTE_I_E6353BB4_F">
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
           <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
@@ -1520,6 +1464,18 @@
             </Principal>
             <Dependent Role="TRANSACCION">
               <PropertyRef Name="PEDIDO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSACCI_USUARIO_I_B025DB99_F">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSACCION">
+              <PropertyRef Name="USUARIO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1548,29 +1504,28 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ADMIN_INTERFACE_THEME" EntityType="Self.ADMIN_INTERFACE_THEME" />
           <EntitySet Name="AUTH_GROUP" EntityType="Self.AUTH_GROUP" />
           <EntitySet Name="AUTH_GROUP_PERMISSIONS" EntityType="Self.AUTH_GROUP_PERMISSIONS" />
           <EntitySet Name="AUTH_PERMISSION" EntityType="Self.AUTH_PERMISSION" />
           <EntitySet Name="AUTHTOKEN_TOKEN" EntityType="Self.AUTHTOKEN_TOKEN" />
-          <EntitySet Name="CARRITO" EntityType="Self.CARRITO" />
-          <EntitySet Name="COMUNA" EntityType="Self.COMUNA" />
+          <EntitySet Name="CARRITOes" EntityType="Self.CARRITO" />
+          <EntitySet Name="COMUNAs" EntityType="Self.COMUNA" />
           <EntitySet Name="DETALLE_CARRITO" EntityType="Self.DETALLE_CARRITO" />
           <EntitySet Name="DETALLE_PEDIDO" EntityType="Self.DETALLE_PEDIDO" />
-          <EntitySet Name="DIRECCION" EntityType="Self.DIRECCION" />
+          <EntitySet Name="DIRECCIONs" EntityType="Self.DIRECCION" />
           <EntitySet Name="DJANGO_ADMIN_LOG" EntityType="Self.DJANGO_ADMIN_LOG" />
           <EntitySet Name="DJANGO_CONTENT_TYPE" EntityType="Self.DJANGO_CONTENT_TYPE" />
           <EntitySet Name="DJANGO_MIGRATIONS" EntityType="Self.DJANGO_MIGRATIONS" />
           <EntitySet Name="DJANGO_SESSION" EntityType="Self.DJANGO_SESSION" />
-          <EntitySet Name="ENVIO" EntityType="Self.ENVIO" />
-          <EntitySet Name="LIBRO" EntityType="Self.LIBRO" />
-          <EntitySet Name="MANTENIMIENTO" EntityType="Self.MANTENIMIENTO" />
+          <EntitySet Name="ENVIOs" EntityType="Self.ENVIO" />
+          <EntitySet Name="LIBROes" EntityType="Self.LIBRO" />
+          <EntitySet Name="MANTENIMIENTOes" EntityType="Self.MANTENIMIENTO" />
           <EntitySet Name="METODO_PAGO" EntityType="Self.METODO_PAGO" />
-          <EntitySet Name="OFERTA" EntityType="Self.OFERTA" />
-          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" />
-          <EntitySet Name="REGION" EntityType="Self.REGION" />
-          <EntitySet Name="TRANSACCION" EntityType="Self.TRANSACCION" />
-          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <EntitySet Name="OFERTAs" EntityType="Self.OFERTA" />
+          <EntitySet Name="PEDIDOes" EntityType="Self.PEDIDO" />
+          <EntitySet Name="REGIONs" EntityType="Self.REGION" />
+          <EntitySet Name="TRANSACCIONs" EntityType="Self.TRANSACCION" />
+          <EntitySet Name="USUARIOs" EntityType="Self.USUARIO" />
           <EntitySet Name="USUARIO_GROUPS" EntityType="Self.USUARIO_GROUPS" />
           <EntitySet Name="USUARIO_USER_PERMISSIONS" EntityType="Self.USUARIO_USER_PERMISSIONS" />
           <AssociationSet Name="AUTH_GROU_GROUP_ID_B120CBF9_F" Association="Self.AUTH_GROU_GROUP_ID_B120CBF9_F">
@@ -1594,95 +1549,103 @@
             <End Role="USUARIO_USER_PERMISSIONS" EntitySet="USUARIO_USER_PERMISSIONS" />
           </AssociationSet>
           <AssociationSet Name="AUTHTOKEN_USER_ID_35299EFF_F" Association="Self.AUTHTOKEN_USER_ID_35299EFF_F">
-            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
             <End Role="AUTHTOKEN_TOKEN" EntitySet="AUTHTOKEN_TOKEN" />
           </AssociationSet>
           <AssociationSet Name="CARRITO_USUARIO_I_55385271_F" Association="Self.CARRITO_USUARIO_I_55385271_F">
-            <End Role="USUARIO" EntitySet="USUARIO" />
-            <End Role="CARRITO" EntitySet="CARRITO" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="CARRITO" EntitySet="CARRITOes" />
           </AssociationSet>
           <AssociationSet Name="DETALLE_C_CARRITO_I_6D1F8B6B_F" Association="Self.DETALLE_C_CARRITO_I_6D1F8B6B_F">
-            <End Role="CARRITO" EntitySet="CARRITO" />
+            <End Role="CARRITO" EntitySet="CARRITOes" />
             <End Role="DETALLE_CARRITO" EntitySet="DETALLE_CARRITO" />
           </AssociationSet>
           <AssociationSet Name="COMUNA_REGION_ID_1DD456CB_F" Association="Self.COMUNA_REGION_ID_1DD456CB_F">
-            <End Role="REGION" EntitySet="REGION" />
-            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="REGION" EntitySet="REGIONs" />
+            <End Role="COMUNA" EntitySet="COMUNAs" />
           </AssociationSet>
           <AssociationSet Name="DIRECCION_COMUNA_ID_C661B083_F" Association="Self.DIRECCION_COMUNA_ID_C661B083_F">
-            <End Role="COMUNA" EntitySet="COMUNA" />
-            <End Role="DIRECCION" EntitySet="DIRECCION" />
+            <End Role="COMUNA" EntitySet="COMUNAs" />
+            <End Role="DIRECCION" EntitySet="DIRECCIONs" />
           </AssociationSet>
           <AssociationSet Name="DETALLE_C_LIBRO_ID_A002CD5C_F" Association="Self.DETALLE_C_LIBRO_ID_A002CD5C_F">
-            <End Role="LIBRO" EntitySet="LIBRO" />
+            <End Role="LIBRO" EntitySet="LIBROes" />
             <End Role="DETALLE_CARRITO" EntitySet="DETALLE_CARRITO" />
           </AssociationSet>
           <AssociationSet Name="DETALLE_P_LIBRO_ID_478253B7_F" Association="Self.DETALLE_P_LIBRO_ID_478253B7_F">
-            <End Role="LIBRO" EntitySet="LIBRO" />
+            <End Role="LIBRO" EntitySet="LIBROes" />
             <End Role="DETALLE_PEDIDO" EntitySet="DETALLE_PEDIDO" />
           </AssociationSet>
           <AssociationSet Name="DETALLE_P_PEDIDO_ID_75D4855E_F" Association="Self.DETALLE_P_PEDIDO_ID_75D4855E_F">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="PEDIDO" EntitySet="PEDIDOes" />
             <End Role="DETALLE_PEDIDO" EntitySet="DETALLE_PEDIDO" />
           </AssociationSet>
           <AssociationSet Name="ENVIO_DIRECCION_CE3560FC_F" Association="Self.ENVIO_DIRECCION_CE3560FC_F">
-            <End Role="DIRECCION" EntitySet="DIRECCION" />
-            <End Role="ENVIO" EntitySet="ENVIO" />
+            <End Role="DIRECCION" EntitySet="DIRECCIONs" />
+            <End Role="ENVIO" EntitySet="ENVIOs" />
           </AssociationSet>
           <AssociationSet Name="USUARIO_DIRECCION_4D2CC5E4_F" Association="Self.USUARIO_DIRECCION_4D2CC5E4_F">
-            <End Role="DIRECCION" EntitySet="DIRECCION" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="DIRECCION" EntitySet="DIRECCIONs" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
           </AssociationSet>
           <AssociationSet Name="DJANGO_AD_CONTENT_T_C4BCE8EB_F" Association="Self.DJANGO_AD_CONTENT_T_C4BCE8EB_F">
             <End Role="DJANGO_CONTENT_TYPE" EntitySet="DJANGO_CONTENT_TYPE" />
             <End Role="DJANGO_ADMIN_LOG" EntitySet="DJANGO_ADMIN_LOG" />
           </AssociationSet>
           <AssociationSet Name="DJANGO_AD_USER_ID_C564EBA6_F" Association="Self.DJANGO_AD_USER_ID_C564EBA6_F">
-            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
             <End Role="DJANGO_ADMIN_LOG" EntitySet="DJANGO_ADMIN_LOG" />
           </AssociationSet>
           <AssociationSet Name="ENVIO_PEDIDO_ID_A1F90F65_F" Association="Self.ENVIO_PEDIDO_ID_A1F90F65_F">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="ENVIO" EntitySet="ENVIO" />
+            <End Role="PEDIDO" EntitySet="PEDIDOes" />
+            <End Role="ENVIO" EntitySet="ENVIOs" />
           </AssociationSet>
           <AssociationSet Name="ENVIO_REPARTIDO_3940B68F_F" Association="Self.ENVIO_REPARTIDO_3940B68F_F">
-            <End Role="USUARIO" EntitySet="USUARIO" />
-            <End Role="ENVIO" EntitySet="ENVIO" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="ENVIO" EntitySet="ENVIOs" />
           </AssociationSet>
           <AssociationSet Name="MANTENIMI_LIBRO_ID_C5ABC3FE_F" Association="Self.MANTENIMI_LIBRO_ID_C5ABC3FE_F">
-            <End Role="LIBRO" EntitySet="LIBRO" />
-            <End Role="MANTENIMIENTO" EntitySet="MANTENIMIENTO" />
+            <End Role="LIBRO" EntitySet="LIBROes" />
+            <End Role="MANTENIMIENTO" EntitySet="MANTENIMIENTOes" />
           </AssociationSet>
           <AssociationSet Name="OFERTA_LIBRO_ID_AF914488_F" Association="Self.OFERTA_LIBRO_ID_AF914488_F">
-            <End Role="LIBRO" EntitySet="LIBRO" />
-            <End Role="OFERTA" EntitySet="OFERTA" />
+            <End Role="LIBRO" EntitySet="LIBROes" />
+            <End Role="OFERTA" EntitySet="OFERTAs" />
           </AssociationSet>
           <AssociationSet Name="MANTENIMI_CLIENTE_I_87240F08_F" Association="Self.MANTENIMI_CLIENTE_I_87240F08_F">
-            <End Role="USUARIO" EntitySet="USUARIO" />
-            <End Role="MANTENIMIENTO" EntitySet="MANTENIMIENTO" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="MANTENIMIENTO" EntitySet="MANTENIMIENTOes" />
           </AssociationSet>
           <AssociationSet Name="MANTENIMI_TECNICO_I_F351FB7F_F" Association="Self.MANTENIMI_TECNICO_I_F351FB7F_F">
-            <End Role="USUARIO" EntitySet="USUARIO" />
-            <End Role="MANTENIMIENTO" EntitySet="MANTENIMIENTO" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="MANTENIMIENTO" EntitySet="MANTENIMIENTOes" />
           </AssociationSet>
           <AssociationSet Name="METODO_PA_USUARIO_I_CB94264F_F" Association="Self.METODO_PA_USUARIO_I_CB94264F_F">
-            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
             <End Role="METODO_PAGO" EntitySet="METODO_PAGO" />
           </AssociationSet>
+          <AssociationSet Name="TRANSACCI_METODO_PA_D4EF531D_F" Association="Self.TRANSACCI_METODO_PA_D4EF531D_F">
+            <End Role="METODO_PAGO" EntitySet="METODO_PAGO" />
+            <End Role="TRANSACCION" EntitySet="TRANSACCIONs" />
+          </AssociationSet>
           <AssociationSet Name="PEDIDO_CLIENTE_I_E6353BB4_F" Association="Self.PEDIDO_CLIENTE_I_E6353BB4_F">
-            <End Role="USUARIO" EntitySet="USUARIO" />
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="PEDIDO" EntitySet="PEDIDOes" />
           </AssociationSet>
           <AssociationSet Name="TRANSACCI_PEDIDO_ID_887AFE2F_F" Association="Self.TRANSACCI_PEDIDO_ID_887AFE2F_F">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="TRANSACCION" EntitySet="TRANSACCION" />
+            <End Role="PEDIDO" EntitySet="PEDIDOes" />
+            <End Role="TRANSACCION" EntitySet="TRANSACCIONs" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSACCI_USUARIO_I_B025DB99_F" Association="Self.TRANSACCI_USUARIO_I_B025DB99_F">
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="TRANSACCION" EntitySet="TRANSACCIONs" />
           </AssociationSet>
           <AssociationSet Name="USUARIO_G_USUARIO_I_161FC80C_F" Association="Self.USUARIO_G_USUARIO_I_161FC80C_F">
-            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
             <End Role="USUARIO_GROUPS" EntitySet="USUARIO_GROUPS" />
           </AssociationSet>
           <AssociationSet Name="USUARIO_U_USUARIO_I_693D9C50_F" Association="Self.USUARIO_U_USUARIO_I_693D9C50_F">
-            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
             <End Role="USUARIO_USER_PERMISSIONS" EntitySet="USUARIO_USER_PERMISSIONS" />
           </AssociationSet>
           <FunctionImport Name="ACTUALIZAR_MANTENIMIENTO">
@@ -1752,6 +1715,13 @@
             <Parameter Name="P_THUMBNAIL" Mode="In" Type="String" />
             <Parameter Name="P_RESULTADO" Mode="Out" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="MOSTRARCANTIDADLIBROS">
+          <Parameter Name="CANTIDAD" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="OBTENERLIBROPORID">
+          <Parameter Name="P_IDLIBRO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="LISTAR_PEDIDOS" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1759,66 +1729,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="ADMIN_INTERFACE_THEME">
-            <EntityTypeMapping TypeName="Model.ADMIN_INTERFACE_THEME">
-              <MappingFragment StoreEntitySet="ADMIN_INTERFACE_THEME">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
-                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
-                <ScalarProperty Name="TITLE_VISIBLE" ColumnName="TITLE_VISIBLE" />
-                <ScalarProperty Name="LOGO" ColumnName="LOGO" />
-                <ScalarProperty Name="LOGO_VISIBLE" ColumnName="LOGO_VISIBLE" />
-                <ScalarProperty Name="CSS_HEADER_BACKGROUND_COLOR" ColumnName="CSS_HEADER_BACKGROUND_COLOR" />
-                <ScalarProperty Name="TITLE_COLOR" ColumnName="TITLE_COLOR" />
-                <ScalarProperty Name="CSS_HEADER_TEXT_COLOR" ColumnName="CSS_HEADER_TEXT_COLOR" />
-                <ScalarProperty Name="CSS_HEADER_LINK_COLOR" ColumnName="CSS_HEADER_LINK_COLOR" />
-                <ScalarProperty Name="CSS_HEADER_LINK_HOVER_COLOR" ColumnName="CSS_HEADER_LINK_HOVER_COLOR" />
-                <ScalarProperty Name="CSS_MODULE_BACKGROUND_COLOR" ColumnName="CSS_MODULE_BACKGROUND_COLOR" />
-                <ScalarProperty Name="CSS_MODULE_TEXT_COLOR" ColumnName="CSS_MODULE_TEXT_COLOR" />
-                <ScalarProperty Name="CSS_MODULE_LINK_COLOR" ColumnName="CSS_MODULE_LINK_COLOR" />
-                <ScalarProperty Name="CSS_MODULE_LINK_HOVER_COLOR" ColumnName="CSS_MODULE_LINK_HOVER_COLOR" />
-                <ScalarProperty Name="CSS_MODULE_ROUNDED_CORNERS" ColumnName="CSS_MODULE_ROUNDED_CORNERS" />
-                <ScalarProperty Name="CSS_GENERIC_LINK_COLOR" ColumnName="CSS_GENERIC_LINK_COLOR" />
-                <ScalarProperty Name="CSS_GENERIC_LINK_HOVER_COLOR" ColumnName="CSS_GENERIC_LINK_HOVER_COLOR" />
-                <ScalarProperty Name="CSS_SAVE_BUTTON_BACKGROUND99E4" ColumnName="CSS_SAVE_BUTTON_BACKGROUND99E4" />
-                <ScalarProperty Name="CSS_SAVE_BUTTON_BACKGROUND20F4" ColumnName="CSS_SAVE_BUTTON_BACKGROUND20F4" />
-                <ScalarProperty Name="CSS_SAVE_BUTTON_TEXT_COLOR" ColumnName="CSS_SAVE_BUTTON_TEXT_COLOR" />
-                <ScalarProperty Name="CSS_DELETE_BUTTON_BACKGROUE0B7" ColumnName="CSS_DELETE_BUTTON_BACKGROUE0B7" />
-                <ScalarProperty Name="CSS_DELETE_BUTTON_BACKGROUA080" ColumnName="CSS_DELETE_BUTTON_BACKGROUA080" />
-                <ScalarProperty Name="CSS_DELETE_BUTTON_TEXT_COLOR" ColumnName="CSS_DELETE_BUTTON_TEXT_COLOR" />
-                <ScalarProperty Name="LIST_FILTER_DROPDOWN" ColumnName="LIST_FILTER_DROPDOWN" />
-                <ScalarProperty Name="RELATED_MODAL_ACTIVE" ColumnName="RELATED_MODAL_ACTIVE" />
-                <ScalarProperty Name="RELATED_MODAL_BACKGROUND_COLOR" ColumnName="RELATED_MODAL_BACKGROUND_COLOR" />
-                <ScalarProperty Name="RELATED_MODAL_ROUNDED_CORNERS" ColumnName="RELATED_MODAL_ROUNDED_CORNERS" />
-                <ScalarProperty Name="LOGO_COLOR" ColumnName="LOGO_COLOR" />
-                <ScalarProperty Name="RECENT_ACTIONS_VISIBLE" ColumnName="RECENT_ACTIONS_VISIBLE" />
-                <ScalarProperty Name="FAVICON" ColumnName="FAVICON" />
-                <ScalarProperty Name="RELATED_MODAL_BACKGROUND_OE111" ColumnName="RELATED_MODAL_BACKGROUND_OE111" />
-                <ScalarProperty Name="ENV_NAME" ColumnName="ENV_NAME" />
-                <ScalarProperty Name="ENV_VISIBLE_IN_HEADER" ColumnName="ENV_VISIBLE_IN_HEADER" />
-                <ScalarProperty Name="ENV_COLOR" ColumnName="ENV_COLOR" />
-                <ScalarProperty Name="ENV_VISIBLE_IN_FAVICON" ColumnName="ENV_VISIBLE_IN_FAVICON" />
-                <ScalarProperty Name="RELATED_MODAL_CLOSE_BUTTON3B73" ColumnName="RELATED_MODAL_CLOSE_BUTTON3B73" />
-                <ScalarProperty Name="LANGUAGE_CHOOSER_ACTIVE" ColumnName="LANGUAGE_CHOOSER_ACTIVE" />
-                <ScalarProperty Name="LANGUAGE_CHOOSER_DISPLAY" ColumnName="LANGUAGE_CHOOSER_DISPLAY" />
-                <ScalarProperty Name="LIST_FILTER_STICKY" ColumnName="LIST_FILTER_STICKY" />
-                <ScalarProperty Name="FORM_PAGINATION_STICKY" ColumnName="FORM_PAGINATION_STICKY" />
-                <ScalarProperty Name="FORM_SUBMIT_STICKY" ColumnName="FORM_SUBMIT_STICKY" />
-                <ScalarProperty Name="CSS_MODULE_BACKGROUND_SELE1A15" ColumnName="CSS_MODULE_BACKGROUND_SELE1A15" />
-                <ScalarProperty Name="CSS_MODULE_LINK_SELECTED_COLOR" ColumnName="CSS_MODULE_LINK_SELECTED_COLOR" />
-                <ScalarProperty Name="LOGO_MAX_HEIGHT" ColumnName="LOGO_MAX_HEIGHT" />
-                <ScalarProperty Name="LOGO_MAX_WIDTH" ColumnName="LOGO_MAX_WIDTH" />
-                <ScalarProperty Name="FOLDABLE_APPS" ColumnName="FOLDABLE_APPS" />
-                <ScalarProperty Name="LANGUAGE_CHOOSER_CONTROL" ColumnName="LANGUAGE_CHOOSER_CONTROL" />
-                <ScalarProperty Name="LIST_FILTER_HIGHLIGHT" ColumnName="LIST_FILTER_HIGHLIGHT" />
-                <ScalarProperty Name="LIST_FILTER_REMOVAL_LINKS" ColumnName="LIST_FILTER_REMOVAL_LINKS" />
-                <ScalarProperty Name="SHOW_FIELDSETS_AS_TABS" ColumnName="SHOW_FIELDSETS_AS_TABS" />
-                <ScalarProperty Name="SHOW_INLINES_AS_TABS" ColumnName="SHOW_INLINES_AS_TABS" />
-                <ScalarProperty Name="CSS_GENERIC_LINK_ACTIVE_COLOR" ColumnName="CSS_GENERIC_LINK_ACTIVE_COLOR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AUTH_GROUP">
             <EntityTypeMapping TypeName="Model.AUTH_GROUP">
               <MappingFragment StoreEntitySet="AUTH_GROUP">
@@ -1855,7 +1765,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CARRITO">
+          <EntitySetMapping Name="CARRITOes">
             <EntityTypeMapping TypeName="Model.CARRITO">
               <MappingFragment StoreEntitySet="CARRITO">
                 <ScalarProperty Name="ID_CARRITO" ColumnName="ID_CARRITO" />
@@ -1867,7 +1777,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="COMUNA">
+          <EntitySetMapping Name="COMUNAs">
             <EntityTypeMapping TypeName="Model.COMUNA">
               <MappingFragment StoreEntitySet="COMUNA">
                 <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
@@ -1899,7 +1809,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DIRECCION">
+          <EntitySetMapping Name="DIRECCIONs">
             <EntityTypeMapping TypeName="Model.DIRECCION">
               <MappingFragment StoreEntitySet="DIRECCION">
                 <ScalarProperty Name="ID_DIRECCION" ColumnName="ID_DIRECCION" />
@@ -1950,7 +1860,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ENVIO">
+          <EntitySetMapping Name="ENVIOs">
             <EntityTypeMapping TypeName="Model.ENVIO">
               <MappingFragment StoreEntitySet="ENVIO">
                 <ScalarProperty Name="ID_ENVIO" ColumnName="ID_ENVIO" />
@@ -1961,7 +1871,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LIBRO">
+          <EntitySetMapping Name="LIBROes">
             <EntityTypeMapping TypeName="Model.LIBRO">
               <MappingFragment StoreEntitySet="LIBRO">
                 <ScalarProperty Name="ID_LIBRO" ColumnName="ID_LIBRO" />
@@ -1980,7 +1890,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MANTENIMIENTO">
+          <EntitySetMapping Name="MANTENIMIENTOes">
             <EntityTypeMapping TypeName="Model.MANTENIMIENTO">
               <MappingFragment StoreEntitySet="MANTENIMIENTO">
                 <ScalarProperty Name="ID_MANTENIMIENTO" ColumnName="ID_MANTENIMIENTO" />
@@ -2007,7 +1917,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OFERTA">
+          <EntitySetMapping Name="OFERTAs">
             <EntityTypeMapping TypeName="Model.OFERTA">
               <MappingFragment StoreEntitySet="OFERTA">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2018,7 +1928,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PEDIDO">
+          <EntitySetMapping Name="PEDIDOes">
             <EntityTypeMapping TypeName="Model.PEDIDO">
               <MappingFragment StoreEntitySet="PEDIDO">
                 <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
@@ -2030,7 +1940,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="REGION">
+          <EntitySetMapping Name="REGIONs">
             <EntityTypeMapping TypeName="Model.REGION">
               <MappingFragment StoreEntitySet="REGION">
                 <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
@@ -2039,16 +1949,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TRANSACCION">
+          <EntitySetMapping Name="TRANSACCIONs">
             <EntityTypeMapping TypeName="Model.TRANSACCION">
               <MappingFragment StoreEntitySet="TRANSACCION">
                 <ScalarProperty Name="ID_TRANSACCION" ColumnName="ID_TRANSACCION" />
                 <ScalarProperty Name="TOTAL_TRANSACCION" ColumnName="TOTAL_TRANSACCION" />
                 <ScalarProperty Name="PEDIDO_ID" ColumnName="PEDIDO_ID" />
+                <ScalarProperty Name="APROBADO" ColumnName="APROBADO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="METODO_PAGO_ID" ColumnName="METODO_PAGO_ID" />
+                <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="USUARIO">
+          <EntitySetMapping Name="USUARIOs">
             <EntityTypeMapping TypeName="Model.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2095,6 +2009,9 @@
           <FunctionImportMapping FunctionImportName="LISTAR_CATEGORIAS" FunctionName="Model.Store.LISTAR_CATEGORIAS" />
           <FunctionImportMapping FunctionImportName="LISTAR_LIBROS" FunctionName="Model.Store.LISTAR_LIBROS" />
           <FunctionImportMapping FunctionImportName="MODIFICAR_LIBRO" FunctionName="Model.Store.MODIFICAR_LIBRO" />
+          <FunctionImportMapping FunctionImportName="MOSTRARCANTIDADLIBROS" FunctionName="Model.Store.MOSTRARCANTIDADLIBROS" />
+          <FunctionImportMapping FunctionImportName="OBTENERLIBROPORID" FunctionName="Model.Store.OBTENERLIBROPORID" />
+          <FunctionImportMapping FunctionImportName="LISTAR_PEDIDOS" FunctionName="Model.Store.LISTAR_PEDIDOS" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2109,7 +2026,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />

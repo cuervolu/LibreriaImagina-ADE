@@ -15,9 +15,15 @@ namespace SistemaLibreriaImagina.Models
     public partial class TRANSACCION
     {
         public long ID_TRANSACCION { get; set; }
-        public long TOTAL_TRANSACCION { get; set; }
+        public decimal TOTAL_TRANSACCION { get; set; }
         public long PEDIDO_ID { get; set; }
+        public bool APROBADO { get; set; }
+        public System.DateTime FECHA { get; set; }
+        public long METODO_PAGO_ID { get; set; }
+        public long USUARIO_ID { get; set; }
     
+        public virtual METODO_PAGO METODO_PAGO { get; set; }
         public virtual PEDIDO PEDIDO { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

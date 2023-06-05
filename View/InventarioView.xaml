@@ -28,10 +28,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
-        <Button HorizontalAlignment="Left" Margin="772,7,0,0" VerticalAlignment="Top" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Background="#FF008CBA" Foreground="White" FontFamily="Montserrat Thin Medium">
-            <TextBlock Text="Agregar Libro" FontSize="16" TextAlignment="Center"  Foreground="White" Padding="5,0,5,0" />
-        </Button>
         <DataGrid ItemsSource="{Binding Libros}" AutoGenerateColumns="False" Margin="0,50,10,0" IsReadOnly="True">
             <DataGrid.Columns>
                 <!-- Columnas existentes -->

@@ -113,6 +113,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -145,108 +146,112 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Connected Services\wsImaginaEnvio\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\UrlToImageConverter.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
-    <Compile Include="Models\ADMIN_INTERFACE_THEME.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AUTHTOKEN_TOKEN.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AUTH_GROUP.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AUTH_GROUP_PERMISSIONS.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AUTH_PERMISSION.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CARRITO.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\COMUNA.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DETALLE_CARRITO.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DETALLE_PEDIDO.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DIRECCION.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DJANGO_ADMIN_LOG.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DJANGO_CONTENT_TYPE.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DJANGO_MIGRATIONS.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DJANGO_SESSION.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ENVIO.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LibreriaImagina.Context.cs">
+    <Compile Include="Models\LibreriaImaginaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LibreriaImagina.Context.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LibreriaImagina.cs">
+    <Compile Include="Models\LibreriaImaginaModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LibreriaImagina.Designer.cs">
+    <Compile Include="Models\LibreriaImaginaModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LibreriaImagina.edmx</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\LIBRO.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MANTENIMIENTO.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\METODO_PAGO.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OFERTA.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PEDIDO.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\REGION.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TRANSACCION.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USUARIO.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USUARIO_GROUPS.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USUARIO_USER_PERMISSIONS.cs">
-      <DependentUpon>LibreriaImagina.tt</DependentUpon>
+      <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\BookService.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="Utilities\ErrorControl.cs" />
     <Compile Include="ViewModels\InicioViewModel.cs" />
     <Compile Include="ViewModels\InventarioViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ModificarLibroViewModel.cs" />
+    <Compile Include="ViewModels\PedidosViewModel.cs" />
     <Compile Include="ViewModels\RestockViewModel.cs" />
     <Compile Include="View\InicioView.xaml.cs">
       <DependentUpon>InicioView.xaml</DependentUpon>
@@ -259,6 +264,9 @@
     </Compile>
     <Compile Include="View\ModificarLibroView.xaml.cs">
       <DependentUpon>ModificarLibroView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PedidosView.xaml.cs">
+      <DependentUpon>PedidosView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RestockView.xaml.cs">
       <DependentUpon>RestockView.xaml</DependentUpon>
@@ -299,6 +307,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PedidosView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\RestockView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -318,6 +330,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Connected Services\wsImaginaEnvio\configuration91.svcinfo" />
+    <None Include="Connected Services\wsImaginaEnvio\configuration.svcinfo" />
+    <None Include="Connected Services\wsImaginaEnvio\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Models\LibreriaImaginaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibreriaImaginaModel.edmx</DependentUpon>
+      <LastGenOutput>LibreriaImaginaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\LibreriaImaginaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibreriaImaginaModel.edmx</DependentUpon>
+      <LastGenOutput>LibreriaImaginaModel.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -345,12 +373,16 @@
     <None Include=".env">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <EntityDeploy Include="Models\LibreriaImagina.edmx">
+    <EntityDeploy Include="Models\LibreriaImaginaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LibreriaImagina.Designer.cs</LastGenOutput>
+      <LastGenOutput>LibreriaImaginaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\LibreriaImagina.edmx.diagram">
-      <DependentUpon>LibreriaImagina.edmx</DependentUpon>
+    <None Include="Connected Services\wsImaginaEnvio\ImaginaEnvio.wsdl" />
+    <None Include="Connected Services\wsImaginaEnvio\SistemaLibreriaImagina.wsImaginaEnvio.GenerateShipmentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Models\LibreriaImaginaModel.edmx.diagram">
+      <DependentUpon>LibreriaImaginaModel.edmx</DependentUpon>
     </None>
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
@@ -396,16 +428,10 @@
     <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\LibreriaImagina.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LibreriaImagina.edmx</DependentUpon>
-      <LastGenOutput>LibreriaImagina.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\LibreriaImagina.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LibreriaImagina.edmx</DependentUpon>
-      <LastGenOutput>LibreriaImagina.cs</LastGenOutput>
-    </Content>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\wsImaginaEnvio\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

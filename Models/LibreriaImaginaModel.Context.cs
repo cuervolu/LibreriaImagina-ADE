@@ -27,29 +27,28 @@ namespace SistemaLibreriaImagina.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ADMIN_INTERFACE_THEME> ADMIN_INTERFACE_THEME { get; set; }
         public virtual DbSet<AUTH_GROUP> AUTH_GROUP { get; set; }
         public virtual DbSet<AUTH_GROUP_PERMISSIONS> AUTH_GROUP_PERMISSIONS { get; set; }
         public virtual DbSet<AUTH_PERMISSION> AUTH_PERMISSION { get; set; }
         public virtual DbSet<AUTHTOKEN_TOKEN> AUTHTOKEN_TOKEN { get; set; }
-        public virtual DbSet<CARRITO> CARRITO { get; set; }
-        public virtual DbSet<COMUNA> COMUNA { get; set; }
+        public virtual DbSet<CARRITO> CARRITOes { get; set; }
+        public virtual DbSet<COMUNA> COMUNAs { get; set; }
         public virtual DbSet<DETALLE_CARRITO> DETALLE_CARRITO { get; set; }
         public virtual DbSet<DETALLE_PEDIDO> DETALLE_PEDIDO { get; set; }
-        public virtual DbSet<DIRECCION> DIRECCION { get; set; }
+        public virtual DbSet<DIRECCION> DIRECCIONs { get; set; }
         public virtual DbSet<DJANGO_ADMIN_LOG> DJANGO_ADMIN_LOG { get; set; }
         public virtual DbSet<DJANGO_CONTENT_TYPE> DJANGO_CONTENT_TYPE { get; set; }
         public virtual DbSet<DJANGO_MIGRATIONS> DJANGO_MIGRATIONS { get; set; }
         public virtual DbSet<DJANGO_SESSION> DJANGO_SESSION { get; set; }
-        public virtual DbSet<ENVIO> ENVIO { get; set; }
-        public virtual DbSet<LIBRO> LIBRO { get; set; }
-        public virtual DbSet<MANTENIMIENTO> MANTENIMIENTO { get; set; }
+        public virtual DbSet<ENVIO> ENVIOs { get; set; }
+        public virtual DbSet<LIBRO> LIBROes { get; set; }
+        public virtual DbSet<MANTENIMIENTO> MANTENIMIENTOes { get; set; }
         public virtual DbSet<METODO_PAGO> METODO_PAGO { get; set; }
-        public virtual DbSet<OFERTA> OFERTA { get; set; }
-        public virtual DbSet<PEDIDO> PEDIDO { get; set; }
-        public virtual DbSet<REGION> REGION { get; set; }
-        public virtual DbSet<TRANSACCION> TRANSACCION { get; set; }
-        public virtual DbSet<USUARIO> USUARIO { get; set; }
+        public virtual DbSet<OFERTA> OFERTAs { get; set; }
+        public virtual DbSet<PEDIDO> PEDIDOes { get; set; }
+        public virtual DbSet<REGION> REGIONs { get; set; }
+        public virtual DbSet<TRANSACCION> TRANSACCIONs { get; set; }
+        public virtual DbSet<USUARIO> USUARIOs { get; set; }
         public virtual DbSet<USUARIO_GROUPS> USUARIO_GROUPS { get; set; }
         public virtual DbSet<USUARIO_USER_PERMISSIONS> USUARIO_USER_PERMISSIONS { get; set; }
     
@@ -268,6 +267,25 @@ namespace SistemaLibreriaImagina.Models
                 new ObjectParameter("P_THUMBNAIL", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MODIFICAR_LIBRO", p_ID_LIBROParameter, p_NOMBRE_LIBROParameter, p_DESCRIPCIONParameter, p_AUTORParameter, p_EDITORIALParameter, p_PRECIO_UNITARIOParameter, p_CANTIDAD_DISPONIBLEParameter, p_PORTADAParameter, p_FECHA_PUBLICACIONParameter, p_CATEGORIAParameter, p_ISBNParameter, p_SLUGParameter, p_THUMBNAILParameter, p_RESULTADO);
+        }
+    
+        public virtual int MOSTRARCANTIDADLIBROS(ObjectParameter cANTIDAD)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MOSTRARCANTIDADLIBROS", cANTIDAD);
+        }
+    
+        public virtual int OBTENERLIBROPORID(Nullable<decimal> p_IDLIBRO)
+        {
+            var p_IDLIBROParameter = p_IDLIBRO.HasValue ?
+                new ObjectParameter("P_IDLIBRO", p_IDLIBRO) :
+                new ObjectParameter("P_IDLIBRO", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OBTENERLIBROPORID", p_IDLIBROParameter);
+        }
+    
+        public virtual int LISTAR_PEDIDOS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LISTAR_PEDIDOS");
         }
     }
 }

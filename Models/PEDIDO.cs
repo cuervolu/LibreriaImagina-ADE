@@ -18,8 +18,8 @@ namespace SistemaLibreriaImagina.Models
         public PEDIDO()
         {
             this.DETALLE_PEDIDO = new HashSet<DETALLE_PEDIDO>();
-            this.ENVIO = new HashSet<ENVIO>();
-            this.TRANSACCION = new HashSet<TRANSACCION>();
+            this.ENVIOs = new HashSet<ENVIO>();
+            this.TRANSACCIONs = new HashSet<TRANSACCION>();
         }
     
         public long ID_PEDIDO { get; set; }
@@ -32,9 +32,9 @@ namespace SistemaLibreriaImagina.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLE_PEDIDO> DETALLE_PEDIDO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ENVIO> ENVIO { get; set; }
+        public virtual ICollection<ENVIO> ENVIOs { get; set; }
         public virtual USUARIO USUARIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TRANSACCION> TRANSACCION { get; set; }
+        public virtual ICollection<TRANSACCION> TRANSACCIONs { get; set; }
     }
 }

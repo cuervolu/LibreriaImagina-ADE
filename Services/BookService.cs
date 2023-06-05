@@ -1,6 +1,7 @@
 ﻿using dotenv.net;
 using Newtonsoft.Json;
 using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 using SistemaLibreriaImagina.Models;
 using System;
 using System.Collections.Generic;
@@ -219,7 +220,7 @@ public static class BookService
         {
             try
             {
-                var libro = dbContext.LIBRO.FirstOrDefault(l => l.ID_LIBRO == p_id_libro);
+                var libro = dbContext.LIBROes.FirstOrDefault(l => l.ID_LIBRO == p_id_libro);
 
                 if (libro != null)
                 {
@@ -251,4 +252,48 @@ public static class BookService
             }
         }
     }
+    public static int GetAmountBooks()
+    {
+        try
+        {
+            using (var dbContext = new Entities())
+            {
+                var cantidadParam = new OracleParameter
+                {
+                    ParameterName = "cantidad",
+                    Direction = ParameterDirection.Output,
+                    OracleDbType = OracleDbType.Int32
+                };
+
+                dbContext.Database.ExecuteSqlCommand("BEGIN MostrarCantidadLibros (:cantidad); END;", cantidadParam);
+
+                var cantidadLibros = 0;
+
+                if (cantidadParam.Value is OracleDecimal oracleDecimal)
+                {
+                    try
+                    {
+                        cantidadLibros = oracleDecimal.ToInt32();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al convertir el valor del parámetro a int: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("El valor del parámetro no es un OracleDecimal.");
+                }
+
+                return cantidadLibros;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error al obtener la cantidad de libros: " + ex.Message);
+            return 0;
+        }
+    }
+
+
 }

@@ -19,8 +19,8 @@ namespace SistemaLibreriaImagina.Models
         {
             this.DETALLE_CARRITO = new HashSet<DETALLE_CARRITO>();
             this.DETALLE_PEDIDO = new HashSet<DETALLE_PEDIDO>();
-            this.MANTENIMIENTO = new HashSet<MANTENIMIENTO>();
-            this.OFERTA = new HashSet<OFERTA>();
+            this.MANTENIMIENTOes = new HashSet<MANTENIMIENTO>();
+            this.OFERTAs = new HashSet<OFERTA>();
         }
     
         public long ID_LIBRO { get; set; }
@@ -42,8 +42,8 @@ namespace SistemaLibreriaImagina.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLE_PEDIDO> DETALLE_PEDIDO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MANTENIMIENTO> MANTENIMIENTO { get; set; }
+        public virtual ICollection<MANTENIMIENTO> MANTENIMIENTOes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OFERTA> OFERTA { get; set; }
+        public virtual ICollection<OFERTA> OFERTAs { get; set; }
     }
 }

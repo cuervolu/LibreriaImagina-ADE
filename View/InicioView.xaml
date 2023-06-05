@@ -3,8 +3,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:SistemaLibreriaImagina.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="780" d:DesignWidth="905">
+
+    <UserControl.DataContext>
+        <viewModels:InicioViewModel />
+    </UserControl.DataContext>
+
     <StackPanel>
         <TextBlock  Text="Bienvenido" Foreground="DarkGray" FontSize="28" HorizontalAlignment="Left" Margin="0,0,0,20" />
 
@@ -33,6 +39,10 @@
 
 
             <Border Width="200" Height="200" CornerRadius="10" Margin="45,0,0,0">
+                <StackPanel>
+                    <TextBlock Text="Cantidad de Libros&#x0a; en la Bodega" Foreground="#FF3A3A3A" FontSize="16" Margin="20,10,10,0" FontWeight="Bold" FontFamily="Montserrat Black" />
+                    <TextBlock Text="{Binding CantidadLibros}" Foreground="#FF3A3A3A" FontSize="87" Margin="20,10,10,0" FontWeight="Bold" FontFamily="Montserrat Black" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </StackPanel>
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
                         <GradientStop Color="#E7F4F5" Offset="0.0" />
@@ -40,6 +50,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
+
         </StackPanel>
 
         <StackPanel>

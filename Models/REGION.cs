@@ -17,7 +17,7 @@ namespace SistemaLibreriaImagina.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public REGION()
         {
-            this.COMUNA = new HashSet<COMUNA>();
+            this.COMUNAs = new HashSet<COMUNA>();
         }
     
         public long ID_REGION { get; set; }
@@ -25,6 +25,6 @@ namespace SistemaLibreriaImagina.Models
         public string NUMERO_ROMANO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COMUNA> COMUNA { get; set; }
+        public virtual ICollection<COMUNA> COMUNAs { get; set; }
     }
 }

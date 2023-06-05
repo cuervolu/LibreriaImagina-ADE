@@ -42,7 +42,7 @@
                 <RadioButton  Content="Restock" Height="50" Foreground="White" FontSize="14" 
                               Command="{Binding RestockCommand }" Style="{StaticResource MenuButtonTheme}"/>
 
-                <RadioButton  Content="Pedidos" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" FontFamily="Montserrat"/>
+                <RadioButton  Content="Pedidos" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding PedidoViewCommand }" FontFamily="Montserrat"/>
                 <RadioButton  Content="Cerrar Sesión" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" VerticalContentAlignment="Bottom" FontFamily="Montserrat" Command="{Binding CerrarSesionCommand }"/>
             </StackPanel>
 

@@ -33,17 +33,19 @@
                 </TransformGroup>
             </DataGrid.RenderTransform>
         </DataGrid>
-
-        <TextBlock Text="{Binding Message}" Margin="10" HorizontalAlignment="Center"
-           Visibility="{Binding IsMessageVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
-
+        
         <ComboBox x:Name="cbxCategoria" HorizontalAlignment="Left" Margin="565,20,0,0" VerticalAlignment="Top" Width="120" FontFamily="Montserrat"
           ItemsSource="{Binding Categorias}" SelectedItem="{Binding SelectedCategoria}">
             <ComboBox.Effect>
                 <DropShadowEffect ShadowDepth="0" Color="Black" Opacity="0.1" BlurRadius="20"/>
             </ComboBox.Effect>
         </ComboBox>
-
+        
+        
+        <TextBlock Text="{Binding Message}" Margin="10" HorizontalAlignment="Center"
+           Visibility="{Binding IsMessageVisible, Converter={StaticResource BooleanToVisibilityConverter}}" VerticalAlignment="Center" />
+        
+        
         <!-- Grid adicional para el ProgressRing -->
         <Grid  Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Height="780" Width="905">
             <Grid.RowDefinitions>

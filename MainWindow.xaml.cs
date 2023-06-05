@@ -1,5 +1,4 @@
 ﻿using MahApps.Metro.Controls;
-using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.ViewModels;
 using System.Windows;
 
@@ -7,13 +6,13 @@ namespace SistemaLibreriaImagina
 {
     public partial class MainWindow : MetroWindow
     {
-        private USUARIO usuario;
+        private long usuario;
         private string token;
 
-        public MainWindow(USUARIO usuario, string token)
+        public MainWindow(long usuario_id, string token)
         {
             InitializeComponent();
-            this.usuario = usuario;
+            this.usuario = usuario_id;
             this.token = token;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 

@@ -18,13 +18,14 @@ namespace SistemaLibreriaImagina.Models
         public USUARIO()
         {
             this.AUTHTOKEN_TOKEN = new HashSet<AUTHTOKEN_TOKEN>();
-            this.CARRITO = new HashSet<CARRITO>();
+            this.CARRITOes = new HashSet<CARRITO>();
             this.DJANGO_ADMIN_LOG = new HashSet<DJANGO_ADMIN_LOG>();
-            this.ENVIO = new HashSet<ENVIO>();
-            this.MANTENIMIENTO = new HashSet<MANTENIMIENTO>();
-            this.MANTENIMIENTO1 = new HashSet<MANTENIMIENTO>();
+            this.ENVIOs = new HashSet<ENVIO>();
+            this.MANTENIMIENTOes = new HashSet<MANTENIMIENTO>();
+            this.MANTENIMIENTOes1 = new HashSet<MANTENIMIENTO>();
             this.METODO_PAGO = new HashSet<METODO_PAGO>();
-            this.PEDIDO = new HashSet<PEDIDO>();
+            this.PEDIDOes = new HashSet<PEDIDO>();
+            this.TRANSACCIONs = new HashSet<TRANSACCION>();
             this.USUARIO_GROUPS = new HashSet<USUARIO_GROUPS>();
             this.USUARIO_USER_PERMISSIONS = new HashSet<USUARIO_USER_PERMISSIONS>();
         }
@@ -47,20 +48,22 @@ namespace SistemaLibreriaImagina.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AUTHTOKEN_TOKEN> AUTHTOKEN_TOKEN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CARRITO> CARRITO { get; set; }
+        public virtual ICollection<CARRITO> CARRITOes { get; set; }
         public virtual DIRECCION DIRECCION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DJANGO_ADMIN_LOG> DJANGO_ADMIN_LOG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ENVIO> ENVIO { get; set; }
+        public virtual ICollection<ENVIO> ENVIOs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MANTENIMIENTO> MANTENIMIENTO { get; set; }
+        public virtual ICollection<MANTENIMIENTO> MANTENIMIENTOes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MANTENIMIENTO> MANTENIMIENTO1 { get; set; }
+        public virtual ICollection<MANTENIMIENTO> MANTENIMIENTOes1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<METODO_PAGO> METODO_PAGO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO> PEDIDO { get; set; }
+        public virtual ICollection<PEDIDO> PEDIDOes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TRANSACCION> TRANSACCIONs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO_GROUPS> USUARIO_GROUPS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
