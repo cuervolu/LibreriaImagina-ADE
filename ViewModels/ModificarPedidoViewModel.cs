@@ -148,21 +148,17 @@ namespace SistemaLibreriaImagina.ViewModels
 
         private async void GuardarCambios(object parameter)
         {
-            Debug.WriteLine(parameter.ToString());
             if (parameter is PEDIDO pedido)
             {
                 // Mostrar mensaje de confirmación utilizando el servicio de diálogos
                 var result = await dialogCoordinator.ShowMessageAsync(this, "Confirmación", "¿Desea guardar los cambios?",
                 MessageDialogStyle.AffirmativeAndNegative);
 
+
                 if (result == MessageDialogResult.Affirmative)
                 {
                     CreateShipment();
                 }
-            }
-            else
-            {
-                Debug.WriteLine("Ni una wea");
             }
         }
 
@@ -171,6 +167,7 @@ namespace SistemaLibreriaImagina.ViewModels
         {
             try
             {
+                IsLoading = true;
                 using (var dbContext = new Entities())
                 {
                     var id_pedido = pedido.ID_PEDIDO;
@@ -193,10 +190,15 @@ namespace SistemaLibreriaImagina.ViewModels
                             Message = "Se creo el envío con éxito",
                             Type = NotificationType.Success
                         });
+                        // Cerrar la ventana
+                        CerrarVentana = true;
+                        IsLoading = false;
+
                     }
                     else
                     {
                         ShowErrorMessage("No se puede crear el envío, el usuario no posee una dirección asignada");
+                        IsLoading = false;
                         return;
                     }
                 }

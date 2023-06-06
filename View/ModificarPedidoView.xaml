@@ -82,6 +82,23 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
+
+
+            <!-- Grid adicional para el ProgressRing -->
+            <Grid Grid.ColumnSpan="2" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Grid.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.4" />
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <mah:ProgressRing IsActive="{Binding IsLoading}" Foreground="#1F8BAC" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+
+
         </Grid>
     </Border>
 </mah:MetroWindow>

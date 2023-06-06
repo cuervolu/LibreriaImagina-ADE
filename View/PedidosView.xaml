@@ -27,7 +27,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
             <TextBlock  Text="PEDIDOS" FontSize="25" FontWeight="Bold"   HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#35869C"/>
-            <DataGrid ItemsSource="{Binding Pedidos}" AutoGenerateColumns="False" Margin="15,40,15,10">
+            <DataGrid ItemsSource="{Binding Pedidos}" AutoGenerateColumns="False" Margin="15,40,15,10" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding ID_PEDIDO}" IsReadOnly="True" />
                     <DataGridTextColumn Header="Fecha Pedido" Binding="{Binding FECHA_PEDIDO}"  IsReadOnly="True" />
