@@ -2,11 +2,12 @@
 using SistemaLibreriaImagina.Core;
 using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.Services;
+using SistemaLibreriaImagina.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Xml.Linq;
+using System.Windows;
 
 namespace SistemaLibreriaImagina.ViewModels
 {
@@ -29,17 +30,17 @@ namespace SistemaLibreriaImagina.ViewModels
         }
 
 
-        private RelayCommand createShipmentCommand;
+        private RelayCommand editOrderCommand;
 
-        public RelayCommand CreateShipmentCommand
+        public RelayCommand EditOrderCommand
         {
             get
             {
-                if (createShipmentCommand == null)
+                if (editOrderCommand == null)
                 {
-                    createShipmentCommand = new RelayCommand(CreateShipment);
+                    editOrderCommand = new RelayCommand(EditOrder);
                 }
-                return createShipmentCommand;
+                return editOrderCommand;
             }
         }
 
@@ -88,53 +89,29 @@ namespace SistemaLibreriaImagina.ViewModels
             }
         }
 
-        private void CreateShipment(object parameter)
+
+        private void EditOrder(object parameter)
         {
             if (parameter is PEDIDO pedido)
             {
-                try
-                {
-                    using (var dbContext = new Entities())
-                    {
-                        var id_pedido = pedido.ID_PEDIDO;
-                        DateTime fecha_envio = DateTime.Now;
-                        USUARIO cliente = dbContext.USUARIOs.FirstOrDefault(u => u.ID == pedido.CLIENTE_ID);
-                        if (cliente.DIRECCION_ID != null)
-                        {
-                            long direccion_id = (long)cliente.DIRECCION_ID;
 
-                            var response = OrderService.GenerateShipment(fecha_envio, direccion_id, id_pedido, cliente.ID);
+                var idPedido = pedido.ID_PEDIDO;
 
-                            // Convertir la respuesta XML a una cadena con formato
-                            XDocument xmlDoc = XDocument.Parse(response.OuterXml);
-                            string formattedXml = xmlDoc.ToString();
-                            var notificationManager = new NotificationManager();
-                            notificationManager.Show(new NotificationContent
-                            {
-                                Title = "¡Bien hecho!",
-                                Message = "Se creo el envío con éxito",
-                                Type = NotificationType.Success
-                            });
-                        }
-                        else
-                        {
-                            ShowErrorMessage("No se puede crear el envío, el usuario no posee una dirección asignada");
-                            return;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ShowErrorMessage(ex.Message);
-                }
-            }
-            else
-            {
-                ShowErrorMessage("No se puede crear el envío");
-                return;
+                // Crear una instancia de la nueva ventana
+                var modificarPedidoView = new ModificarPedidoView(idPedido);
+
+                // Bloquear la ventana anterior
+                var mainWindow = Application.Current.MainWindow;
+                mainWindow.IsEnabled = false;
+
+                // Mostrar la nueva ventana como diálogo modal
+                modificarPedidoView.Owner = mainWindow;
+                modificarPedidoView.ShowDialog();
+
+                // Desbloquear la ventana anterior cuando se cierre la nueva ventana
+                mainWindow.IsEnabled = true;
             }
         }
-
 
         private void ChangeState(object parameter)
         {

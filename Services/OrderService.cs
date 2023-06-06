@@ -32,6 +32,24 @@ namespace SistemaLibreriaImagina.Services
             }
         }
 
+        public static PEDIDO GetPEDIDO(long id_pedido)
+        {
+            try
+            {
+                using (Entities dbContext = new Entities())
+                {
+                    PEDIDO pedido = dbContext.PEDIDOes.FirstOrDefault(p => p.ID_PEDIDO == id_pedido);
+                    return pedido;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
         public static XmlDocument GenerateShipment(DateTime fecha_envio, long direccion_id, long pedido_id, long repartidor_id)
         {
             ImaginaEnvioSoapClient cliente = new ImaginaEnvioSoapClient();

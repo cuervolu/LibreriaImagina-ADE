@@ -260,6 +260,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ModificarLibroViewModel.cs" />
+    <Compile Include="ViewModels\ModificarPedidoViewModel.cs" />
     <Compile Include="ViewModels\PedidosViewModel.cs" />
     <Compile Include="ViewModels\RestockViewModel.cs" />
     <Compile Include="ViewModels\UsersViewModel.cs" />
@@ -274,6 +275,9 @@
     </Compile>
     <Compile Include="View\ModificarLibroView.xaml.cs">
       <DependentUpon>ModificarLibroView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ModificarPedidoView.xaml.cs">
+      <DependentUpon>ModificarPedidoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PedidosView.xaml.cs">
       <DependentUpon>PedidosView.xaml</DependentUpon>
@@ -317,6 +321,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ModificarLibroView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ModificarPedidoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

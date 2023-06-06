@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SistemaLibreriaImagina.Services
@@ -41,5 +42,28 @@ namespace SistemaLibreriaImagina.Services
                 return null;
             }
         }
+
+        public static async Task<List<USUARIO>> GetRepartidores()
+        {
+            try
+            {
+                using (Entities dbContext = new Entities())
+                {
+                    List<USUARIO> repartidores = await dbContext.USUARIOs
+                        .Where(u => u.TIPO_USUARIO == "Repartidor")
+                        .ToListAsync();
+
+                    return repartidores;
+                }
+            }
+            catch (Exception ex)
+            {
+                await Console.Out.WriteLineAsync(ex.Message);
+                return null;
+            }
+        }
+
+
+
     }
 }

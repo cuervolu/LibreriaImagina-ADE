@@ -47,7 +47,7 @@
                     <DataGridTemplateColumn Header="Acciones">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Command="{Binding DataContext.CreateShipmentCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                <Button Command="{Binding DataContext.EditOrderCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
                             CommandParameter="{Binding}" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Background="#FF008CBA" Foreground="White" FontFamily="Montserrat Thin Medium">
                                     <TextBlock Text="Crear Envío"/>
                                 </Button>
