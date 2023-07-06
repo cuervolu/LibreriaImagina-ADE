@@ -2,6 +2,7 @@
 using SistemaLibreriaImagina.Core;
 using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.Services;
+using SistemaLibreriaImagina.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -50,6 +51,22 @@ namespace SistemaLibreriaImagina.ViewModels
                 return changeRolCommand;
             }
         }
+
+        private RelayCommand createUserCommand;
+
+        public RelayCommand CreateUserCommand
+        {
+            get
+            {
+                if (createUserCommand == null)
+                {
+                    createUserCommand = new RelayCommand(OpenCrearUsuario);
+                }
+                return createUserCommand;
+            }
+        }
+
+
 
         public UsersViewModel()
         {
@@ -154,6 +171,12 @@ namespace SistemaLibreriaImagina.ViewModels
             }
         }
 
+        private void OpenCrearUsuario(object parameter)
+        {
+            // Lógica para abrir la nueva ventana de creación de usuario
+            CrearUsuarioView crearUsuarioView = new CrearUsuarioView();
+            crearUsuarioView.ShowDialog();
+        }
 
         private void ShowErrorMessage(string message)
         {

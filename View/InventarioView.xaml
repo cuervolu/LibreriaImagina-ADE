@@ -70,6 +70,10 @@
             <Button Content="Anterior" Command="{Binding PreviousPageCommand}" />
             <Label Content="{Binding CurrentPage}" />
             <Button Content="Siguiente" Command="{Binding NextPageCommand}" />
+
+            <Button Command="{Binding IngresarCommand}" Background="#FF008CBA"  FontFamily="Montserrat Thin Medium" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Margin="10,0,0,0">
+                <TextBlock  Text="Crear Libro"  FontSize="16"  Foreground="White" />
+            </Button>
         </StackPanel>
 
         <!-- Grid adicional para el ProgressRing -->

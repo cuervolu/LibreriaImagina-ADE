@@ -11,20 +11,23 @@
               xmlns:notifications="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
              xmlns:viewModels="clr-namespace:SistemaLibreriaImagina.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="780" d:DesignWidth="905" Margin="10" Background="Transparent">
+             d:DesignHeight="775" d:DesignWidth="1065" Margin="10" Background="Transparent">
 
     <UserControl.DataContext>
         <viewModels:UsersViewModel />
     </UserControl.DataContext>
-    
+
     <Border Background="#FFFFFAF5" CornerRadius="10">
-        <Grid>
+        <Grid Height="775" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <TextBlock  Text="USUARIOS" FontSize="25" FontWeight="Bold"   HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#35869C"/>
-            <DataGrid ItemsSource="{Binding Usuarios}" AutoGenerateColumns="False" Margin="15,40,20,10" IsSynchronizedWithCurrentItem="True" Cursor="Hand" CanUserAddRows="False">
+            <Button Command="{Binding CreateUserCommand}" Background="#FF008CBA" Margin="167,152,5,10" FontFamily="Montserrat Thin Medium" Grid.RowSpan="2" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <TextBlock  Text="Crear Usuario"  FontSize="16"  Foreground="White" />
+            </Button>
+            <DataGrid ItemsSource="{Binding Usuarios}" AutoGenerateColumns="False" Margin="15,40,10,50" IsSynchronizedWithCurrentItem="True" Cursor="Hand" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True" />
                     <DataGridTextColumn Header="RUT" Binding="{Binding RUT}" IsReadOnly="True" />
@@ -48,6 +51,8 @@
                 </DataGrid.Columns>
             </DataGrid>
 
+            
+
 
             <!-- Grid adicional para el ProgressRing -->
             <Grid  Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Height="780" Width="905">
@@ -59,7 +64,11 @@
                 </Grid.ColumnDefinitions>
                 <mah:ProgressRing IsActive="{Binding IsLoading}" Foreground="#1F8BAC" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
             </Grid>
+            
+            
+            
             <notifications:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="1" />
+            
 
 
         </Grid>

@@ -191,6 +191,11 @@
     <Compile Include="Converters\UrlToImageConverter.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Helpers\ComboBoxValidationRule.cs" />
+    <Compile Include="Helpers\EmailValidationRule.cs" />
+    <Compile Include="Helpers\MaxLengthValidationRule.cs" />
+    <Compile Include="Helpers\NotEmptyValidationRule.cs" />
+    <Compile Include="Helpers\PhoneValidationRule.cs" />
     <Compile Include="Models\AUTHTOKEN_TOKEN.cs">
       <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
@@ -284,6 +289,7 @@
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\UsersService.cs" />
     <Compile Include="Utilities\ErrorControl.cs" />
+    <Compile Include="ViewModels\CrearUsuarioViewModel.cs" />
     <Compile Include="ViewModels\InicioViewModel.cs" />
     <Compile Include="ViewModels\InventarioViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -293,6 +299,9 @@
     <Compile Include="ViewModels\PedidosViewModel.cs" />
     <Compile Include="ViewModels\RestockViewModel.cs" />
     <Compile Include="ViewModels\UsersViewModel.cs" />
+    <Compile Include="View\CrearUsuarioView.xaml.cs">
+      <DependentUpon>CrearUsuarioView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\InicioView.xaml.cs">
       <DependentUpon>InicioView.xaml</DependentUpon>
     </Compile>
@@ -334,6 +343,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\TextboxTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CrearUsuarioView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

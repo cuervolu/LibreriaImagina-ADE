@@ -1,10 +1,13 @@
 ﻿using dotenv.net;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 namespace SistemaLibreriaImagina.Services
 {
-    public static class AuthenticationService
+    public class AuthenticationService
     {
         public static async Task<HttpResponseMessage> AuthenticateAsync(string username, string password)
         {
@@ -49,6 +52,38 @@ namespace SistemaLibreriaImagina.Services
 
             return response;
         }
+
+        public async Task<bool> createUser(string rut, string nombre, string apellido, string username, string correo, string telefono, string tipoUsuario)
+        {
+            var envVars = DotEnv.Read();
+            var httpClient = new HttpClient();
+            try
+            {
+                var usuario = new
+                {
+                    rut,
+                    nombre,
+                    apellido,
+                    username,
+                    correo,
+                    telefono,
+                    tipo_usuario = tipoUsuario
+                };
+
+                var jsonUsuario = JsonConvert.SerializeObject(usuario);
+                var content = new StringContent(jsonUsuario, Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PostAsync($"{envVars["API_URL"]}api/createUser/", content);
+
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al crear el usuario: {ex.Message}");
+                return false;
+            }
+        }
+
 
 
     }

@@ -1,0 +1,109 @@
+﻿<mah:MetroWindow x:Class="SistemaLibreriaImagina.View.CrearUsuarioView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+    xmlns:converters="clr-namespace:SistemaLibreriaImagina.Converters"
+                 Dialog:DialogParticipation.Register="{Binding}"
+    xmlns:local="clr-namespace:SistemaLibreriaImagina.View" xmlns:validations="clr-namespace:SistemaLibreriaImagina.Helpers"
+                 Background="Transparent"
+    WindowStyle="None"
+    AllowsTransparency="True"
+    ShowTitleBar="False"
+    mc:Ignorable="d"
+    Title="Crear Usuario" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+
+
+    <mah:MetroWindow.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </mah:MetroWindow.Resources>
+
+    <Grid>
+        <Border Background="#FFFFFAF5" CornerRadius="10">
+            <StackPanel Margin="20">
+                <TextBlock Text="Crear Usuario" FontSize="18" FontWeight="Bold" Margin="0 0 0 10"/>
+
+                <Label Content="Nombre:"/>
+                <TextBox>
+                    <TextBox.Text>
+                        <Binding Path="DataContext.USUARIO.NOMBRE" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validations:NotEmptyValidationRule ErrorMessage="El nombre es requerido"/>
+                                <validations:MaxLengthValidationRule MaxLength="50" ErrorMessage="El nombre debe tener como máximo 50 caracteres"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+
+                <Label Content="Apellido:"/>
+                <TextBox>
+                    <TextBox.Text>
+                        <Binding Path="DataContext.USUARIO.APELLIDO" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validations:NotEmptyValidationRule ErrorMessage="El apellido es requerido"/>
+                                <validations:MaxLengthValidationRule MaxLength="50" ErrorMessage="El apellido debe tener como máximo 50 caracteres"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+
+                <Label Content="Usuario:"/>
+                <TextBox>
+                    <TextBox.Text>
+                        <Binding Path="DataContext.USUARIO.USERNAME" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validations:NotEmptyValidationRule ErrorMessage="El usuario es requerido"/>
+                                <validations:MaxLengthValidationRule MaxLength="30" ErrorMessage="El usuario debe tener como máximo 30 caracteres"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Label Content="Correo electrónico:"/>
+                <TextBox>
+                    <TextBox.Text>
+                        <Binding Path="Correo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validations:EmailValidationRule ErrorMessage="Correo electrónico inválido" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+
+                <Label Content="Teléfono:"/>
+                <TextBox>
+                    <TextBox.Text>
+                        <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validations:PhoneValidationRule ErrorMessage="Teléfono inválido" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <ComboBox x:Name="tipoUsuarioComboBox" Width="120" Margin="0,7,0,0" HorizontalAlignment="Left" SelectedItem="{Binding SelectedTipoUsuario}">
+                    <ComboBoxItem Content="Seleccione rol..." IsSelected="True"/>
+                    <ComboBoxItem Content="Admin"/>
+                    <ComboBoxItem Content="Repartidor"/>
+                    <ComboBoxItem Content="Técnico"/>
+                    <ComboBoxItem Content="Cliente"/>
+                    <ComboBoxItem Content="Empleado"/>
+                    <ComboBoxItem Content="Encargado de Bodega"/>
+                </ComboBox>
+                <TextBlock Text="Debe seleccionar un rol" Visibility="{Binding IsTipoUsuarioInvalid, Converter={StaticResource BooleanToVisibilityConverter}}" Foreground="Red" />
+
+
+
+
+                <Button Content="Guardar" Width="100" Margin="0 10 0 0" IsEnabled="{Binding IsFormValid}" />
+
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</mah:MetroWindow>
