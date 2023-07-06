@@ -161,7 +161,9 @@
           <Property Name="ESTADO_MANTENIMIENTO" Type="nvarchar2" MaxLength="50" />
           <Property Name="CLIENTE_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
           <Property Name="LIBRO_ID" Type="number" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="TECNICO_ID" Type="number" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="TECNICO_ID" Type="number" Precision="19" Scale="0" />
+          <Property Name="COMENTARIO" Type="nclob" />
+          <Property Name="RESPUESTA" Type="nclob" />
         </EntityType>
         <EntityType Name="METODO_PAGO">
           <Key>
@@ -469,7 +471,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="MANTENIMI_TECNICO_I_F351FB7F_F">
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
           <End Role="MANTENIMIENTO" Type="Self.MANTENIMIENTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIO">
@@ -620,6 +622,7 @@
           <Parameter Name="P_CLIENTE_ID" Type="number" Mode="In" />
           <Parameter Name="P_LIBRO_ID" Type="number" Mode="In" />
           <Parameter Name="P_TECNICO_ID" Type="number" Mode="In" />
+          <Parameter Name="P_COMENTARIO" Type="nclob" Mode="In" />
         </Function>
         <Function Name="AGREGAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
           <Parameter Name="P_NOMBRE_LIBRO" Type="nvarchar2" Mode="In" />
@@ -642,6 +645,7 @@
           <Parameter Name="P_CLIENTE_ID" Type="number" Mode="In" />
           <Parameter Name="P_LIBRO_ID" Type="number" Mode="In" />
           <Parameter Name="P_TECNICO_ID" Type="number" Mode="In" />
+          <Parameter Name="P_COMENTARIO" Type="nclob" Mode="In" />
         </Function>
         <Function Name="ELIMINAR_LIBRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
           <Parameter Name="P_ID_LIBRO" Type="number" Mode="In" />
@@ -657,6 +661,7 @@
           <Parameter Name="P_CLIENTE_ID" Type="number" Mode="Out" />
           <Parameter Name="P_LIBRO_ID" Type="number" Mode="Out" />
           <Parameter Name="P_TECNICO_ID" Type="number" Mode="Out" />
+          <Parameter Name="P_COMENTARIO" Type="nclob" Mode="Out" />
         </Function>
         <Function Name="LISTAR_CATEGORIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA" />
         <Function Name="LISTAR_LIBROS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="LIBRERIA_IMAGINA">
@@ -1026,6 +1031,8 @@
           <NavigationProperty Name="LIBRO" Relationship="Self.MANTENIMI_LIBRO_ID_C5ABC3FE_F" FromRole="MANTENIMIENTO" ToRole="LIBRO" />
           <NavigationProperty Name="USUARIO" Relationship="Self.MANTENIMI_CLIENTE_I_87240F08_F" FromRole="MANTENIMIENTO" ToRole="USUARIO" />
           <NavigationProperty Name="USUARIO1" Relationship="Self.MANTENIMI_TECNICO_I_F351FB7F_F" FromRole="MANTENIMIENTO" ToRole="USUARIO" />
+          <Property Name="COMENTARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RESPUESTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="METODO_PAGO">
           <Key>
@@ -1656,6 +1663,7 @@
             <Parameter Name="P_CLIENTE_ID" Mode="In" Type="Decimal" />
             <Parameter Name="P_LIBRO_ID" Mode="In" Type="Decimal" />
             <Parameter Name="P_TECNICO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COMENTARIO" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AGREGAR_LIBRO">
             <Parameter Name="P_NOMBRE_LIBRO" Mode="In" Type="String" />
@@ -1678,6 +1686,7 @@
             <Parameter Name="P_CLIENTE_ID" Mode="In" Type="Decimal" />
             <Parameter Name="P_LIBRO_ID" Mode="In" Type="Decimal" />
             <Parameter Name="P_TECNICO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_COMENTARIO" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ELIMINAR_LIBRO">
           <Parameter Name="P_ID_LIBRO" Mode="In" Type="Decimal" />
@@ -1693,6 +1702,7 @@
             <Parameter Name="P_CLIENTE_ID" Mode="Out" Type="Decimal" />
             <Parameter Name="P_LIBRO_ID" Mode="Out" Type="Decimal" />
             <Parameter Name="P_TECNICO_ID" Mode="Out" Type="Decimal" />
+            <Parameter Name="P_COMENTARIO" Mode="Out" Type="String" />
           </FunctionImport>
           <FunctionImport Name="LISTAR_CATEGORIAS" />
           <FunctionImport Name="LISTAR_LIBROS">
@@ -1893,6 +1903,8 @@
           <EntitySetMapping Name="MANTENIMIENTOes">
             <EntityTypeMapping TypeName="Model.MANTENIMIENTO">
               <MappingFragment StoreEntitySet="MANTENIMIENTO">
+                <ScalarProperty Name="RESPUESTA" ColumnName="RESPUESTA" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
                 <ScalarProperty Name="ID_MANTENIMIENTO" ColumnName="ID_MANTENIMIENTO" />
                 <ScalarProperty Name="FECHA_SOLICITUD" ColumnName="FECHA_SOLICITUD" />
                 <ScalarProperty Name="TIPO_MANTENIMIENTO" ColumnName="TIPO_MANTENIMIENTO" />
@@ -2026,7 +2038,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />

@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'D:\Duoc\Asignaturas\Quinto Semestre\Integración de Plataformas\Caso Semestral\Entrega 2\AplicacionEscritorio\SistemaLibreriaImagina\Models\LibreriaImaginaModel.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'D:\Duoc\Asignaturas\Quinto Semestre\Integración de Plataformas\Caso Semestral\Exámen\AplicacionEscritorio\SistemaLibreriaImagina\Models\LibreriaImaginaModel.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

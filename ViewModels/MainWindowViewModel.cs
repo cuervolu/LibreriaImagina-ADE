@@ -2,7 +2,6 @@
 using SistemaLibreriaImagina.Core;
 using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.Services;
-using SistemaLibreriaImagina.View;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -121,9 +120,8 @@ namespace SistemaLibreriaImagina.ViewModels
                             await progressDialog.CloseAsync();
 
                             // Redirigir al inicio de sesión
-                            LoginView loginView = new LoginView();
-                            loginView.Show();
-                            CloseMainWindow();
+                            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                            Application.Current.Shutdown();
                         }
                         catch (Exception ex)
                         {
@@ -136,16 +134,12 @@ namespace SistemaLibreriaImagina.ViewModels
 
                 // Ocultar el elemento de carga una vez que se complete la carga
                 IsLoading = false;
-
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-
-
-
 
         private async Task<USUARIO> GetUserInfo()
         {

@@ -21,6 +21,8 @@ namespace SistemaLibreriaImagina.Models
         public long CLIENTE_ID { get; set; }
         public long LIBRO_ID { get; set; }
         public long TECNICO_ID { get; set; }
+        public string COMENTARIO { get; set; }
+        public string RESPUESTA { get; set; }
     
         public virtual LIBRO LIBRO { get; set; }
         public virtual USUARIO USUARIO { get; set; }

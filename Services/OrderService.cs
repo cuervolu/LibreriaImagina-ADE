@@ -1,4 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.wsImaginaEnvio;
 using System;
@@ -73,5 +74,78 @@ namespace SistemaLibreriaImagina.Services
 
             return null; // En caso de que no haya respuesta o haya ocurrido un error
         }
+
+        public static int GetAmountOrders()
+        {
+
+            try
+            {
+                using (var dbContext = new Entities())
+                {
+                    var cantidadParam = new OracleParameter
+                    {
+                        ParameterName = "cantidad",
+                        Direction = ParameterDirection.Output,
+                        OracleDbType = OracleDbType.Int32
+                    };
+
+                    dbContext.Database.ExecuteSqlCommand("BEGIN MostrarCantidadPedidos (:cantidad); END;", cantidadParam);
+
+                    var cantidadPedidos = 0;
+
+                    if (cantidadParam.Value is OracleDecimal oracleDecimal)
+                    {
+                        try
+                        {
+                            cantidadPedidos = oracleDecimal.ToInt32();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error al convertir el valor del parámetro a int: " + ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("El valor del parámetro no es un OracleDecimal.");
+                    }
+
+                    return cantidadPedidos;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la cantidad de pedidos: " + ex.Message);
+                return 0;
+            }
+        }
+
+
+        public static (double[] Values, string[] Labels) GetOrderStatusCount()
+        {
+            try
+            {
+                using (Entities dbContext = new Entities())
+                {
+                    var statusCounts = dbContext.PEDIDOes
+                        .GroupBy(p => p.ESTADO_PEDIDO)
+                        .ToDictionary(g => g.Key, g => g.Count());
+
+                    double[] values = statusCounts.Values.Select(v => (double)v).ToArray();
+                    string[] labels = statusCounts.Keys.ToArray();
+
+                    return (values, labels);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener el número de pedidos por estado: {ex.Message}");
+                return (null, null);
+            }
+        }
+
+
+
+
+
     }
 }

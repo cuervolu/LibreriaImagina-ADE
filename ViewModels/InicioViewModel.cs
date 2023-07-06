@@ -1,20 +1,40 @@
-﻿using Notifications.Wpf;
+﻿using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.SkiaSharpView.VisualElements;
+using Notifications.Wpf;
 using SistemaLibreriaImagina.Core;
 using SistemaLibreriaImagina.Models;
+using SistemaLibreriaImagina.Services;
+using SkiaSharp;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace SistemaLibreriaImagina.ViewModels
 {
-    class InicioViewModel : ObservableObject
+    internal class InicioViewModel : ObservableObject
     {
         private int cantidadLibros;
+
         public int CantidadLibros
         {
             get { return cantidadLibros; }
             set
             {
                 cantidadLibros = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int cantidadPedidos;
+
+        public int CantidadPedidos
+        {
+            get { return cantidadPedidos; }
+            set
+            {
+                cantidadPedidos = value;
                 OnPropertyChanged();
             }
         }
@@ -31,6 +51,8 @@ namespace SistemaLibreriaImagina.ViewModels
         {
             Usuario = UsuarioGlobal.Instancia.Usuario;
             obtenerCantidadDeLibros();
+            obtenerCantidadDePedidos();
+            generatePieChart();
         }
 
         private int obtenerCantidadDeLibros()
@@ -50,6 +72,55 @@ namespace SistemaLibreriaImagina.ViewModels
                 return cantidadLibros;
             }
         }
+
+        private int obtenerCantidadDePedidos() //Pedidos en validación
+        {
+            try
+            {
+                var response = OrderService.GetAmountOrders();
+                cantidadPedidos = response;
+                CantidadPedidos = cantidadPedidos; // Utilizar el setter de la propiedad para notificar el cambio
+                return cantidadPedidos;
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage($"No se puede obtener la cantidad de libros: {ex}");
+                cantidadPedidos = 0;
+                CantidadLibros = cantidadPedidos; // Utilizar el setter de la propiedad para notificar el cambio
+                return cantidadPedidos;
+            }
+        }
+
+        public void generatePieChart()
+        {
+            // Obtener los datos del gráfico circular desde OrderService
+            var (values, labels) = OrderService.GetOrderStatusCount();
+
+            List<PieSeries<double>> series = new List<PieSeries<double>>();
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                double value = values[i];
+                string label = labels[i];
+                SolidColorPaint color = statusColors[i % statusColors.Count];
+
+                var pieSeries = new PieSeries<double>
+                {
+                    Values = new[] { value },
+                    Name = label,
+                    DataLabelsPaint = new SolidColorPaint(new SKColor(30, 30, 30)),
+                    DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.ChartCenter,
+                    DataLabelsFormatter = p => $"{p.PrimaryValue} / {(p.StackedValue != null ? p.StackedValue.Total : 0)} ({(p.StackedValue != null ? p.StackedValue.Share : 0):P2})",
+                    TooltipLabelFormatter = p => $"{p.PrimaryValue:C2}",
+                    Fill = color
+                };
+
+                series.Add(pieSeries);
+            }
+
+            Series = series;
+        }
+
         private void ShowErrorMessage(string message)
         {
             Application.Current.Dispatcher.BeginInvoke(new Action(() =>
@@ -63,5 +134,25 @@ namespace SistemaLibreriaImagina.ViewModels
                 });
             }));
         }
+
+        public List<SolidColorPaint> statusColors = new List<SolidColorPaint>
+        {
+            new SolidColorPaint(new SKColor(0, 0, 255, 128)), // Azul con transparencia
+            new SolidColorPaint(new SKColor(0, 255, 0, 128)), // Verde con transparencia
+            new SolidColorPaint(new SKColor(255, 255, 0, 128)), // Amarillo con transparencia
+            new SolidColorPaint(new SKColor(255, 165, 0, 128)), // Naranja con transparencia
+            new SolidColorPaint(new SKColor(255, 0, 0, 128)) // Rojo con transparencia
+        };
+
+        public IEnumerable<ISeries> Series { get; set; }
+
+        public LabelVisual Title { get; set; } =
+            new LabelVisual
+            {
+                Text = "Número de Pedidos en Base a Estado",
+                TextSize = 25,
+                Padding = new LiveChartsCore.Drawing.Padding(15),
+                Paint = new SolidColorPaint(SKColors.DarkSlateGray)
+            };
     }
 }
