@@ -42,12 +42,12 @@
             <!-- Logo Librería Imagina-->
             <Image  Height="64"  Width="200" Source="/Assets/brand.png" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="5,0,0,0" />
 
-            <StackPanel Grid.Row="1" Background="#1F8BAC">
+            <StackPanel Grid.Row="1" Background="#1F8BAC" Height="725" VerticalAlignment="Bottom">
 
                 <RadioButton  Content="Inicio" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" IsChecked="True" Command="{Binding InicioViewCommand }" FontFamily="Montserrat" />
 
                 <RadioButton  Content="Inventario" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding InventarioViewCommand }" FontFamily="Montserrat Medium" Visibility="{Binding RolUsuario, Converter={StaticResource RolVisibilityConverter}, ConverterParameter=Inventario}"/>
-                <RadioButton  Content="Cerrar Sesión" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" VerticalContentAlignment="Bottom" FontFamily="Montserrat" Command="{Binding CerrarSesionCommand}"/>
+                
 
                 <RadioButton  Content="Restock" Height="50" Foreground="White" FontSize="14" 
                               Command="{Binding RestockCommand }" Style="{StaticResource MenuButtonTheme}" Visibility="{Binding RolUsuario, Converter={StaticResource RolVisibilityConverter}, ConverterParameter=Restock}"/>
@@ -56,6 +56,8 @@
 
 
                 <RadioButton  Content="Usuarios" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding UserViewCommand }" FontFamily="Montserrat" Visibility="{Binding RolUsuario, Converter={StaticResource RolVisibilityConverter}, ConverterParameter=Usuarios}" />
+
+                <RadioButton  Content="Cerrar Sesión" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" VerticalContentAlignment="Bottom" FontFamily="Montserrat" Command="{Binding CerrarSesionCommand}"/>
             </StackPanel>
 
             <!-- <TextBox VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="20,5,0,5" Grid.Column="1" Style="{StaticResource ModernTextBox}"/> -->
