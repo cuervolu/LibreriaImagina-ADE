@@ -188,14 +188,10 @@
     </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\RolVisibilityConverter.cs" />
+    <Compile Include="Converters\RutFormattingConverter.cs" />
     <Compile Include="Converters\UrlToImageConverter.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
-    <Compile Include="Helpers\ComboBoxValidationRule.cs" />
-    <Compile Include="Helpers\EmailValidationRule.cs" />
-    <Compile Include="Helpers\MaxLengthValidationRule.cs" />
-    <Compile Include="Helpers\NotEmptyValidationRule.cs" />
-    <Compile Include="Helpers\PhoneValidationRule.cs" />
     <Compile Include="Models\AUTHTOKEN_TOKEN.cs">
       <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>

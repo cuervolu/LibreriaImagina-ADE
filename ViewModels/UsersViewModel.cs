@@ -176,6 +176,7 @@ namespace SistemaLibreriaImagina.ViewModels
             // Lógica para abrir la nueva ventana de creación de usuario
             CrearUsuarioView crearUsuarioView = new CrearUsuarioView();
             crearUsuarioView.ShowDialog();
+            LoadUsers();
         }
 
         private void ShowErrorMessage(string message)

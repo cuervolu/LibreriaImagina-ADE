@@ -12,6 +12,7 @@ namespace SistemaLibreriaImagina.View
         public CrearUsuarioView()
         {
             InitializeComponent();
+            viewModel = new CrearUsuarioViewModel();
             DataContext = viewModel;
         }
     }
