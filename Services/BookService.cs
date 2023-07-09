@@ -5,6 +5,7 @@ using Oracle.ManagedDataAccess.Types;
 using SistemaLibreriaImagina.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Net.Http;
@@ -256,7 +257,7 @@ public static class BookService
     {
         try
         {
-            using (var dbContext = new Entities())
+            using (Entities dbContext = new Entities())
             {
                 var cantidadParam = new OracleParameter
                 {
@@ -295,5 +296,19 @@ public static class BookService
         }
     }
 
-
+    public static ObservableCollection<LIBRO> GetBooks()
+    {
+        try
+        {
+            using (var dbContext = new Entities())
+            {
+                List<LIBRO> libros = dbContext.LIBROes.ToList();
+                return new ObservableCollection<LIBRO>(libros);
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Error al obtener lista de libros: {ex.Message}");
+        }
+    }
 }

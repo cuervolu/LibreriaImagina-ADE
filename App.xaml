@@ -40,6 +40,12 @@
             <DataTemplate DataType="{x:Type viewModel:ModificarPedidoViewModel}">
                 <view:ModificarLibroView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:POSViewModel}">
+                <view:POSView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:CrearUsuarioViewModel}">
+                <view:CrearUsuarioView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -17,12 +17,15 @@ namespace SistemaLibreriaImagina.ViewModels
         public RelayCommand RestockCommand { get; set; }
         public RelayCommand PedidoViewCommand { get; set; }
         public RelayCommand UserViewCommand { get; set; }
+        public RelayCommand POSViewCommand { get; set; }
 
         public InicioViewModel InicioVM { get; set; }
         public InventarioViewModel InventarioVM { get; set; }
         public RestockViewModel RestockVM { get; set; }
         public PedidosViewModel PedidosVM { get; set; }
         public UsersViewModel UserVM { get; set; }
+        public POSViewModel POSVM { get; set; }
+
         public string RolUsuario { get; set; }
 
         private object _currentView;
@@ -99,6 +102,13 @@ namespace SistemaLibreriaImagina.ViewModels
                     UserVM = new UsersViewModel();
                     CurrentView = UserVM;
                 });
+
+                POSViewCommand = new RelayCommand(o =>
+                {
+                    POSVM = new POSViewModel();
+                    CurrentView = POSVM;
+                });
+
 
                 CerrarSesionCommand = new RelayCommand(async o =>
                 {

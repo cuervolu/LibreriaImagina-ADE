@@ -58,6 +58,10 @@
 
                 <RadioButton  Content="Usuarios" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding UserViewCommand }" FontFamily="Montserrat" Visibility="{Binding RolUsuario, Converter={StaticResource RolVisibilityConverter}, ConverterParameter=Usuarios}" />
 
+
+                <RadioButton  Content="POS" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding POSViewCommand }" FontFamily="Montserrat" Visibility="{Binding RolUsuario, Converter={StaticResource RolVisibilityConverter}, ConverterParameter=POS}" />
+
+
                 <RadioButton  Content="Cerrar Sesión" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" VerticalContentAlignment="Bottom" FontFamily="Montserrat" Command="{Binding CerrarSesionCommand}"/>
             </StackPanel>
 

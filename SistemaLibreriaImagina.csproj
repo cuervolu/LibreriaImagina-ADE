@@ -104,6 +104,9 @@
     <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.21.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>packages\Oracle.ManagedDataAccess.EntityFramework.21.9.0\lib\net462\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>packages\Prism.Core.8.1.97\lib\net47\Prism.dll</HintPath>
+    </Reference>
     <Reference Include="SkiaSharp, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>packages\SkiaSharp.2.88.3\lib\net462\SkiaSharp.dll</HintPath>
     </Reference>
@@ -175,6 +178,21 @@
     <Reference Include="WpfMessageBox, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\WpfMessageBox.1.2.0\lib\net40-client\WpfMessageBox.dll</HintPath>
     </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.5.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -187,9 +205,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\PrecioConverter.cs" />
     <Compile Include="Converters\RolVisibilityConverter.cs" />
     <Compile Include="Converters\RutFormattingConverter.cs" />
+    <Compile Include="Converters\SelectedProductConverter.cs" />
     <Compile Include="Converters\UrlToImageConverter.cs" />
+    <Compile Include="Converters\IsNotNullConverter.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Models\AUTHTOKEN_TOKEN.cs">
@@ -267,6 +288,7 @@
     <Compile Include="Models\REGION.cs">
       <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SelectedProductItem.cs" />
     <Compile Include="Models\TRANSACCION.cs">
       <DependentUpon>LibreriaImaginaModel.tt</DependentUpon>
     </Compile>
@@ -293,6 +315,7 @@
     <Compile Include="ViewModels\ModificarLibroViewModel.cs" />
     <Compile Include="ViewModels\ModificarPedidoViewModel.cs" />
     <Compile Include="ViewModels\PedidosViewModel.cs" />
+    <Compile Include="ViewModels\POSViewModel.cs" />
     <Compile Include="ViewModels\RestockViewModel.cs" />
     <Compile Include="ViewModels\UsersViewModel.cs" />
     <Compile Include="View\CrearUsuarioView.xaml.cs">
@@ -315,6 +338,9 @@
     </Compile>
     <Compile Include="View\PedidosView.xaml.cs">
       <DependentUpon>PedidosView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\POSView.xaml.cs">
+      <DependentUpon>POSView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RestockView.xaml.cs">
       <DependentUpon>RestockView.xaml</DependentUpon>
@@ -367,6 +393,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PedidosView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\POSView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

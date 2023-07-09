@@ -145,9 +145,5 @@ namespace SistemaLibreriaImagina.Services
                 return await dbContext.USUARIOs.AnyAsync(u => u.CORREO == correo);
             }
         }
-
-
-
-
     }
 }

@@ -140,6 +140,10 @@ namespace SistemaLibreriaImagina.ViewModels
                                     usuarioActualizado.IS_STAFF = true;
                                     usuarioActualizado.IS_SUPERUSER = false;
                                     break;
+                                case "Empleado":
+                                    usuarioActualizado.IS_STAFF = true;
+                                    usuarioActualizado.IS_SUPERUSER = false;
+                                    break;
                                 default:
                                     usuarioActualizado = null;
                                     break;

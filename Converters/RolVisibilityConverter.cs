@@ -30,6 +30,10 @@ namespace SistemaLibreriaImagina.Converters
                 {
                     isVisible = true;
                 }
+                else if (rol == "Empleado" && (parametro == "POS" || parametro == "Inventario" || parametro == "Inicio"))
+                {
+                    isVisible = true;
+                }
 
                 return isVisible ? Visibility.Visible : Visibility.Collapsed;
             }
@@ -42,5 +46,4 @@ namespace SistemaLibreriaImagina.Converters
             throw new NotImplementedException();
         }
     }
-
 }
