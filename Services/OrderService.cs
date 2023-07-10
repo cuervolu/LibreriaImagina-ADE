@@ -2,11 +2,11 @@
 using Oracle.ManagedDataAccess.Types;
 using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.wsImaginaEnvio;
+using SistemaLibreriaImagina.wsImaginaPay;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Xml;
 
 namespace SistemaLibreriaImagina.Services
 {
@@ -51,28 +51,62 @@ namespace SistemaLibreriaImagina.Services
             }
         }
 
-        public static XmlDocument GenerateShipment(DateTime fecha_envio, long direccion_id, long pedido_id, long repartidor_id)
+        public static string GenerateShipment(DateTime fecha_envio, long direccion_id, long pedido_id, long repartidor_id)
         {
             ImaginaEnvioSoapClient cliente = new ImaginaEnvioSoapClient();
             try
             {
-                var respuestaXml = cliente.GenerateShipments(fecha_envio, direccion_id, pedido_id, repartidor_id);
-
-                if (!string.IsNullOrEmpty(respuestaXml))
+                if (IsServiceOnline(cliente.Endpoint.Address.Uri))
                 {
-                    // Crear un objeto XmlDocument y cargar la respuesta XML en él
-                    XmlDocument xmlDoc = new XmlDocument();
-                    xmlDoc.LoadXml(respuestaXml);
-
-                    return xmlDoc;
+                    var res = cliente.GenerateShipments(fecha_envio, direccion_id, pedido_id, repartidor_id);
+                    return res;
+                }
+                else
+                {
+                    throw new Exception("El servicio de envío no está en línea.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                throw new Exception($"Error al crear envío: {ex.Message}");
             }
+        }
 
-            return null; // En caso de que no haya respuesta o haya ocurrido un error
+        public static string CreatePayment(string user_rut, decimal total)
+        {
+            ImaginaPaySoapClient cliente = new ImaginaPaySoapClient();
+            try
+            {
+                if (IsServiceOnline(cliente.Endpoint.Address.Uri))
+                {
+                    var res = cliente.CreateBranchPayment(user_rut, total);
+                    return res;
+                }
+                else
+                {
+                    throw new Exception("El servicio de pago no está en línea.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al hacer el pago: {ex.Message}");
+            }
+        }
+
+        private static bool IsServiceOnline(Uri serviceUri)
+        {
+            using (var client = new System.Net.WebClient())
+            {
+                try
+                {
+                    client.OpenRead(serviceUri);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
         }
 
         public static int GetAmountOrders()

@@ -10,13 +10,12 @@ namespace SistemaLibreriaImagina.View
     /// </summary>
     public partial class POSView : UserControl
     {
-        private POSViewModel viewModel;
         public POSView()
         {
             InitializeComponent();
-            viewModel = new POSViewModel();
-            DataContext = viewModel;
+            DataContext = new POSViewModel();
         }
+
 
 
         private void PreviewTextInputHandler(object sender, TextCompositionEventArgs e)

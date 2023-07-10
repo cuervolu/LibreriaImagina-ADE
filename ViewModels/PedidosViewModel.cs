@@ -107,6 +107,7 @@ namespace SistemaLibreriaImagina.ViewModels
                 // Mostrar la nueva ventana como diálogo modal
                 modificarPedidoView.Owner = mainWindow;
                 modificarPedidoView.ShowDialog();
+                LoadOrders();
 
                 // Desbloquear la ventana anterior cuando se cierre la nueva ventana
                 mainWindow.IsEnabled = true;
@@ -140,6 +141,7 @@ namespace SistemaLibreriaImagina.ViewModels
                                 Message = "Cambios realizados exitosamente",
                                 Type = NotificationType.Success
                             });
+
                         }
                     }
                 }

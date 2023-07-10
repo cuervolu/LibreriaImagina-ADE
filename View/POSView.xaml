@@ -7,20 +7,18 @@
              xmlns:fa="http://schemas.fontawesome.io/icons/"
              xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:SistemaLibreriaImagina.View"
+             Dialog:DialogParticipation.Register="{Binding}"
              xmlns:converters="clr-namespace:SistemaLibreriaImagina.Converters"
              xmlns:notifications="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
              xmlns:viewModels="clr-namespace:SistemaLibreriaImagina.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
-    <UserControl.DataContext>
-        <viewModels:POSViewModel />
-    </UserControl.DataContext>
-
+    
     <UserControl.Resources>
         <converters:IsNotNullConverter x:Key="IsNotNullConverter" />
         <converters:SelectedProductConverter x:Key="SelectedProductConverter" />
         <converters:PrecioConverter x:Key="PrecioConverter" />
+        <converters:RutFormattingConverter x:Key="RutFormattingConverter" />
     </UserControl.Resources>
 
     <Grid Background="#FFFFFAF5">
@@ -79,8 +77,16 @@
                 
                 <TextBlock Text="Total" Margin="5" />
                 <TextBox Width="100" Margin="5" Text="{Binding PrecioTotal, Converter={StaticResource PrecioConverter}}" IsReadOnly="True" />
+                
+                <TextBlock Text="RUT" Margin="5" />
+                <TextBox  Margin="5" Text="{Binding Rut, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource RutFormattingConverter}}" MaxLength="12"/>
 
-                <!-- Otros controles relacionados con los detalles de la venta -->
+                <Button Content="Pagar"
+                        Command="{Binding CreatePaymentCommand}"
+                        Width="75"
+                        Margin="5"
+                        HorizontalAlignment="Center"
+                        IsEnabled="{Binding SelectedProducts, Converter={StaticResource IsNotNullConverter}}" />
             </StackPanel>
         </Border>
 

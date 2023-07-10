@@ -59,10 +59,10 @@
   </wsdl:binding>
   <wsdl:service name="ImaginaEnvio">
     <wsdl:port name="ImaginaEnvioSoap" binding="tns:ImaginaEnvioSoap">
-      <soap:address location="http://localhost:64685/ImaginaEnvio.asmx" />
+      <soap:address location="http://localhost:18848/ImaginaEnvio.asmx" />
     </wsdl:port>
     <wsdl:port name="ImaginaEnvioSoap12" binding="tns:ImaginaEnvioSoap12">
-      <soap12:address location="http://localhost:64685/ImaginaEnvio.asmx" />
+      <soap12:address location="http://localhost:18848/ImaginaEnvio.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

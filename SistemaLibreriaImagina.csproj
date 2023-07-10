@@ -204,6 +204,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\wsImaginaPay\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\PrecioConverter.cs" />
     <Compile Include="Converters\RolVisibilityConverter.cs" />
@@ -425,7 +430,15 @@
     </Compile>
     <None Include="Connected Services\wsImaginaEnvio\configuration91.svcinfo" />
     <None Include="Connected Services\wsImaginaEnvio\configuration.svcinfo" />
+    <None Include="Connected Services\wsImaginaEnvio\ImaginaEnvio1.wsdl" />
     <None Include="Connected Services\wsImaginaEnvio\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\wsImaginaPay\ImaginaPay.disco" />
+    <None Include="Connected Services\wsImaginaPay\configuration91.svcinfo" />
+    <None Include="Connected Services\wsImaginaPay\configuration.svcinfo" />
+    <None Include="Connected Services\wsImaginaPay\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -470,8 +483,20 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LibreriaImaginaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Connected Services\wsImaginaEnvio\ImaginaEnvio.wsdl" />
     <None Include="Connected Services\wsImaginaEnvio\SistemaLibreriaImagina.wsImaginaEnvio.GenerateShipmentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsImaginaPay\ImaginaPay.wsdl" />
+    <None Include="Connected Services\wsImaginaPay\SistemaLibreriaImagina.wsImaginaPay.CreateBranchPaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsImaginaPay\SistemaLibreriaImagina.wsImaginaPay.GetPaymentDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsImaginaPay\SistemaLibreriaImagina.wsImaginaPay.GetPaymentHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsImaginaPay\SistemaLibreriaImagina.wsImaginaPay.TransaccionDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Models\LibreriaImaginaModel.edmx.diagram">
@@ -525,10 +550,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\wsImaginaEnvio\" />
+    <WCFMetadataStorage Include="Connected Services\wsImaginaPay\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

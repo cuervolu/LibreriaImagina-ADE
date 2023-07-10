@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="CreatePayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="total" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="pedido_id" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="metodo_pago_id" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="usuario_id" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreatePaymentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPaymentDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPaymentDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPaymentDetailsResult" type="tns:TransaccionDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TransaccionDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID_TRANSACCION" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="TOTAL_TRANSACCION" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="PEDIDO_ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="APROBADO" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FECHA" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="METODO_PAGO_ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="USUARIO_ID" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPaymentHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_rut" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPaymentHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPaymentHistoryResult" type="tns:ArrayOfTransaccionDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTransaccionDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TransaccionDTO" nillable="true" type="tns:TransaccionDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateBranchPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_rut" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="total" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateBranchPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateBranchPaymentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreatePaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePayment" />
+  </wsdl:message>
+  <wsdl:message name="CreatePaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPaymentDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPaymentDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetPaymentHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetPaymentHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateBranchPaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateBranchPayment" />
+  </wsdl:message>
+  <wsdl:message name="CreateBranchPaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateBranchPaymentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ImaginaPaySoap">
+    <wsdl:operation name="CreatePayment">
+      <wsdl:input message="tns:CreatePaymentSoapIn" />
+      <wsdl:output message="tns:CreatePaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentDetails">
+      <wsdl:input message="tns:GetPaymentDetailsSoapIn" />
+      <wsdl:output message="tns:GetPaymentDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentHistory">
+      <wsdl:input message="tns:GetPaymentHistorySoapIn" />
+      <wsdl:output message="tns:GetPaymentHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBranchPayment">
+      <wsdl:input message="tns:CreateBranchPaymentSoapIn" />
+      <wsdl:output message="tns:CreateBranchPaymentSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ImaginaPaySoap" type="tns:ImaginaPaySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreatePayment">
+      <soap:operation soapAction="http://tempuri.org/CreatePayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentDetails">
+      <soap:operation soapAction="http://tempuri.org/GetPaymentDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentHistory">
+      <soap:operation soapAction="http://tempuri.org/GetPaymentHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBranchPayment">
+      <soap:operation soapAction="http://tempuri.org/CreateBranchPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ImaginaPaySoap12" type="tns:ImaginaPaySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreatePayment">
+      <soap12:operation soapAction="http://tempuri.org/CreatePayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetPaymentDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentHistory">
+      <soap12:operation soapAction="http://tempuri.org/GetPaymentHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBranchPayment">
+      <soap12:operation soapAction="http://tempuri.org/CreateBranchPayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ImaginaPay">
+    <wsdl:port name="ImaginaPaySoap" binding="tns:ImaginaPaySoap">
+      <soap:address location="http://localhost:54585/ImaginaPay.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ImaginaPaySoap12" binding="tns:ImaginaPaySoap12">
+      <soap12:address location="http://localhost:54585/ImaginaPay.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

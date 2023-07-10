@@ -8,7 +8,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace SistemaLibreriaImagina.ViewModels
 {
@@ -172,7 +171,8 @@ namespace SistemaLibreriaImagina.ViewModels
                 {
                     var id_pedido = pedido.ID_PEDIDO;
                     DateTime fecha_envio = DateTime.Now;
-                    //Ver si el cliente posee una dirección
+
+                    // Verificar si el cliente posee una dirección asignada
                     USUARIO cliente = dbContext.USUARIOs.FirstOrDefault(u => u.ID == pedido.CLIENTE_ID);
                     if (cliente.DIRECCION_ID != null)
                     {
@@ -180,20 +180,27 @@ namespace SistemaLibreriaImagina.ViewModels
 
                         var response = OrderService.GenerateShipment(fecha_envio, direccion_id, id_pedido, selectedRepartidor.ID);
 
-                        // Convertir la respuesta XML a una cadena con formato
-                        XDocument xmlDoc = XDocument.Parse(response.OuterXml);
-                        string formattedXml = xmlDoc.ToString();
-                        var notificationManager = new NotificationManager();
-                        notificationManager.Show(new NotificationContent
+                        // Validar la respuesta del servicio
+                        if (!string.IsNullOrEmpty(response))
                         {
-                            Title = "¡Bien hecho!",
-                            Message = "Se creo el envío con éxito",
-                            Type = NotificationType.Success
-                        });
-                        // Cerrar la ventana
-                        CerrarVentana = true;
-                        IsLoading = false;
+                            var notificationManager = new NotificationManager();
+                            notificationManager.Show(new NotificationContent
+                            {
+                                Title = "¡Bien hecho!",
+                                Message = "Se creó el envío con éxito",
+                                Type = NotificationType.Success
+                            });
 
+                            // Cerrar la ventana
+                            CerrarVentana = true;
+                            IsLoading = false;
+                        }
+                        else
+                        {
+                            ShowErrorMessage("El servicio de envío no devolvió una respuesta válida");
+                            IsLoading = false;
+                            return;
+                        }
                     }
                     else
                     {

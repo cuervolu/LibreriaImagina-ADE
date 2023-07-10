@@ -1,10 +1,13 @@
-﻿using Notifications.Wpf;
+﻿using MahApps.Metro.Controls.Dialogs;
+using Notifications.Wpf;
 using Prism.Commands;
 using SistemaLibreriaImagina.Core;
 using SistemaLibreriaImagina.Models;
+using SistemaLibreriaImagina.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SistemaLibreriaImagina.ViewModels
 {
@@ -19,17 +22,34 @@ namespace SistemaLibreriaImagina.ViewModels
         private int cantidad;
         private decimal subtotal;
         private decimal precioTotal;
+        private string rut;
+        private ProgressDialogController _progressDialog;
+        private IDialogCoordinator _dialogCoordinator;
+        private bool isPaymentEnabled;
 
         // Constructor
         public POSViewModel()
         {
+            _dialogCoordinator = new DialogCoordinator();
             LoadLibros();
             AddProductCommand = new DelegateCommand(AddProduct, CanAddProduct);
+            CreatePaymentCommand = new DelegateCommand(Pagar, CanCreatePayment);
             selectedProducts = new ObservableCollection<SelectedProductItem>();
             Cantidad = 1; // Inicializar la cantidad en 1 por defecto
         }
 
         // Propiedades públicas
+        public string Rut
+        {
+            get { return rut; }
+            set
+            {
+                rut = value;
+                OnPropertyChanged();
+                CreatePaymentCommand.RaiseCanExecuteChanged();
+            }
+        }
+
         public int Cantidad
         {
             get { return cantidad; }
@@ -112,6 +132,7 @@ namespace SistemaLibreriaImagina.ViewModels
         }
 
         public DelegateCommand AddProductCommand { get; private set; }
+        public DelegateCommand CreatePaymentCommand { get; private set; }
 
         // Métodos privados
         private void LoadLibros()
@@ -151,8 +172,33 @@ namespace SistemaLibreriaImagina.ViewModels
 
                 SelectedProducts.Add(selectedProductItem);
                 UpdatePrecioTotal();
+                CreatePaymentCommand.RaiseCanExecuteChanged();
             }
         }
+
+        private bool CanCreatePayment()
+        {
+            return isLibrosLoaded && SelectedProducts.Any() && !string.IsNullOrEmpty(Rut) && PrecioTotal > 0;
+        }
+
+
+        private void Pagar()
+        {
+            try
+            {
+                // Realizar el pago utilizando el servicio de pedidos
+                ShowProgressDialog("Realizando pago...", () =>
+                {
+                    Task.Run(() => RealizarPago()).Wait();
+                });
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage($"Error durante el pago: {ex.Message}");
+            }
+        }
+
+
 
         private void UpdateSelectedProduct()
         {
@@ -164,7 +210,79 @@ namespace SistemaLibreriaImagina.ViewModels
         {
             Subtotal = SelectedProducts.Sum(item => item.Libro.PRECIO_UNITARIO * item.Cantidad);
             PrecioTotal = Subtotal * 1.19m; // Agregar el IVA (19%)
+            CreatePaymentCommand.RaiseCanExecuteChanged();
         }
+
+
+        private async void ShowProgressDialog(string message, Action loadingAction)
+        {
+            _progressDialog = await _dialogCoordinator.ShowProgressAsync(this, "Cargando", message, true);
+            _progressDialog.SetIndeterminate();
+            _progressDialog.Canceled += ProgressDialogCanceled;
+            try
+            {
+                loadingAction.Invoke(); // Ejecuta la operación de carga
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier excepción que ocurra durante la carga
+                ShowErrorMessage($"Error durante la carga: {ex.Message}");
+            }
+
+            await _progressDialog.CloseAsync();
+        }
+
+
+        private async Task RealizarPago()
+        {
+            await Console.Out.WriteLineAsync($"El rut es: {Rut}. El precio Total es {PrecioTotal}");
+            try
+            {
+
+                if (string.IsNullOrEmpty(Rut))
+                {
+                    ShowErrorMessage("El campo 'Rut' no puede estar vacío.");
+                    return;
+                }
+
+                if (Rut.Length != 12)
+                {
+                    ShowErrorMessage("El campo 'Rut' debe tener 9 caracteres.");
+                    return;
+                }
+
+                string resultadoPago = await Task.Run(() => OrderService.CreatePayment(Rut, PrecioTotal));
+
+
+                if (!string.IsNullOrEmpty(resultadoPago))
+                {
+                    var successDialogResult = await _dialogCoordinator.ShowMessageAsync(this, "Éxito", "Pago realizado exitosamente");
+
+                    // Limpiar los productos seleccionados y reiniciar los valores
+                    SelectedProducts.Clear();
+                    Cantidad = 1;
+                    Rut = string.Empty;
+                    UpdatePrecioTotal();
+                }
+                else
+                {
+                    await _dialogCoordinator.ShowMessageAsync(this, "Error", $"No se pudo realizar el pago para RUT: {Rut}");
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message);
+            }
+        }
+
+
+        private void ProgressDialogCanceled(object sender, EventArgs e)
+        {
+            _progressDialog.CloseAsync();
+        }
+
+
+
 
         private void ShowErrorMessage(string message)
         {
