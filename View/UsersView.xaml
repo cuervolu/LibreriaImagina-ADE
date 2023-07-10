@@ -7,8 +7,8 @@
              xmlns:fa="http://schemas.fontawesome.io/icons/"
              xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:SistemaLibreriaImagina.View"
-              xmlns:converters="clr-namespace:SistemaLibreriaImagina.Converters"
-              xmlns:notifications="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
+             xmlns:converters="clr-namespace:SistemaLibreriaImagina.Converters"
+             xmlns:notifications="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
              xmlns:viewModels="clr-namespace:SistemaLibreriaImagina.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="775" d:DesignWidth="1065" Margin="10" Background="Transparent">
@@ -36,42 +36,58 @@
                     <DataGridTextColumn Header="Usuario" Binding="{Binding USERNAME}"  IsReadOnly="True" />
                     <DataGridTextColumn Header="Correo" Binding="{Binding CORREO}"  IsReadOnly="True" />
                     <DataGridTextColumn Header="Teléfono" Binding="{Binding TELEFONO}"  IsReadOnly="True" />
-                    <DataGridCheckBoxColumn Header="ADMIN" Binding="{Binding IS_SUPERUSER}"  IsReadOnly="True" />
-                    <DataGridCheckBoxColumn Header="Staff" Binding="{Binding IS_STAFF}"  IsReadOnly="True" />
+                    <DataGridTemplateColumn Header="ADMIN">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <mah:ToggleSwitch IsOn="{Binding IS_SUPERUSER, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Toggled="AdminSwitch_Toggled"
+                                                  OnContent="Admin" OffContent="Usuario"
+                                                  Command="{Binding DataContext.AdminSwitchCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                  CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Staff">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <mah:ToggleSwitch IsOn="{Binding IS_STAFF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Toggled="StaffSwitch_Toggled"
+                                                  OnContent="Staff" OffContent="Usuario"
+                                                  Command="{Binding DataContext.StaffSwitchCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                  CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
                     <DataGridTemplateColumn Header="Tipo Usuario">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox SelectedItem="{Binding TIPO_USUARIO, UpdateSourceTrigger=PropertyChanged}"
-                      ItemsSource="{Binding DataContext.Tipos, RelativeSource={RelativeSource AncestorType=UserControl}}" SelectionChanged="ComboBox_SelectionChanged">
+                                          ItemsSource="{Binding DataContext.Tipos, RelativeSource={RelativeSource AncestorType=UserControl}}" SelectionChanged="ComboBox_SelectionChanged">
                                 </ComboBox>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridCheckBoxColumn Header="ACTIVO" Binding="{Binding IS_ACTIVE}" IsReadOnly="True" />
+
+                    <DataGridTemplateColumn Header="ACTIVO">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <mah:ToggleSwitch IsOn="{Binding IS_ACTIVE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Toggled="ActiveSwitch_Toggled"
+                                                  OnContent="Activo" OffContent="Inactivo"
+                                                  Command="{Binding DataContext.ActiveSwitchCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                  CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
-            
-
-
             <!-- Grid adicional para el ProgressRing -->
-            <Grid  Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Height="780" Width="905">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <Grid Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Height="780" Width="905" Grid.Row="0">
                 <mah:ProgressRing IsActive="{Binding IsLoading}" Foreground="#1F8BAC" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
             </Grid>
-            
-            
-            
-            <notifications:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="1" />
-            
 
+            <notifications:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="1" Grid.Row="0" />
 
         </Grid>
-
     </Border>
 </UserControl>

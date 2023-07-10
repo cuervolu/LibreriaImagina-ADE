@@ -3,6 +3,7 @@ using SistemaLibreriaImagina.Core;
 using SistemaLibreriaImagina.Models;
 using SistemaLibreriaImagina.Services;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -129,8 +130,8 @@ namespace SistemaLibreriaImagina.ViewModels
                             // Cerrar la pantalla de carga
                             await progressDialog.CloseAsync();
 
-                            // Redirigir al inicio de sesión
-                            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                            // Reiniciar la aplicación y mostrar la ventana de inicio de sesión
+                            Process.Start(Application.ResourceAssembly.Location);
                             Application.Current.Shutdown();
                         }
                         catch (Exception ex)
@@ -141,6 +142,7 @@ namespace SistemaLibreriaImagina.ViewModels
                         }
                     }
                 });
+
 
                 // Ocultar el elemento de carga una vez que se complete la carga
                 IsLoading = false;

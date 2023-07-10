@@ -29,12 +29,6 @@ namespace SistemaLibreriaImagina.Converters
                         rut = rut.Insert(rut.Length - 5, ".");
                     }
                 }
-
-                // Ajustar el formato del RUT a "XX.XXX.XXX-X"
-                if (rut.Length == 11)
-                {
-                    rut = rut.Substring(0, 2) + "." + rut.Substring(2, 3) + "." + rut.Substring(5, 3) + "-" + rut.Substring(8, 1);
-                }
             }
 
             return rut;

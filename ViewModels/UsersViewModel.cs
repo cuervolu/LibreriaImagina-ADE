@@ -38,6 +38,45 @@ namespace SistemaLibreriaImagina.ViewModels
             }
         }
 
+        private RelayCommand adminSwitchCommand;
+        public RelayCommand AdminSwitchCommand
+        {
+            get
+            {
+                if (adminSwitchCommand == null)
+                {
+                    adminSwitchCommand = new RelayCommand(AdminSwitchExecute);
+                }
+                return adminSwitchCommand;
+            }
+        }
+
+        private RelayCommand staffSwitchCommand;
+        public RelayCommand StaffSwitchCommand
+        {
+            get
+            {
+                if (staffSwitchCommand == null)
+                {
+                    staffSwitchCommand = new RelayCommand(StaffSwitchExecute);
+                }
+                return staffSwitchCommand;
+            }
+        }
+
+        private RelayCommand activeSwitchCommand;
+        public RelayCommand ActiveSwitchCommand
+        {
+            get
+            {
+                if (activeSwitchCommand == null)
+                {
+                    activeSwitchCommand = new RelayCommand(ActiveSwitchExecute);
+                }
+                return activeSwitchCommand;
+            }
+        }
+
         private RelayCommand changeRolCommand;
 
         public RelayCommand ChangeRolCommand
@@ -77,6 +116,7 @@ namespace SistemaLibreriaImagina.ViewModels
                 "Repartidor",
                 "Técnico",
                 "Cliente",
+                "Empleado",
                 "Encargado de Bodega"
             };
             LoadUsers();
@@ -182,6 +222,107 @@ namespace SistemaLibreriaImagina.ViewModels
             crearUsuarioView.ShowDialog();
             LoadUsers();
         }
+
+
+        private void AdminSwitchExecute(object parameter)
+        {
+            if (parameter is Tuple<USUARIO, bool> tuple && tuple.Item1 is USUARIO usuario && tuple.Item2 is bool isAdmin)
+            {
+                try
+                {
+                    bool res = UsersService.UpdateAdminStatus(usuario.ID, isAdmin);
+                    if (res)
+                    {
+                        var notificationManager = new NotificationManager();
+                        notificationManager.Show(new NotificationContent
+                        {
+                            Title = "¡Bien hecho!",
+                            Message = "Se hizo el cambio con éxito",
+                            Type = NotificationType.Success
+                        });
+
+                        // Actualizar solo el usuario modificado en lugar de volver a cargar todos los usuarios
+                        int index = Usuarios.IndexOf(usuario);
+                        if (index != -1)
+                        {
+                            Usuarios[index] = usuario;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex.Message);
+                }
+            }
+        }
+
+
+
+        private void StaffSwitchExecute(object parameter)
+        {
+            if (parameter is Tuple<USUARIO, bool> tuple && tuple.Item1 is USUARIO usuario && tuple.Item2 is bool isStaff)
+            {
+                try
+                {
+                    bool res = UsersService.UpdateStaffStatus(usuario.ID, isStaff);
+                    if (res)
+                    {
+                        var notificationManager = new NotificationManager();
+                        notificationManager.Show(new NotificationContent
+                        {
+                            Title = "¡Bien hecho!",
+                            Message = "Se hizo el cambio con éxito",
+                            Type = NotificationType.Success
+                        });
+
+                        // Actualizar solo el usuario modificado en lugar de volver a cargar todos los usuarios
+                        int index = Usuarios.IndexOf(usuario);
+                        if (index != -1)
+                        {
+                            Usuarios[index] = usuario;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex.Message);
+                }
+            }
+        }
+
+        private void ActiveSwitchExecute(object parameter)
+        {
+            if (parameter is Tuple<USUARIO, bool> tuple && tuple.Item1 is USUARIO usuario && tuple.Item2 is bool isActive)
+            {
+                try
+                {
+                    bool res = UsersService.UpdateActiveStatus(usuario.ID, isActive);
+                    if (res)
+                    {
+                        var notificationManager = new NotificationManager();
+                        notificationManager.Show(new NotificationContent
+                        {
+                            Title = "¡Bien hecho!",
+                            Message = "Se hizo el cambio con éxito",
+                            Type = NotificationType.Success
+                        });
+
+                        // Actualizar solo el usuario modificado en lugar de volver a cargar todos los usuarios
+                        int index = Usuarios.IndexOf(usuario);
+                        if (index != -1)
+                        {
+                            Usuarios[index] = usuario;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex.Message);
+                }
+            }
+        }
+
+
 
         private void ShowErrorMessage(string message)
         {

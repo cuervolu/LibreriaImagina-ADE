@@ -182,14 +182,14 @@ namespace SistemaLibreriaImagina.ViewModels
         }
 
 
-        private void Pagar()
+        private async void Pagar()
         {
             try
             {
                 // Realizar el pago utilizando el servicio de pedidos
-                ShowProgressDialog("Realizando pago...", () =>
+                await ShowProgressDialog("Realizando pago...", async () =>
                 {
-                    Task.Run(() => RealizarPago()).Wait();
+                    await RealizarPago();
                 });
             }
             catch (Exception ex)
@@ -197,8 +197,6 @@ namespace SistemaLibreriaImagina.ViewModels
                 ShowErrorMessage($"Error durante el pago: {ex.Message}");
             }
         }
-
-
 
         private void UpdateSelectedProduct()
         {
@@ -214,7 +212,7 @@ namespace SistemaLibreriaImagina.ViewModels
         }
 
 
-        private async void ShowProgressDialog(string message, Action loadingAction)
+        private async Task ShowProgressDialog(string message, Action loadingAction)
         {
             _progressDialog = await _dialogCoordinator.ShowProgressAsync(this, "Cargando", message, true);
             _progressDialog.SetIndeterminate();
@@ -236,9 +234,9 @@ namespace SistemaLibreriaImagina.ViewModels
         private async Task RealizarPago()
         {
             await Console.Out.WriteLineAsync($"El rut es: {Rut}. El precio Total es {PrecioTotal}");
+
             try
             {
-
                 if (string.IsNullOrEmpty(Rut))
                 {
                     ShowErrorMessage("El campo 'Rut' no puede estar vacío.");
@@ -251,8 +249,7 @@ namespace SistemaLibreriaImagina.ViewModels
                     return;
                 }
 
-                string resultadoPago = await Task.Run(() => OrderService.CreatePayment(Rut, PrecioTotal));
-
+                string resultadoPago = await OrderService.CreatePayment(Rut, PrecioTotal);
 
                 if (!string.IsNullOrEmpty(resultadoPago))
                 {

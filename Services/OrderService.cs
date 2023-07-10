@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SistemaLibreriaImagina.Services
 {
@@ -72,15 +73,15 @@ namespace SistemaLibreriaImagina.Services
             }
         }
 
-        public static string CreatePayment(string user_rut, decimal total)
+        public static async Task<string> CreatePayment(string user_rut, decimal total)
         {
             ImaginaPaySoapClient cliente = new ImaginaPaySoapClient();
             try
             {
                 if (IsServiceOnline(cliente.Endpoint.Address.Uri))
                 {
-                    var res = cliente.CreateBranchPayment(user_rut, total);
-                    return res;
+                    var response = await cliente.CreateBranchPaymentAsync(user_rut, total);
+                    return response.ToString();
                 }
                 else
                 {
@@ -92,6 +93,8 @@ namespace SistemaLibreriaImagina.Services
                 throw new Exception($"Error al hacer el pago: {ex.Message}");
             }
         }
+
+
 
         private static bool IsServiceOnline(Uri serviceUri)
         {

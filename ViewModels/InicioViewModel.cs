@@ -93,7 +93,7 @@ namespace SistemaLibreriaImagina.ViewModels
 
         public void generatePieChart()
         {
-            // Obtener los datos del gráfico circular desde OrderService
+            // Obtener los datos del grÃ¡fico circular desde OrderService
             var (values, labels) = OrderService.GetOrderStatusCount();
 
             List<PieSeries<double>> series = new List<PieSeries<double>>();
@@ -109,7 +109,6 @@ namespace SistemaLibreriaImagina.ViewModels
                     Values = new[] { value },
                     Name = label,
                     DataLabelsPaint = new SolidColorPaint(new SKColor(30, 30, 30)),
-                    DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.ChartCenter,
                     DataLabelsFormatter = p => $"{p.PrimaryValue} / {(p.StackedValue != null ? p.StackedValue.Total : 0)} ({(p.StackedValue != null ? p.StackedValue.Share : 0):P2})",
                     TooltipLabelFormatter = p => $"{p.PrimaryValue:C2}",
                     Fill = color
@@ -120,6 +119,15 @@ namespace SistemaLibreriaImagina.ViewModels
 
             Series = series;
         }
+
+        public List<SolidColorPaint> statusColors = new List<SolidColorPaint>
+        {
+            new SolidColorPaint(new SKColor(20, 110, 137, 255)),
+            new SolidColorPaint(new SKColor(31, 139, 172, 255)),
+            new SolidColorPaint(new SKColor(100, 180, 205, 255)),
+            new SolidColorPaint(new SKColor(130, 194, 203, 255)),
+            new SolidColorPaint(new SKColor(107, 155, 167, 255))
+        };
 
         private void ShowErrorMessage(string message)
         {
@@ -134,15 +142,6 @@ namespace SistemaLibreriaImagina.ViewModels
                 });
             }));
         }
-
-        public List<SolidColorPaint> statusColors = new List<SolidColorPaint>
-        {
-            new SolidColorPaint(new SKColor(0, 0, 255, 128)), // Azul con transparencia
-            new SolidColorPaint(new SKColor(0, 255, 0, 128)), // Verde con transparencia
-            new SolidColorPaint(new SKColor(255, 255, 0, 128)), // Amarillo con transparencia
-            new SolidColorPaint(new SKColor(255, 165, 0, 128)), // Naranja con transparencia
-            new SolidColorPaint(new SKColor(255, 0, 0, 128)) // Rojo con transparencia
-        };
 
         public IEnumerable<ISeries> Series { get; set; }
 
