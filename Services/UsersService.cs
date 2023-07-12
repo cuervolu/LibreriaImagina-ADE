@@ -70,6 +70,7 @@ namespace SistemaLibreriaImagina.Services
                 using (Entities dbContext = new Entities())
                 {
                     USUARIO user = dbContext.USUARIOs.FirstOrDefault(u => u.ID == id);
+                    if (user.IS_SUPERUSER == isAdmin) return false;
                     if (user != null)
                     {
                         user.IS_SUPERUSER = isAdmin;
@@ -96,6 +97,8 @@ namespace SistemaLibreriaImagina.Services
                 using (Entities dbContext = new Entities())
                 {
                     USUARIO user = dbContext.USUARIOs.FirstOrDefault(u => u.ID == id);
+                    if (user.IS_ACTIVE == isActive) return false;
+
                     if (user != null)
                     {
                         user.IS_ACTIVE = isActive;
@@ -121,7 +124,8 @@ namespace SistemaLibreriaImagina.Services
             {
                 using (Entities dbContext = new Entities())
                 {
-                    USUARIO user = dbContext.USUARIOs.Find(id);
+                    USUARIO user = dbContext.USUARIOs.FirstOrDefault(u => u.ID == id);
+                    if (user.IS_STAFF == isStaff) return false;
                     if (user != null)
                     {
                         user.IS_STAFF = isStaff;

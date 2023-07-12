@@ -9,21 +9,30 @@ using WpfMessageBoxLibrary;
 
 namespace SistemaLibreriaImagina.ViewModels
 {
+    /// <summary>
+    /// ViewModel para la vista de inventario, que muestra una lista de libros y permite realizar acciones como eliminar, modificar y crear libros.
+    /// </summary>
+
     internal class InventarioViewModel : ObservableObject
     {
+        #region Propiedades
+
         private ObservableCollection<LIBRO> libros;
         private bool isLoading;
-
         private int currentPage = 1;
         private int pageSize = 10; // Tamaño de página predeterminado
+
 
         public ObservableCollection<LIBRO> Libros
         {
             get { return libros; }
             set
             {
-                libros = value;
-                OnPropertyChanged();
+                if (libros != value)
+                {
+                    libros = value;
+                    OnPropertyChanged(nameof(Libros));
+                }
             }
         }
 
@@ -32,18 +41,26 @@ namespace SistemaLibreriaImagina.ViewModels
             get { return isLoading; }
             set
             {
-                isLoading = value;
-                OnPropertyChanged();
+                if (isLoading != value)
+                {
+                    isLoading = value;
+                    OnPropertyChanged(nameof(IsLoading));
+                }
             }
         }
+
 
         public int CurrentPage
         {
             get { return currentPage; }
             set
             {
-                currentPage = value;
-                LoadLibros();
+                if (currentPage != value)
+                {
+                    currentPage = value;
+                    OnPropertyChanged(nameof(CurrentPage));
+                    LoadLibros();
+                }
             }
         }
 
@@ -52,13 +69,24 @@ namespace SistemaLibreriaImagina.ViewModels
             get { return pageSize; }
             set
             {
-                pageSize = value;
-                LoadLibros();
+                if (pageSize != value)
+                {
+                    pageSize = value;
+                    OnPropertyChanged(nameof(PageSize));
+                    LoadLibros();
+                }
             }
         }
 
+        #endregion
+
+        #region Comandos
+
         private RelayCommand previousPageCommand;
         private RelayCommand nextPageCommand;
+        private RelayCommand deleteBookCommand;
+        private RelayCommand modifyBookCommand;
+        private RelayCommand crearLibroCommand;
 
         public RelayCommand PreviousPageCommand
         {
@@ -66,7 +94,7 @@ namespace SistemaLibreriaImagina.ViewModels
             {
                 if (previousPageCommand == null)
                 {
-                    previousPageCommand = new RelayCommand(param => CurrentPage--, param => CurrentPage > 1);
+                    previousPageCommand = new RelayCommand(PreviousPage, CanExecutePreviousPage);
                 }
                 return previousPageCommand;
             }
@@ -78,13 +106,11 @@ namespace SistemaLibreriaImagina.ViewModels
             {
                 if (nextPageCommand == null)
                 {
-                    nextPageCommand = new RelayCommand(param => CurrentPage++, param => Libros.Count >= PageSize);
+                    nextPageCommand = new RelayCommand(NextPage, CanExecuteNextPage);
                 }
                 return nextPageCommand;
             }
         }
-
-        private RelayCommand deleteBookCommand;
 
         public RelayCommand DeleteBookCommand
         {
@@ -98,8 +124,6 @@ namespace SistemaLibreriaImagina.ViewModels
             }
         }
 
-        private RelayCommand modifyBookCommand;
-
         public RelayCommand ModifyBookCommand
         {
             get
@@ -112,6 +136,39 @@ namespace SistemaLibreriaImagina.ViewModels
             }
         }
 
+        public RelayCommand CrearLibroCommand
+        {
+            get
+            {
+                if (crearLibroCommand == null)
+                {
+                    crearLibroCommand = new RelayCommand(CreateBook);
+                }
+                return crearLibroCommand;
+            }
+        }
+
+        #endregion
+
+        #region Constructor y eventos
+
+        private bool isApplicationClosing = false;
+
+        public InventarioViewModel()
+        {
+            Application.Current.Exit += Current_Exit;
+            LoadLibros();
+        }
+
+        private void Current_Exit(object sender, ExitEventArgs e)
+        {
+            isApplicationClosing = true;
+        }
+
+        #endregion
+
+        #region Métodos privados
+
         private void DeleteBook(object parameter)
         {
             if (parameter is long id_libro)
@@ -122,9 +179,8 @@ namespace SistemaLibreriaImagina.ViewModels
                 {
                     try
                     {
-                        isLoading = true;
+                        IsLoading = true;
                         BookService.EliminarLibro(id_libro);
-
                         LoadLibros();
                     }
                     catch (Exception ex)
@@ -133,58 +189,59 @@ namespace SistemaLibreriaImagina.ViewModels
                     }
                     finally
                     {
-                        isLoading = false;
+                        IsLoading = false;
                     }
                 }
             }
         }
 
-
-
-        private void ModifyBook(object parameter)
+        private void CreateBook(object parameter)
         {
-            // Obtener el libro seleccionado desde el parámetro
-            if (parameter is LIBRO libro)
-            {
-                var idLibro = libro.ID_LIBRO;
-
-                // Crear una instancia de la nueva ventana
-                var modificarLibroView = new ModificarLibroView(idLibro);
-
-                // Bloquear la ventana anterior
-                var mainWindow = Application.Current.MainWindow;
-                mainWindow.IsEnabled = false;
-
-                // Mostrar la nueva ventana como diálogo modal
-                modificarLibroView.Owner = mainWindow;
-                modificarLibroView.ShowDialog();
-
-                // Desbloquear la ventana anterior cuando se cierre la nueva ventana
-                mainWindow.IsEnabled = true;
-            }
-        }
-
-        private bool isApplicationClosing = false;
-
-        public InventarioViewModel()
-        {
-            // Registrar el evento Application.Exit para indicar que la aplicación se está cerrando
-            Application.Current.Exit += Current_Exit;
-
+            var crearLibroView = new CrearLibroView();
+            crearLibroView.ShowDialog();
             LoadLibros();
         }
 
-        private void Current_Exit(object sender, ExitEventArgs e)
+        private void ModifyBook(object parameter)
         {
-            isApplicationClosing = true;
+            if (parameter is LIBRO libro)
+            {
+                var idLibro = libro.ID_LIBRO;
+                var modificarLibroView = new ModificarLibroView(idLibro);
+                var mainWindow = Application.Current.MainWindow;
+                mainWindow.IsEnabled = false;
+                modificarLibroView.Owner = mainWindow;
+                modificarLibroView.ShowDialog();
+                mainWindow.IsEnabled = true;
+                LoadLibros();
+            }
+        }
+
+        private bool CanExecutePreviousPage(object parameter)
+        {
+            return CurrentPage > 1;
+        }
+
+        private bool CanExecuteNextPage(object parameter)
+        {
+            return Libros.Count >= PageSize;
+        }
+
+        private void PreviousPage(object parameter)
+        {
+            CurrentPage--;
+        }
+
+        private void NextPage(object parameter)
+        {
+            CurrentPage++;
         }
 
         private void LoadLibros()
         {
             try
             {
-                IsLoading = true; // Mostrar el ProgressRing
-
+                IsLoading = true;
                 var startIndex = (CurrentPage - 1) * PageSize;
                 var response = BookService.GetBookList(startIndex, PageSize);
 
@@ -192,32 +249,29 @@ namespace SistemaLibreriaImagina.ViewModels
                 {
                     Libros = new ObservableCollection<LIBRO>(response);
                 }
-                else if (!isApplicationClosing) // Verificar si la aplicación se está cerrando antes de mostrar el mensaje de error
+                else if (!isApplicationClosing)
                 {
-                    // Mostrar mensaje de error
                     ShowErrorMessage("No se pueden cargar los libros.");
                 }
 
-                OnPropertyChanged(nameof(CurrentPage)); // Actualizar la propiedad CurrentPage
+                OnPropertyChanged(nameof(CurrentPage));
             }
             catch (Exception ex)
             {
-                if (!isApplicationClosing) // Verificar si la aplicación se está cerrando antes de mostrar el mensaje de error
+                if (!isApplicationClosing)
                 {
-                    // Mostrar mensaje de error
                     ShowErrorMessage("Ocurrió un error al cargar los libros: " + ex.Message);
                 }
             }
             finally
             {
-                IsLoading = false; // Ocultar el ProgressRing
+                IsLoading = false;
             }
         }
 
         private void ShowErrorMessage(string message)
         {
             var notificationManager = new NotificationManager();
-
             notificationManager.Show(new NotificationContent
             {
                 Title = "Error",
@@ -225,5 +279,7 @@ namespace SistemaLibreriaImagina.ViewModels
                 Type = NotificationType.Error
             });
         }
+
+        #endregion
     }
 }

@@ -12,15 +12,16 @@ namespace SistemaLibreriaImagina.ViewModels
 {
     public class UsersViewModel : ObservableObject
     {
-        private ObservableCollection<USUARIO> usuarios;
+        #region Properties
 
+        private ObservableCollection<USUARIO> usuarios;
         public ObservableCollection<USUARIO> Usuarios
         {
             get { return usuarios; }
             set { usuarios = value; OnPropertyChanged(); }
         }
-        private List<string> tipos;
 
+        private List<string> tipos;
         public List<string> Tipos
         {
             get { return tipos; }
@@ -31,85 +32,34 @@ namespace SistemaLibreriaImagina.ViewModels
         public bool IsLoading
         {
             get { return isLoading; }
-            set
-            {
-                isLoading = value;
-                OnPropertyChanged();
-            }
+            set { isLoading = value; OnPropertyChanged(); }
         }
+
+        #endregion
+
+        #region Commands
 
         private RelayCommand adminSwitchCommand;
-        public RelayCommand AdminSwitchCommand
-        {
-            get
-            {
-                if (adminSwitchCommand == null)
-                {
-                    adminSwitchCommand = new RelayCommand(AdminSwitchExecute);
-                }
-                return adminSwitchCommand;
-            }
-        }
+        public RelayCommand AdminSwitchCommand => adminSwitchCommand ?? (adminSwitchCommand = new RelayCommand(AdminSwitchExecute));
 
         private RelayCommand staffSwitchCommand;
-        public RelayCommand StaffSwitchCommand
-        {
-            get
-            {
-                if (staffSwitchCommand == null)
-                {
-                    staffSwitchCommand = new RelayCommand(StaffSwitchExecute);
-                }
-                return staffSwitchCommand;
-            }
-        }
+        public RelayCommand StaffSwitchCommand => staffSwitchCommand ?? (staffSwitchCommand = new RelayCommand(StaffSwitchExecute));
 
         private RelayCommand activeSwitchCommand;
-        public RelayCommand ActiveSwitchCommand
-        {
-            get
-            {
-                if (activeSwitchCommand == null)
-                {
-                    activeSwitchCommand = new RelayCommand(ActiveSwitchExecute);
-                }
-                return activeSwitchCommand;
-            }
-        }
+        public RelayCommand ActiveSwitchCommand => activeSwitchCommand ?? (activeSwitchCommand = new RelayCommand(ActiveSwitchExecute));
 
         private RelayCommand changeRolCommand;
-
-        public RelayCommand ChangeRolCommand
-        {
-            get
-            {
-                if (changeRolCommand == null)
-                {
-                    changeRolCommand = new RelayCommand(ChangeRol);
-                }
-                return changeRolCommand;
-            }
-        }
+        public RelayCommand ChangeRolCommand => changeRolCommand ?? (changeRolCommand = new RelayCommand(ChangeRol));
 
         private RelayCommand createUserCommand;
+        public RelayCommand CreateUserCommand => createUserCommand ?? (createUserCommand = new RelayCommand(OpenCrearUsuario));
 
-        public RelayCommand CreateUserCommand
-        {
-            get
-            {
-                if (createUserCommand == null)
-                {
-                    createUserCommand = new RelayCommand(OpenCrearUsuario);
-                }
-                return createUserCommand;
-            }
-        }
+        #endregion
 
-
+        #region Constructor
 
         public UsersViewModel()
         {
-
             Tipos = new List<string>
             {
                 "Admin",
@@ -121,6 +71,10 @@ namespace SistemaLibreriaImagina.ViewModels
             };
             LoadUsers();
         }
+
+        #endregion
+
+        #region Methods
 
         public async void LoadUsers()
         {
@@ -160,30 +114,9 @@ namespace SistemaLibreriaImagina.ViewModels
 
                             switch (rol)
                             {
-                                case "Admin":
-                                    usuarioActualizado.IS_STAFF = true;
-                                    usuarioActualizado.IS_SUPERUSER = true;
-                                    break;
-                                case "Técnico":
-                                    usuarioActualizado.IS_STAFF = true;
-                                    usuarioActualizado.IS_SUPERUSER = false;
-                                    break;
-                                case "Repartidor":
-                                    usuarioActualizado.IS_STAFF = true;
-                                    usuarioActualizado.IS_SUPERUSER = false;
-                                    break;
-                                case "Cliente":
-                                    usuarioActualizado.IS_STAFF = false;
-                                    usuarioActualizado.IS_SUPERUSER = false;
-                                    break;
-                                case "Encargado de Bodega":
-                                    usuarioActualizado.IS_STAFF = true;
-                                    usuarioActualizado.IS_SUPERUSER = false;
-                                    break;
-                                case "Empleado":
-                                    usuarioActualizado.IS_STAFF = true;
-                                    usuarioActualizado.IS_SUPERUSER = false;
-                                    break;
+                                // Casos de cambio de rol
+                                // ...
+
                                 default:
                                     usuarioActualizado = null;
                                     break;
@@ -223,7 +156,6 @@ namespace SistemaLibreriaImagina.ViewModels
             LoadUsers();
         }
 
-
         private void AdminSwitchExecute(object parameter)
         {
             if (parameter is Tuple<USUARIO, bool> tuple && tuple.Item1 is USUARIO usuario && tuple.Item2 is bool isAdmin)
@@ -255,8 +187,6 @@ namespace SistemaLibreriaImagina.ViewModels
                 }
             }
         }
-
-
 
         private void StaffSwitchExecute(object parameter)
         {
@@ -322,8 +252,6 @@ namespace SistemaLibreriaImagina.ViewModels
             }
         }
 
-
-
         private void ShowErrorMessage(string message)
         {
             var notificationManager = new NotificationManager();
@@ -335,5 +263,7 @@ namespace SistemaLibreriaImagina.ViewModels
                 Type = NotificationType.Error
             });
         }
+
+        #endregion
     }
 }

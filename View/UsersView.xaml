@@ -40,9 +40,10 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <mah:ToggleSwitch IsOn="{Binding IS_SUPERUSER, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Toggled="AdminSwitch_Toggled"
-                                                  OnContent="Admin" OffContent="Usuario"
-                                                  Command="{Binding DataContext.AdminSwitchCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                                  CommandParameter="{Binding}" />
+                  OnContent="Admin" OffContent="Usuario"
+                  Command="{Binding DataContext.AdminSwitchCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                  CommandParameter="{Binding DataContext, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -50,10 +51,11 @@
                     <DataGridTemplateColumn Header="Staff">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <mah:ToggleSwitch IsOn="{Binding IS_STAFF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Toggled="StaffSwitch_Toggled"
-                                                  OnContent="Staff" OffContent="Usuario"
-                                                  Command="{Binding DataContext.StaffSwitchCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                                  CommandParameter="{Binding}" />
+                                <mah:ToggleSwitch IsOn="{Binding IS_STAFF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" Toggled="StaffSwitch_Toggled"
+                  OnContent="Staff" OffContent="Usuario"
+                  Command="{Binding DataContext.StaffSwitchCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                  CommandParameter="{Binding DataContext, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -71,10 +73,11 @@
                     <DataGridTemplateColumn Header="ACTIVO">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <mah:ToggleSwitch IsOn="{Binding IS_ACTIVE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Toggled="ActiveSwitch_Toggled"
-                                                  OnContent="Activo" OffContent="Inactivo"
-                                                  Command="{Binding DataContext.ActiveSwitchCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                                  CommandParameter="{Binding}" />
+
+                                <mah:ToggleSwitch IsOn="{Binding IS_ACTIVE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Toggled="ActiveSwitch_Toggled"
+                  OnContent="Activo" OffContent="Inactivo"
+                  Command="{Binding DataContext.ActiveSwitchCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                  CommandParameter="{Binding DataContext, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

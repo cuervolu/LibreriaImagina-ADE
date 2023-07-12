@@ -13,7 +13,7 @@
                  Height="Auto" Width="Auto" Background="Transparent"
                  WindowStyle="None"
                   WindowState="Maximized"
-                 
+                 ShowTitleBar="False" 
                  AllowsTransparency="False"
                  ResizeMode="CanResize" Title="Sistema Librería Imagina">
 

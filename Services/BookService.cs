@@ -11,7 +11,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-public static class BookService
+public class BookService
 {
     public class ApiResponse<T>
     {
@@ -134,6 +134,40 @@ public static class BookService
             return categorias;
         }
     }
+
+
+    public async Task<bool> CrearLibro(Dictionary<string, object> nuevoLibro)
+    {
+        DotEnv.Load(options: new DotEnvOptions(ignoreExceptions: false));
+        var envVars = DotEnv.Read();
+        try
+        {
+            var jsonData = JsonConvert.SerializeObject(nuevoLibro);
+            await Console.Out.WriteLineAsync(jsonData);
+            var content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
+            var httpClient = new HttpClient();
+            var apiUrl = envVars["API_URL"];
+
+            var response = await httpClient.PostAsync(apiUrl + "api/libros/", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseBody = await response.Content.ReadAsStringAsync();
+                return true;
+            }
+            else
+            {
+                // La solicitud no fue exitosa
+                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                return false;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Error al crear el libro {nuevoLibro["titulo"]}: {ex.Message}");
+        }
+    }
+
 
     public static void EliminarLibro(long idLibro)
     {

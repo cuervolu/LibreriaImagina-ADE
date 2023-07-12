@@ -312,6 +312,7 @@
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\UsersService.cs" />
     <Compile Include="Utilities\ErrorControl.cs" />
+    <Compile Include="ViewModels\CrearLibroViewModel.cs" />
     <Compile Include="ViewModels\CrearUsuarioViewModel.cs" />
     <Compile Include="ViewModels\InicioViewModel.cs" />
     <Compile Include="ViewModels\InventarioViewModel.cs" />
@@ -323,6 +324,9 @@
     <Compile Include="ViewModels\POSViewModel.cs" />
     <Compile Include="ViewModels\RestockViewModel.cs" />
     <Compile Include="ViewModels\UsersViewModel.cs" />
+    <Compile Include="View\CrearLibroView.xaml.cs">
+      <DependentUpon>CrearLibroView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CrearUsuarioView.xaml.cs">
       <DependentUpon>CrearUsuarioView.xaml</DependentUpon>
     </Compile>
@@ -370,6 +374,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\TextboxTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CrearLibroView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
